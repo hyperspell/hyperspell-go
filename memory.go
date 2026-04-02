@@ -14,15 +14,15 @@ import (
 	"slices"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go/internal/apiform"
-	"github.com/stainless-sdks/hyperspell-go/internal/apijson"
-	"github.com/stainless-sdks/hyperspell-go/internal/apiquery"
-	"github.com/stainless-sdks/hyperspell-go/internal/requestconfig"
-	"github.com/stainless-sdks/hyperspell-go/option"
-	"github.com/stainless-sdks/hyperspell-go/packages/pagination"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
-	"github.com/stainless-sdks/hyperspell-go/packages/respjson"
-	"github.com/stainless-sdks/hyperspell-go/shared"
+	"github.com/hyperspell/hyperspell-go/internal/apiform"
+	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	"github.com/hyperspell/hyperspell-go/internal/apiquery"
+	"github.com/hyperspell/hyperspell-go/internal/requestconfig"
+	"github.com/hyperspell/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go/packages/pagination"
+	"github.com/hyperspell/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/shared"
 )
 
 // MemoryService contains methods and other services that help with interacting

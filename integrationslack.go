@@ -8,10 +8,10 @@ import (
 	"net/url"
 	"slices"
 
-	"github.com/stainless-sdks/hyperspell-go/internal/apiquery"
-	"github.com/stainless-sdks/hyperspell-go/internal/requestconfig"
-	"github.com/stainless-sdks/hyperspell-go/option"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/internal/apiquery"
+	"github.com/hyperspell/hyperspell-go/internal/requestconfig"
+	"github.com/hyperspell/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 )
 
 // IntegrationSlackService contains methods and other services that help with

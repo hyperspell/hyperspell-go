@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
-	"github.com/stainless-sdks/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

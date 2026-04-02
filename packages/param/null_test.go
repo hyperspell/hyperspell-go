@@ -2,7 +2,7 @@ package param_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 	"testing"
 )
 

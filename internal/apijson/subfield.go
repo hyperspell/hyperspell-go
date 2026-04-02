@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/packages/respjson"
 	"reflect"
 )
 

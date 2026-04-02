@@ -2,8 +2,8 @@ package apijson_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/hyperspell-go/internal/apijson"
-	"github.com/stainless-sdks/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	"github.com/hyperspell/hyperspell-go/packages/respjson"
 	"testing"
 )
 

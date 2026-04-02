@@ -3,7 +3,7 @@
 package constant
 
 import (
-	shimjson "github.com/stainless-sdks/hyperspell-go/internal/encoding/json"
+	shimjson "github.com/hyperspell/hyperspell-go/internal/encoding/json"
 )
 
 type Constant[T any] interface {

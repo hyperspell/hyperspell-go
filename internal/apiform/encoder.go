@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 )
 
 var encoders sync.Map // map[encoderEntry]encoderFunc

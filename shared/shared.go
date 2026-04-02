@@ -5,9 +5,9 @@ package shared
 import (
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go/internal/apijson"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
-	"github.com/stainless-sdks/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	"github.com/hyperspell/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/respjson"
 )
 
 // aliased to make [param.APIUnion] private when embedding

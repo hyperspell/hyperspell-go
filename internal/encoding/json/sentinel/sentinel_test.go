@@ -1,8 +1,8 @@
 package sentinel_test
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/internal/encoding/json/sentinel"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/internal/encoding/json/sentinel"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 	"reflect"
 	"slices"
 	"testing"
