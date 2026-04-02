@@ -1,7 +1,7 @@
 package sentinel
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/internal/encoding/json/shims"
+	"github.com/hyperspell/hyperspell-go/internal/encoding/json/shims"
 	"reflect"
 	"sync"
 )

@@ -3,8 +3,8 @@ package respjson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/hyperspell-go/internal/apijson"
-	rj "github.com/stainless-sdks/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	rj "github.com/hyperspell/hyperspell-go/packages/respjson"
 	"reflect"
 	"testing"
 )

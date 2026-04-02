@@ -3,9 +3,9 @@
 package hyperspell
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/internal/apierror"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
-	"github.com/stainless-sdks/hyperspell-go/shared"
+	"github.com/hyperspell/hyperspell-go/internal/apierror"
+	"github.com/hyperspell/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/shared"
 )
 
 // aliased to make [param.APIUnion] private when embedding

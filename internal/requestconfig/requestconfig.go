@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go/internal"
-	"github.com/stainless-sdks/hyperspell-go/internal/apierror"
-	"github.com/stainless-sdks/hyperspell-go/internal/apiform"
-	"github.com/stainless-sdks/hyperspell-go/internal/apiquery"
+	"github.com/hyperspell/hyperspell-go/internal"
+	"github.com/hyperspell/hyperspell-go/internal/apierror"
+	"github.com/hyperspell/hyperspell-go/internal/apiform"
+	"github.com/hyperspell/hyperspell-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {

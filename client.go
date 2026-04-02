@@ -8,8 +8,8 @@ import (
 	"os"
 	"slices"
 
-	"github.com/stainless-sdks/hyperspell-go/internal/requestconfig"
-	"github.com/stainless-sdks/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go/internal/requestconfig"
+	"github.com/hyperspell/hyperspell-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with
