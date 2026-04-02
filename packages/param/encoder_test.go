@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 )
 
 type Struct struct {

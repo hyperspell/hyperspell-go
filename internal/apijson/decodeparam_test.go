@@ -3,8 +3,8 @@ package apijson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/hyperspell-go/internal/apijson"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 	"reflect"
 	"testing"
 )

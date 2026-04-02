@@ -8,11 +8,11 @@ import (
 	"slices"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go/internal/apijson"
-	"github.com/stainless-sdks/hyperspell-go/internal/requestconfig"
-	"github.com/stainless-sdks/hyperspell-go/option"
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
-	"github.com/stainless-sdks/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	"github.com/hyperspell/hyperspell-go/internal/requestconfig"
+	"github.com/hyperspell/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/respjson"
 )
 
 // AuthService contains methods and other services that help with interacting with

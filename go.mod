@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/hyperspell-go
+module github.com/hyperspell/hyperspell-go
 
 go 1.22
 

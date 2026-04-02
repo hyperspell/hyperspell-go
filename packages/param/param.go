@@ -2,7 +2,7 @@ package param
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/hyperspell-go/internal/encoding/json/sentinel"
+	"github.com/hyperspell/hyperspell-go/internal/encoding/json/sentinel"
 	"reflect"
 )
 

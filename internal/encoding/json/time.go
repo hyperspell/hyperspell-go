@@ -2,7 +2,7 @@
 package json
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/internal/encoding/json/shims"
+	"github.com/hyperspell/hyperspell-go/internal/encoding/json/shims"
 	"reflect"
 	"time"
 )

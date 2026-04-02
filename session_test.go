@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go"
-	"github.com/stainless-sdks/hyperspell-go/internal/testutil"
-	"github.com/stainless-sdks/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go"
+	"github.com/hyperspell/hyperspell-go/internal/testutil"
+	"github.com/hyperspell/hyperspell-go/option"
 )
 
 func TestSessionAddWithOptionalParams(t *testing.T) {

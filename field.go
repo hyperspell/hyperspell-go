@@ -1,7 +1,7 @@
 package hyperspell
 
 import (
-	"github.com/stainless-sdks/hyperspell-go/packages/param"
+	"github.com/hyperspell/hyperspell-go/packages/param"
 	"io"
 	"time"
 )

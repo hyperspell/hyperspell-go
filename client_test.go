@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/hyperspell-go"
-	"github.com/stainless-sdks/hyperspell-go/internal"
-	"github.com/stainless-sdks/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go"
+	"github.com/hyperspell/hyperspell-go/internal"
+	"github.com/hyperspell/hyperspell-go/option"
 )
 
 type closureTransport struct {
