@@ -3,10 +3,8 @@
 package hyperspell_test
 
 import (
-	"bytes"
 	"context"
 	"errors"
-	"io"
 	"os"
 	"testing"
 	"time"
@@ -334,7 +332,7 @@ func TestMemoryUploadWithOptionalParams(t *testing.T) {
 		option.WithUserID("My User ID"),
 	)
 	_, err := client.Memories.Upload(context.TODO(), hyperspell.MemoryUploadParams{
-		File:       io.Reader(bytes.NewBuffer([]byte("Example data"))),
+		File:       "file",
 		Collection: hyperspell.String("collection"),
 		Metadata:   hyperspell.String("metadata"),
 	})
