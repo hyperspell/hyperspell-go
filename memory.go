@@ -7,6 +7,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -961,7 +962,7 @@ func (r *MemorySearchParamsOptionsWebCrawler) UnmarshalJSON(data []byte) error {
 
 type MemoryUploadParams struct {
 	// The file to ingest.
-	File string `json:"file" api:"required"`
+	File io.Reader `json:"file,omitzero" api:"required" format:"binary"`
 	// The collection to add the document to — deprecated, set the collection using
 	// metadata instead.
 	Collection param.Opt[string] `json:"collection,omitzero"`
