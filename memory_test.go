@@ -126,16 +126,22 @@ func TestMemoryAddWithOptionalParams(t *testing.T) {
 		option.WithUserID("My User ID"),
 	)
 	_, err := client.Memories.Add(context.TODO(), hyperspell.MemoryAddParams{
-		Text:       "text",
-		Collection: hyperspell.String("collection"),
+		Text:       "...",
+		Collection: hyperspell.String("my-collection"),
 		Date:       hyperspell.Time(time.Now()),
 		Metadata: map[string]hyperspell.MemoryAddParamsMetadataUnion{
-			"foo": {
-				OfString: hyperspell.String("string"),
+			"author": {
+				OfString: hyperspell.String("John Doe"),
+			},
+			"date": {
+				OfString: hyperspell.String("2025-05-20T02:31:00Z"),
+			},
+			"rating": {
+				OfFloat: hyperspell.Float(3),
 			},
 		},
 		ResourceID: hyperspell.String("resource_id"),
-		Title:      hyperspell.String("title"),
+		Title:      hyperspell.String("My Document"),
 	})
 	if err != nil {
 		var apierr *hyperspell.Error
@@ -231,7 +237,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 		option.WithUserID("My User ID"),
 	)
 	_, err := client.Memories.Search(context.TODO(), hyperspell.MemorySearchParams{
-		Query:      "query",
+		Query:      "What does Hyperspell do?",
 		Answer:     hyperspell.Bool(true),
 		Effort:     hyperspell.Int(0),
 		MaxResults: hyperspell.Int(0),
@@ -242,9 +248,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 			Box: hyperspell.MemorySearchParamsOptionsBox{
 				Weight: hyperspell.Float(0),
 			},
-			Filter: map[string]any{
-				"foo": "bar",
-			},
+			Filter: map[string]any{},
 			GoogleCalendar: hyperspell.MemorySearchParamsOptionsGoogleCalendar{
 				CalendarID: hyperspell.String("calendar_id"),
 				Weight:     hyperspell.Float(0),
@@ -286,7 +290,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 				Weight:   hyperspell.Float(0),
 			},
 		},
-		Sources: []string{"reddit"},
+		Sources: []string{"vault"},
 	})
 	if err != nil {
 		var apierr *hyperspell.Error
