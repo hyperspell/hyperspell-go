@@ -26,7 +26,7 @@ func TestUsage(t *testing.T) {
 		option.WithUserID("My User ID"),
 	)
 	memoryStatus, err := client.Memories.Add(context.TODO(), hyperspell.MemoryAddParams{
-		Text: "text",
+		Text: "...",
 	})
 	if err != nil {
 		t.Fatalf("err should be nil: %s", err.Error())

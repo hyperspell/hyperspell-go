@@ -66,7 +66,7 @@ func main() {
 		option.WithAPIKey("My API Key"), // defaults to os.LookupEnv("HYPERSPELL_API_KEY")
 	)
 	memoryStatus, err := client.Memories.Add(context.TODO(), hyperspell.MemoryAddParams{
-		Text: "text",
+		Text: "...",
 	})
 	if err != nil {
 		panic(err.Error())
@@ -334,7 +334,7 @@ To handle errors, we recommend that you use the `errors.As` pattern:
 
 ```go
 _, err := client.Memories.Add(context.TODO(), hyperspell.MemoryAddParams{
-	Text: "text",
+	Text: "...",
 })
 if err != nil {
 	var apierr *hyperspell.Error
@@ -363,7 +363,7 @@ defer cancel()
 client.Memories.Add(
 	ctx,
 	hyperspell.MemoryAddParams{
-		Text: "text",
+		Text: "...",
 	},
 	// This sets the per-retry timeout
 	option.WithRequestTimeout(20*time.Second),
@@ -419,7 +419,7 @@ client := hyperspell.NewClient(
 client.Memories.Add(
 	context.TODO(),
 	hyperspell.MemoryAddParams{
-		Text: "text",
+		Text: "...",
 	},
 	option.WithMaxRetries(5),
 )
@@ -436,7 +436,7 @@ var response *http.Response
 memoryStatus, err := client.Memories.Add(
 	context.TODO(),
 	hyperspell.MemoryAddParams{
-		Text: "text",
+		Text: "...",
 	},
 	option.WithResponseInto(&response),
 )
