@@ -46,7 +46,7 @@ func (r *IntegrationWebCrawlerService) Index(ctx context.Context, query Integrat
 type IntegrationWebCrawlerIndexResponse struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source IntegrationWebCrawlerIndexResponseSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
@@ -78,8 +78,8 @@ const (
 	IntegrationWebCrawlerIndexResponseSourceGoogleMail     IntegrationWebCrawlerIndexResponseSource = "google_mail"
 	IntegrationWebCrawlerIndexResponseSourceBox            IntegrationWebCrawlerIndexResponseSource = "box"
 	IntegrationWebCrawlerIndexResponseSourceDropbox        IntegrationWebCrawlerIndexResponseSource = "dropbox"
-	IntegrationWebCrawlerIndexResponseSourceGoogleDrive    IntegrationWebCrawlerIndexResponseSource = "google_drive"
 	IntegrationWebCrawlerIndexResponseSourceGitHub         IntegrationWebCrawlerIndexResponseSource = "github"
+	IntegrationWebCrawlerIndexResponseSourceGoogleDrive    IntegrationWebCrawlerIndexResponseSource = "google_drive"
 	IntegrationWebCrawlerIndexResponseSourceVault          IntegrationWebCrawlerIndexResponseSource = "vault"
 	IntegrationWebCrawlerIndexResponseSourceWebCrawler     IntegrationWebCrawlerIndexResponseSource = "web_crawler"
 	IntegrationWebCrawlerIndexResponseSourceTrace          IntegrationWebCrawlerIndexResponseSource = "trace"

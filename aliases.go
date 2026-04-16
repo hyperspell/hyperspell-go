@@ -88,11 +88,11 @@ const ResourceSourceBox = shared.ResourceSourceBox
 // Equals "dropbox"
 const ResourceSourceDropbox = shared.ResourceSourceDropbox
 
-// Equals "google_drive"
-const ResourceSourceGoogleDrive = shared.ResourceSourceGoogleDrive
-
 // Equals "github"
 const ResourceSourceGitHub = shared.ResourceSourceGitHub
+
+// Equals "google_drive"
+const ResourceSourceGoogleDrive = shared.ResourceSourceGoogleDrive
 
 // Equals "vault"
 const ResourceSourceVault = shared.ResourceSourceVault

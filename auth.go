@@ -103,13 +103,13 @@ type AuthMeResponse struct {
 	// All integrations available for the app
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	AvailableIntegrations []string `json:"available_integrations" api:"required"`
 	// All integrations installed for the user
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	InstalledIntegrations []string `json:"installed_integrations" api:"required"`
 	// The expiration time of the user token used to make the request
