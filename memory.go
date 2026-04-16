@@ -180,7 +180,7 @@ func (r *MemoryService) Upload(ctx context.Context, body MemoryUploadParams, opt
 type Memory struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source MemorySource `json:"source" api:"required"`
 	// The type of document (e.g. Document, Website, Email)
@@ -222,8 +222,8 @@ const (
 	MemorySourceGoogleMail     MemorySource = "google_mail"
 	MemorySourceBox            MemorySource = "box"
 	MemorySourceDropbox        MemorySource = "dropbox"
-	MemorySourceGoogleDrive    MemorySource = "google_drive"
 	MemorySourceGitHub         MemorySource = "github"
+	MemorySourceGoogleDrive    MemorySource = "google_drive"
 	MemorySourceVault          MemorySource = "vault"
 	MemorySourceWebCrawler     MemorySource = "web_crawler"
 	MemorySourceTrace          MemorySource = "trace"
@@ -234,7 +234,7 @@ const (
 type MemoryStatus struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source MemoryStatusSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
@@ -266,8 +266,8 @@ const (
 	MemoryStatusSourceGoogleMail     MemoryStatusSource = "google_mail"
 	MemoryStatusSourceBox            MemoryStatusSource = "box"
 	MemoryStatusSourceDropbox        MemoryStatusSource = "dropbox"
-	MemoryStatusSourceGoogleDrive    MemoryStatusSource = "google_drive"
 	MemoryStatusSourceGitHub         MemoryStatusSource = "github"
+	MemoryStatusSourceGoogleDrive    MemoryStatusSource = "google_drive"
 	MemoryStatusSourceVault          MemoryStatusSource = "vault"
 	MemoryStatusSourceWebCrawler     MemoryStatusSource = "web_crawler"
 	MemoryStatusSourceTrace          MemoryStatusSource = "trace"
@@ -291,7 +291,7 @@ type MemoryDeleteResponse struct {
 	Message       string `json:"message" api:"required"`
 	ResourceID    string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source  MemoryDeleteResponseSource `json:"source" api:"required"`
 	Success bool                       `json:"success" api:"required"`
@@ -323,8 +323,8 @@ const (
 	MemoryDeleteResponseSourceGoogleMail     MemoryDeleteResponseSource = "google_mail"
 	MemoryDeleteResponseSourceBox            MemoryDeleteResponseSource = "box"
 	MemoryDeleteResponseSourceDropbox        MemoryDeleteResponseSource = "dropbox"
-	MemoryDeleteResponseSourceGoogleDrive    MemoryDeleteResponseSource = "google_drive"
 	MemoryDeleteResponseSourceGitHub         MemoryDeleteResponseSource = "github"
+	MemoryDeleteResponseSourceGoogleDrive    MemoryDeleteResponseSource = "google_drive"
 	MemoryDeleteResponseSourceVault          MemoryDeleteResponseSource = "vault"
 	MemoryDeleteResponseSourceWebCrawler     MemoryDeleteResponseSource = "web_crawler"
 	MemoryDeleteResponseSourceTrace          MemoryDeleteResponseSource = "trace"
@@ -375,7 +375,7 @@ func (r *MemoryStatusResponse) UnmarshalJSON(data []byte) error {
 
 type MemoryUpdateParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source MemoryUpdateParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	// The collection to move the document to — deprecated, set the collection using
@@ -410,8 +410,8 @@ const (
 	MemoryUpdateParamsSourceGoogleMail     MemoryUpdateParamsSource = "google_mail"
 	MemoryUpdateParamsSourceBox            MemoryUpdateParamsSource = "box"
 	MemoryUpdateParamsSourceDropbox        MemoryUpdateParamsSource = "dropbox"
-	MemoryUpdateParamsSourceGoogleDrive    MemoryUpdateParamsSource = "google_drive"
 	MemoryUpdateParamsSourceGitHub         MemoryUpdateParamsSource = "github"
+	MemoryUpdateParamsSourceGoogleDrive    MemoryUpdateParamsSource = "google_drive"
 	MemoryUpdateParamsSourceVault          MemoryUpdateParamsSource = "vault"
 	MemoryUpdateParamsSourceWebCrawler     MemoryUpdateParamsSource = "web_crawler"
 	MemoryUpdateParamsSourceTrace          MemoryUpdateParamsSource = "trace"
@@ -447,7 +447,7 @@ type MemoryListParams struct {
 	// Filter documents by source.
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source MemoryListParamsSource `query:"source,omitzero" json:"-"`
 	// Filter documents by status.
@@ -477,8 +477,8 @@ const (
 	MemoryListParamsSourceGoogleMail     MemoryListParamsSource = "google_mail"
 	MemoryListParamsSourceBox            MemoryListParamsSource = "box"
 	MemoryListParamsSourceDropbox        MemoryListParamsSource = "dropbox"
-	MemoryListParamsSourceGoogleDrive    MemoryListParamsSource = "google_drive"
 	MemoryListParamsSourceGitHub         MemoryListParamsSource = "github"
+	MemoryListParamsSourceGoogleDrive    MemoryListParamsSource = "google_drive"
 	MemoryListParamsSourceVault          MemoryListParamsSource = "vault"
 	MemoryListParamsSourceWebCrawler     MemoryListParamsSource = "web_crawler"
 	MemoryListParamsSourceTrace          MemoryListParamsSource = "trace"
@@ -500,7 +500,7 @@ const (
 
 type MemoryDeleteParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source MemoryDeleteParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	paramObj
@@ -516,8 +516,8 @@ const (
 	MemoryDeleteParamsSourceGoogleMail     MemoryDeleteParamsSource = "google_mail"
 	MemoryDeleteParamsSourceBox            MemoryDeleteParamsSource = "box"
 	MemoryDeleteParamsSourceDropbox        MemoryDeleteParamsSource = "dropbox"
-	MemoryDeleteParamsSourceGoogleDrive    MemoryDeleteParamsSource = "google_drive"
 	MemoryDeleteParamsSourceGitHub         MemoryDeleteParamsSource = "github"
+	MemoryDeleteParamsSourceGoogleDrive    MemoryDeleteParamsSource = "google_drive"
 	MemoryDeleteParamsSourceVault          MemoryDeleteParamsSource = "vault"
 	MemoryDeleteParamsSourceWebCrawler     MemoryDeleteParamsSource = "web_crawler"
 	MemoryDeleteParamsSourceTrace          MemoryDeleteParamsSource = "trace"
@@ -638,7 +638,7 @@ func (u *MemoryAddBulkParamsItemMetadataUnion) UnmarshalJSON(data []byte) error 
 
 type MemoryGetParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source MemoryGetParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	paramObj
@@ -654,8 +654,8 @@ const (
 	MemoryGetParamsSourceGoogleMail     MemoryGetParamsSource = "google_mail"
 	MemoryGetParamsSourceBox            MemoryGetParamsSource = "box"
 	MemoryGetParamsSourceDropbox        MemoryGetParamsSource = "dropbox"
-	MemoryGetParamsSourceGoogleDrive    MemoryGetParamsSource = "google_drive"
 	MemoryGetParamsSourceGitHub         MemoryGetParamsSource = "github"
+	MemoryGetParamsSourceGoogleDrive    MemoryGetParamsSource = "google_drive"
 	MemoryGetParamsSourceVault          MemoryGetParamsSource = "vault"
 	MemoryGetParamsSourceWebCrawler     MemoryGetParamsSource = "web_crawler"
 	MemoryGetParamsSourceTrace          MemoryGetParamsSource = "trace"
@@ -678,7 +678,7 @@ type MemorySearchParams struct {
 	// Only query documents from these sources.
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Sources []string `json:"sources,omitzero"`
 	paramObj

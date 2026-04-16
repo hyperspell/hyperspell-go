@@ -96,7 +96,7 @@ type IntegrationListResponseIntegration struct {
 	// The integration's provider
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Provider string `json:"provider" api:"required"`
 	// Whether this integration only supports write actions (no sync)

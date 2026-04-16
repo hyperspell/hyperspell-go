@@ -119,7 +119,7 @@ func (r *QueryResult) UnmarshalJSON(data []byte) error {
 type Resource struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions".
 	Source ResourceSource `json:"source" api:"required"`
 	// Provider folder ID this resource belongs to
@@ -160,8 +160,8 @@ const (
 	ResourceSourceGoogleMail     ResourceSource = "google_mail"
 	ResourceSourceBox            ResourceSource = "box"
 	ResourceSourceDropbox        ResourceSource = "dropbox"
-	ResourceSourceGoogleDrive    ResourceSource = "google_drive"
 	ResourceSourceGitHub         ResourceSource = "github"
+	ResourceSourceGoogleDrive    ResourceSource = "google_drive"
 	ResourceSourceVault          ResourceSource = "vault"
 	ResourceSourceWebCrawler     ResourceSource = "web_crawler"
 	ResourceSourceTrace          ResourceSource = "trace"
