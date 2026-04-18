@@ -35,6 +35,7 @@ func TestMemoryUpdateWithOptionalParams(t *testing.T) {
 		hyperspell.MemoryUpdateParams{
 			Source:     hyperspell.MemoryUpdateParamsSourceReddit,
 			Collection: map[string]any{},
+			Date:       map[string]any{},
 			Metadata: map[string]hyperspell.MemoryUpdateParamsMetadataUnion{
 				"foo": {
 					OfString: hyperspell.String("string"),

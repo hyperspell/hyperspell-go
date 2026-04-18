@@ -381,6 +381,8 @@ type MemoryUpdateParams struct {
 	// The collection to move the document to — deprecated, set the collection using
 	// metadata instead.
 	Collection any `json:"collection,omitzero"`
+	// Date of the document for ranking and filtering.
+	Date any `json:"date,omitzero"`
 	// Custom metadata for filtering. Keys must be alphanumeric with underscores, max
 	// 64 chars. Values must be string, number, boolean, or null. Will be merged with
 	// existing metadata.
