@@ -700,6 +700,12 @@ type MemorySearchParamsOptions struct {
 	After param.Opt[time.Time] `json:"after,omitzero" format:"date-time"`
 	// Only query documents created before this date.
 	Before param.Opt[time.Time] `json:"before,omitzero" format:"date-time"`
+	// When set, multiplies each result's score by an exponential-decay factor based on
+	// the document's most recent activity timestamp (source-reported last_modified,
+	// falling back to document_date). A document one half-life old gets its score
+	// halved. Resources with no recency timestamp are passed through unchanged. Leave
+	// unset to disable.
+	RecencyHalfLifeDays param.Opt[float64] `json:"recency_half_life_days,omitzero"`
 	// Maximum number of results to return.
 	MaxResults param.Opt[int64] `json:"max_results,omitzero"`
 	// Metadata filters using MongoDB-style operators. Example: {'status': 'published',

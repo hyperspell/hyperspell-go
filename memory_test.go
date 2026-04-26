@@ -267,6 +267,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 				NotionPageIDs: []string{"string"},
 				Weight:        hyperspell.Float(0),
 			},
+			RecencyHalfLifeDays: hyperspell.Float(1),
 			Reddit: hyperspell.MemorySearchParamsOptionsReddit{
 				Period:    "hour",
 				Sort:      "relevance",
