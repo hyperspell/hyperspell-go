@@ -120,7 +120,7 @@ type Resource struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source ResourceSource `json:"source" api:"required"`
 	// Provider folder ID this resource belongs to
 	FolderID string   `json:"folder_id" api:"nullable"`
@@ -167,4 +167,7 @@ const (
 	ResourceSourceTrace          ResourceSource = "trace"
 	ResourceSourceMicrosoftTeams ResourceSource = "microsoft_teams"
 	ResourceSourceGmailActions   ResourceSource = "gmail_actions"
+	ResourceSourceGranola        ResourceSource = "granola"
+	ResourceSourceFathom         ResourceSource = "fathom"
+	ResourceSourceLinear         ResourceSource = "linear"
 )
