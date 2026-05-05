@@ -108,3 +108,12 @@ const ResourceSourceMicrosoftTeams = shared.ResourceSourceMicrosoftTeams
 
 // Equals "gmail_actions"
 const ResourceSourceGmailActions = shared.ResourceSourceGmailActions
+
+// Equals "granola"
+const ResourceSourceGranola = shared.ResourceSourceGranola
+
+// Equals "fathom"
+const ResourceSourceFathom = shared.ResourceSourceFathom
+
+// Equals "linear"
+const ResourceSourceLinear = shared.ResourceSourceLinear

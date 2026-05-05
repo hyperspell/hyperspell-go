@@ -83,7 +83,7 @@ type ConnectionListResponseConnection struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Provider string `json:"provider" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {

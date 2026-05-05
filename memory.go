@@ -181,7 +181,7 @@ type Memory struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source MemorySource `json:"source" api:"required"`
 	// The type of document (e.g. Document, Website, Email)
 	Type string `json:"type" api:"required"`
@@ -229,13 +229,16 @@ const (
 	MemorySourceTrace          MemorySource = "trace"
 	MemorySourceMicrosoftTeams MemorySource = "microsoft_teams"
 	MemorySourceGmailActions   MemorySource = "gmail_actions"
+	MemorySourceGranola        MemorySource = "granola"
+	MemorySourceFathom         MemorySource = "fathom"
+	MemorySourceLinear         MemorySource = "linear"
 )
 
 type MemoryStatus struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source MemoryStatusSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
 	// "skipped".
@@ -273,6 +276,9 @@ const (
 	MemoryStatusSourceTrace          MemoryStatusSource = "trace"
 	MemoryStatusSourceMicrosoftTeams MemoryStatusSource = "microsoft_teams"
 	MemoryStatusSourceGmailActions   MemoryStatusSource = "gmail_actions"
+	MemoryStatusSourceGranola        MemoryStatusSource = "granola"
+	MemoryStatusSourceFathom         MemoryStatusSource = "fathom"
+	MemoryStatusSourceLinear         MemoryStatusSource = "linear"
 )
 
 type MemoryStatusStatus string
@@ -292,7 +298,7 @@ type MemoryDeleteResponse struct {
 	ResourceID    string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source  MemoryDeleteResponseSource `json:"source" api:"required"`
 	Success bool                       `json:"success" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -330,6 +336,9 @@ const (
 	MemoryDeleteResponseSourceTrace          MemoryDeleteResponseSource = "trace"
 	MemoryDeleteResponseSourceMicrosoftTeams MemoryDeleteResponseSource = "microsoft_teams"
 	MemoryDeleteResponseSourceGmailActions   MemoryDeleteResponseSource = "gmail_actions"
+	MemoryDeleteResponseSourceGranola        MemoryDeleteResponseSource = "granola"
+	MemoryDeleteResponseSourceFathom         MemoryDeleteResponseSource = "fathom"
+	MemoryDeleteResponseSourceLinear         MemoryDeleteResponseSource = "linear"
 )
 
 // Response schema for successful bulk ingestion.
@@ -376,7 +385,7 @@ func (r *MemoryStatusResponse) UnmarshalJSON(data []byte) error {
 type MemoryUpdateParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source MemoryUpdateParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	// The collection to move the document to — deprecated, set the collection using
 	// metadata instead.
@@ -419,6 +428,9 @@ const (
 	MemoryUpdateParamsSourceTrace          MemoryUpdateParamsSource = "trace"
 	MemoryUpdateParamsSourceMicrosoftTeams MemoryUpdateParamsSource = "microsoft_teams"
 	MemoryUpdateParamsSourceGmailActions   MemoryUpdateParamsSource = "gmail_actions"
+	MemoryUpdateParamsSourceGranola        MemoryUpdateParamsSource = "granola"
+	MemoryUpdateParamsSourceFathom         MemoryUpdateParamsSource = "fathom"
+	MemoryUpdateParamsSourceLinear         MemoryUpdateParamsSource = "linear"
 )
 
 // Only one field can be non-zero.
@@ -450,7 +462,7 @@ type MemoryListParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source MemoryListParamsSource `query:"source,omitzero" json:"-"`
 	// Filter documents by status.
 	//
@@ -486,6 +498,9 @@ const (
 	MemoryListParamsSourceTrace          MemoryListParamsSource = "trace"
 	MemoryListParamsSourceMicrosoftTeams MemoryListParamsSource = "microsoft_teams"
 	MemoryListParamsSourceGmailActions   MemoryListParamsSource = "gmail_actions"
+	MemoryListParamsSourceGranola        MemoryListParamsSource = "granola"
+	MemoryListParamsSourceFathom         MemoryListParamsSource = "fathom"
+	MemoryListParamsSourceLinear         MemoryListParamsSource = "linear"
 )
 
 // Filter documents by status.
@@ -503,7 +518,7 @@ const (
 type MemoryDeleteParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source MemoryDeleteParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	paramObj
 }
@@ -525,6 +540,9 @@ const (
 	MemoryDeleteParamsSourceTrace          MemoryDeleteParamsSource = "trace"
 	MemoryDeleteParamsSourceMicrosoftTeams MemoryDeleteParamsSource = "microsoft_teams"
 	MemoryDeleteParamsSourceGmailActions   MemoryDeleteParamsSource = "gmail_actions"
+	MemoryDeleteParamsSourceGranola        MemoryDeleteParamsSource = "granola"
+	MemoryDeleteParamsSourceFathom         MemoryDeleteParamsSource = "fathom"
+	MemoryDeleteParamsSourceLinear         MemoryDeleteParamsSource = "linear"
 )
 
 type MemoryAddParams struct {
@@ -641,7 +659,7 @@ func (u *MemoryAddBulkParamsItemMetadataUnion) UnmarshalJSON(data []byte) error 
 type MemoryGetParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source MemoryGetParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	paramObj
 }
@@ -663,6 +681,9 @@ const (
 	MemoryGetParamsSourceTrace          MemoryGetParamsSource = "trace"
 	MemoryGetParamsSourceMicrosoftTeams MemoryGetParamsSource = "microsoft_teams"
 	MemoryGetParamsSourceGmailActions   MemoryGetParamsSource = "gmail_actions"
+	MemoryGetParamsSourceGranola        MemoryGetParamsSource = "granola"
+	MemoryGetParamsSourceFathom         MemoryGetParamsSource = "fathom"
+	MemoryGetParamsSourceLinear         MemoryGetParamsSource = "linear"
 )
 
 type MemorySearchParams struct {
@@ -681,7 +702,7 @@ type MemorySearchParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Sources []string `json:"sources,omitzero"`
 	paramObj
 }

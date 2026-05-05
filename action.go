@@ -100,7 +100,7 @@ type ActionAddReactionParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Provider ActionAddReactionParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message timestamp to react to
 	Timestamp string `json:"timestamp" api:"required"`
@@ -135,6 +135,9 @@ const (
 	ActionAddReactionParamsProviderTrace          ActionAddReactionParamsProvider = "trace"
 	ActionAddReactionParamsProviderMicrosoftTeams ActionAddReactionParamsProvider = "microsoft_teams"
 	ActionAddReactionParamsProviderGmailActions   ActionAddReactionParamsProvider = "gmail_actions"
+	ActionAddReactionParamsProviderGranola        ActionAddReactionParamsProvider = "granola"
+	ActionAddReactionParamsProviderFathom         ActionAddReactionParamsProvider = "fathom"
+	ActionAddReactionParamsProviderLinear         ActionAddReactionParamsProvider = "linear"
 )
 
 type ActionSendMessageParams struct {
@@ -142,7 +145,7 @@ type ActionSendMessageParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Provider ActionSendMessageParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message text
 	Text string `json:"text" api:"required"`
@@ -181,4 +184,7 @@ const (
 	ActionSendMessageParamsProviderTrace          ActionSendMessageParamsProvider = "trace"
 	ActionSendMessageParamsProviderMicrosoftTeams ActionSendMessageParamsProvider = "microsoft_teams"
 	ActionSendMessageParamsProviderGmailActions   ActionSendMessageParamsProvider = "gmail_actions"
+	ActionSendMessageParamsProviderGranola        ActionSendMessageParamsProvider = "granola"
+	ActionSendMessageParamsProviderFathom         ActionSendMessageParamsProvider = "fathom"
+	ActionSendMessageParamsProviderLinear         ActionSendMessageParamsProvider = "linear"
 )
