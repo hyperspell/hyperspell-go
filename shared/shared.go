@@ -122,6 +122,11 @@ type Resource struct {
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
 	Source ResourceSource `json:"source" api:"required"`
+	// Ordered list of provider folder IDs from immediate parent up to (but not
+	// including) provider root. Used by resolve_sync_mode to walk the actual folder
+	// tree without depending on intermediate policy records. Empty = resource lives at
+	// provider root.
+	FolderAncestors []string `json:"folder_ancestors"`
 	// Provider folder ID this resource belongs to
 	FolderID string   `json:"folder_id" api:"nullable"`
 	Metadata Metadata `json:"metadata"`
@@ -132,15 +137,16 @@ type Resource struct {
 	Title string  `json:"title" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ResourceID     respjson.Field
-		Source         respjson.Field
-		FolderID       respjson.Field
-		Metadata       respjson.Field
-		ParentFolderID respjson.Field
-		Score          respjson.Field
-		Title          respjson.Field
-		ExtraFields    map[string]respjson.Field
-		raw            string
+		ResourceID      respjson.Field
+		Source          respjson.Field
+		FolderAncestors respjson.Field
+		FolderID        respjson.Field
+		Metadata        respjson.Field
+		ParentFolderID  respjson.Field
+		Score           respjson.Field
+		Title           respjson.Field
+		ExtraFields     map[string]respjson.Field
+		raw             string
 	} `json:"-"`
 }
 
