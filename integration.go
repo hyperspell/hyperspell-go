@@ -101,6 +101,8 @@ type IntegrationListResponseIntegration struct {
 	Provider string `json:"provider" api:"required"`
 	// Whether this integration only supports write actions (no sync)
 	ActionsOnly bool `json:"actions_only"`
+	// Whether the user must select channels before indexing starts
+	RequiresChannelSelection bool `json:"requires_channel_selection"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID                       respjson.Field
@@ -110,6 +112,7 @@ type IntegrationListResponseIntegration struct {
 		Name                     respjson.Field
 		Provider                 respjson.Field
 		ActionsOnly              respjson.Field
+		RequiresChannelSelection respjson.Field
 		ExtraFields              map[string]respjson.Field
 		raw                      string
 	} `json:"-"`
