@@ -691,11 +691,18 @@ type MemorySearchParams struct {
 	Query string `json:"query" api:"required"`
 	// If true, the query will be answered along with matching source documents.
 	Answer param.Opt[bool] `json:"answer,omitzero"`
-	// Effort level. 0 = pass query through verbatim. 1 = LLM rewrites the query for
-	// better retrieval and extracts date filters.
-	Effort param.Opt[int64] `json:"effort,omitzero"`
 	// Maximum number of results to return.
 	MaxResults param.Opt[int64] `json:"max_results,omitzero"`
+	// How much compute to spend on retrieval. Mirrors the dial popularized by
+	// frontier-model APIs (OpenAI reasoning_effort, etc.). 'minimal' = verbatim
+	// single-shot retrieval (fastest). 'low' = LLM rewrites the query for better
+	// retrieval and extracts date filters. 'medium' = rewrite + agentic refinement
+	// loop (the answer LLM may request additional retrieval rounds, up to 3). 'high' =
+	// rewrite + extended refinement (up to 6 rounds). Higher = better recall, more
+	// latency, more cost.
+	//
+	// Any of "minimal", "low", "medium", "high".
+	Effort MemorySearchParamsEffort `json:"effort,omitzero"`
 	// Search options for the query.
 	Options MemorySearchParamsOptions `json:"options,omitzero"`
 	// Only query documents from these sources.
@@ -714,6 +721,22 @@ func (r MemorySearchParams) MarshalJSON() (data []byte, err error) {
 func (r *MemorySearchParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
+
+// How much compute to spend on retrieval. Mirrors the dial popularized by
+// frontier-model APIs (OpenAI reasoning_effort, etc.). 'minimal' = verbatim
+// single-shot retrieval (fastest). 'low' = LLM rewrites the query for better
+// retrieval and extracts date filters. 'medium' = rewrite + agentic refinement
+// loop (the answer LLM may request additional retrieval rounds, up to 3). 'high' =
+// rewrite + extended refinement (up to 6 rounds). Higher = better recall, more
+// latency, more cost.
+type MemorySearchParamsEffort string
+
+const (
+	MemorySearchParamsEffortMinimal MemorySearchParamsEffort = "minimal"
+	MemorySearchParamsEffortLow     MemorySearchParamsEffort = "low"
+	MemorySearchParamsEffortMedium  MemorySearchParamsEffort = "medium"
+	MemorySearchParamsEffortHigh    MemorySearchParamsEffort = "high"
+)
 
 // Search options for the query.
 type MemorySearchParamsOptions struct {
