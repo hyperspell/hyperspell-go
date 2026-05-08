@@ -240,7 +240,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 	_, err := client.Memories.Search(context.TODO(), hyperspell.MemorySearchParams{
 		Query:      "What does Hyperspell do?",
 		Answer:     hyperspell.Bool(true),
-		Effort:     hyperspell.Int(0),
+		Effort:     hyperspell.MemorySearchParamsEffortMinimal,
 		MaxResults: hyperspell.Int(0),
 		Options: hyperspell.MemorySearchParamsOptions{
 			After:       hyperspell.Time(time.Now()),
