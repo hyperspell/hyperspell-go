@@ -83,7 +83,8 @@ type ConnectionListResponseConnection struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
+	// "salesforce".
 	Provider string `json:"provider" api:"required"`
 	// Count of items in user_options.channels (Teams: workspaces selected; 0 means
 	// nothing is being indexed for integrations that require selection).

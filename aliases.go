@@ -117,3 +117,9 @@ const ResourceSourceFathom = shared.ResourceSourceFathom
 
 // Equals "linear"
 const ResourceSourceLinear = shared.ResourceSourceLinear
+
+// Equals "hubspot"
+const ResourceSourceHubspot = shared.ResourceSourceHubspot
+
+// Equals "salesforce"
+const ResourceSourceSalesforce = shared.ResourceSourceSalesforce

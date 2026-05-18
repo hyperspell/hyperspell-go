@@ -100,7 +100,8 @@ type ActionAddReactionParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
+	// "salesforce".
 	Provider ActionAddReactionParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message timestamp to react to
 	Timestamp string `json:"timestamp" api:"required"`
@@ -138,6 +139,8 @@ const (
 	ActionAddReactionParamsProviderGranola        ActionAddReactionParamsProvider = "granola"
 	ActionAddReactionParamsProviderFathom         ActionAddReactionParamsProvider = "fathom"
 	ActionAddReactionParamsProviderLinear         ActionAddReactionParamsProvider = "linear"
+	ActionAddReactionParamsProviderHubspot        ActionAddReactionParamsProvider = "hubspot"
+	ActionAddReactionParamsProviderSalesforce     ActionAddReactionParamsProvider = "salesforce"
 )
 
 type ActionSendMessageParams struct {
@@ -145,7 +148,8 @@ type ActionSendMessageParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
+	// "salesforce".
 	Provider ActionSendMessageParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message text
 	Text string `json:"text" api:"required"`
@@ -187,4 +191,6 @@ const (
 	ActionSendMessageParamsProviderGranola        ActionSendMessageParamsProvider = "granola"
 	ActionSendMessageParamsProviderFathom         ActionSendMessageParamsProvider = "fathom"
 	ActionSendMessageParamsProviderLinear         ActionSendMessageParamsProvider = "linear"
+	ActionSendMessageParamsProviderHubspot        ActionSendMessageParamsProvider = "hubspot"
+	ActionSendMessageParamsProviderSalesforce     ActionSendMessageParamsProvider = "salesforce"
 )
