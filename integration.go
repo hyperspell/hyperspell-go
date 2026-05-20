@@ -98,7 +98,7 @@ type IntegrationListResponseIntegration struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Provider string `json:"provider" api:"required"`
 	// Whether this integration only supports write actions (no sync)
 	ActionsOnly bool `json:"actions_only"`
