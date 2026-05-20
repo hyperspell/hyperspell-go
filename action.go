@@ -101,7 +101,7 @@ type ActionAddReactionParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce".
+	// "salesforce", "coda".
 	Provider ActionAddReactionParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message timestamp to react to
 	Timestamp string `json:"timestamp" api:"required"`
@@ -141,6 +141,7 @@ const (
 	ActionAddReactionParamsProviderLinear         ActionAddReactionParamsProvider = "linear"
 	ActionAddReactionParamsProviderHubspot        ActionAddReactionParamsProvider = "hubspot"
 	ActionAddReactionParamsProviderSalesforce     ActionAddReactionParamsProvider = "salesforce"
+	ActionAddReactionParamsProviderCoda           ActionAddReactionParamsProvider = "coda"
 )
 
 type ActionSendMessageParams struct {
@@ -149,7 +150,7 @@ type ActionSendMessageParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce".
+	// "salesforce", "coda".
 	Provider ActionSendMessageParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message text
 	Text string `json:"text" api:"required"`
@@ -193,4 +194,5 @@ const (
 	ActionSendMessageParamsProviderLinear         ActionSendMessageParamsProvider = "linear"
 	ActionSendMessageParamsProviderHubspot        ActionSendMessageParamsProvider = "hubspot"
 	ActionSendMessageParamsProviderSalesforce     ActionSendMessageParamsProvider = "salesforce"
+	ActionSendMessageParamsProviderCoda           ActionSendMessageParamsProvider = "coda"
 )
