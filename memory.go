@@ -182,7 +182,7 @@ type Memory struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source MemorySource `json:"source" api:"required"`
 	// The type of document (e.g. Document, Website, Email)
 	Type string `json:"type" api:"required"`
@@ -236,6 +236,7 @@ const (
 	MemorySourceHubspot        MemorySource = "hubspot"
 	MemorySourceSalesforce     MemorySource = "salesforce"
 	MemorySourceCoda           MemorySource = "coda"
+	MemorySourceLightfield     MemorySource = "lightfield"
 )
 
 type MemoryStatus struct {
@@ -243,7 +244,7 @@ type MemoryStatus struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source MemoryStatusSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
 	// "skipped".
@@ -287,6 +288,7 @@ const (
 	MemoryStatusSourceHubspot        MemoryStatusSource = "hubspot"
 	MemoryStatusSourceSalesforce     MemoryStatusSource = "salesforce"
 	MemoryStatusSourceCoda           MemoryStatusSource = "coda"
+	MemoryStatusSourceLightfield     MemoryStatusSource = "lightfield"
 )
 
 type MemoryStatusStatus string
@@ -307,7 +309,7 @@ type MemoryDeleteResponse struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source  MemoryDeleteResponseSource `json:"source" api:"required"`
 	Success bool                       `json:"success" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -351,6 +353,7 @@ const (
 	MemoryDeleteResponseSourceHubspot        MemoryDeleteResponseSource = "hubspot"
 	MemoryDeleteResponseSourceSalesforce     MemoryDeleteResponseSource = "salesforce"
 	MemoryDeleteResponseSourceCoda           MemoryDeleteResponseSource = "coda"
+	MemoryDeleteResponseSourceLightfield     MemoryDeleteResponseSource = "lightfield"
 )
 
 // Response schema for successful bulk ingestion.
@@ -398,7 +401,7 @@ type MemoryUpdateParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source MemoryUpdateParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	// The collection to move the document to — deprecated, set the collection using
 	// metadata instead.
@@ -447,6 +450,7 @@ const (
 	MemoryUpdateParamsSourceHubspot        MemoryUpdateParamsSource = "hubspot"
 	MemoryUpdateParamsSourceSalesforce     MemoryUpdateParamsSource = "salesforce"
 	MemoryUpdateParamsSourceCoda           MemoryUpdateParamsSource = "coda"
+	MemoryUpdateParamsSourceLightfield     MemoryUpdateParamsSource = "lightfield"
 )
 
 // Only one field can be non-zero.
@@ -479,7 +483,7 @@ type MemoryListParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source MemoryListParamsSource `query:"source,omitzero" json:"-"`
 	// Filter documents by status.
 	//
@@ -521,6 +525,7 @@ const (
 	MemoryListParamsSourceHubspot        MemoryListParamsSource = "hubspot"
 	MemoryListParamsSourceSalesforce     MemoryListParamsSource = "salesforce"
 	MemoryListParamsSourceCoda           MemoryListParamsSource = "coda"
+	MemoryListParamsSourceLightfield     MemoryListParamsSource = "lightfield"
 )
 
 // Filter documents by status.
@@ -539,7 +544,7 @@ type MemoryDeleteParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source MemoryDeleteParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	paramObj
 }
@@ -567,6 +572,7 @@ const (
 	MemoryDeleteParamsSourceHubspot        MemoryDeleteParamsSource = "hubspot"
 	MemoryDeleteParamsSourceSalesforce     MemoryDeleteParamsSource = "salesforce"
 	MemoryDeleteParamsSourceCoda           MemoryDeleteParamsSource = "coda"
+	MemoryDeleteParamsSourceLightfield     MemoryDeleteParamsSource = "lightfield"
 )
 
 type MemoryAddParams struct {
@@ -684,7 +690,7 @@ type MemoryGetParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Source MemoryGetParamsSource `path:"source,omitzero" api:"required" json:"-"`
 	paramObj
 }
@@ -712,6 +718,7 @@ const (
 	MemoryGetParamsSourceHubspot        MemoryGetParamsSource = "hubspot"
 	MemoryGetParamsSourceSalesforce     MemoryGetParamsSource = "salesforce"
 	MemoryGetParamsSourceCoda           MemoryGetParamsSource = "coda"
+	MemoryGetParamsSourceLightfield     MemoryGetParamsSource = "lightfield"
 )
 
 type MemorySearchParams struct {
@@ -738,7 +745,7 @@ type MemorySearchParams struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda".
+	// "salesforce", "coda", "lightfield".
 	Sources []string `json:"sources,omitzero"`
 	paramObj
 }

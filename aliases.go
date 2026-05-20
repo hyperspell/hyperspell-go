@@ -126,3 +126,6 @@ const ResourceSourceSalesforce = shared.ResourceSourceSalesforce
 
 // Equals "coda"
 const ResourceSourceCoda = shared.ResourceSourceCoda
+
+// Equals "lightfield"
+const ResourceSourceLightfield = shared.ResourceSourceLightfield
