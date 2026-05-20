@@ -123,3 +123,6 @@ const ResourceSourceHubspot = shared.ResourceSourceHubspot
 
 // Equals "salesforce"
 const ResourceSourceSalesforce = shared.ResourceSourceSalesforce
+
+// Equals "coda"
+const ResourceSourceCoda = shared.ResourceSourceCoda
