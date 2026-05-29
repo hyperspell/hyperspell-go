@@ -120,8 +120,8 @@ type Resource struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda", "lightfield".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield".
 	Source ResourceSource `json:"source" api:"required"`
 	// Ordered list of provider folder IDs from immediate parent up to (but not
 	// including) provider root. Used by resolve_sync_mode to walk the actual folder
@@ -176,6 +176,7 @@ const (
 	ResourceSourceGmailActions   ResourceSource = "gmail_actions"
 	ResourceSourceGranola        ResourceSource = "granola"
 	ResourceSourceFathom         ResourceSource = "fathom"
+	ResourceSourceFireflies      ResourceSource = "fireflies"
 	ResourceSourceLinear         ResourceSource = "linear"
 	ResourceSourceHubspot        ResourceSource = "hubspot"
 	ResourceSourceSalesforce     ResourceSource = "salesforce"
