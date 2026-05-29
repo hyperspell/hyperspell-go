@@ -47,8 +47,8 @@ type IntegrationWebCrawlerIndexResponse struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda", "lightfield".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield".
 	Source IntegrationWebCrawlerIndexResponseSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
 	// "skipped".
@@ -88,6 +88,7 @@ const (
 	IntegrationWebCrawlerIndexResponseSourceGmailActions   IntegrationWebCrawlerIndexResponseSource = "gmail_actions"
 	IntegrationWebCrawlerIndexResponseSourceGranola        IntegrationWebCrawlerIndexResponseSource = "granola"
 	IntegrationWebCrawlerIndexResponseSourceFathom         IntegrationWebCrawlerIndexResponseSource = "fathom"
+	IntegrationWebCrawlerIndexResponseSourceFireflies      IntegrationWebCrawlerIndexResponseSource = "fireflies"
 	IntegrationWebCrawlerIndexResponseSourceLinear         IntegrationWebCrawlerIndexResponseSource = "linear"
 	IntegrationWebCrawlerIndexResponseSourceHubspot        IntegrationWebCrawlerIndexResponseSource = "hubspot"
 	IntegrationWebCrawlerIndexResponseSourceSalesforce     IntegrationWebCrawlerIndexResponseSource = "salesforce"

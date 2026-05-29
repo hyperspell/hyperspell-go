@@ -100,8 +100,8 @@ type ActionAddReactionParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda", "lightfield".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield".
 	Provider ActionAddReactionParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message timestamp to react to
 	Timestamp string `json:"timestamp" api:"required"`
@@ -138,6 +138,7 @@ const (
 	ActionAddReactionParamsProviderGmailActions   ActionAddReactionParamsProvider = "gmail_actions"
 	ActionAddReactionParamsProviderGranola        ActionAddReactionParamsProvider = "granola"
 	ActionAddReactionParamsProviderFathom         ActionAddReactionParamsProvider = "fathom"
+	ActionAddReactionParamsProviderFireflies      ActionAddReactionParamsProvider = "fireflies"
 	ActionAddReactionParamsProviderLinear         ActionAddReactionParamsProvider = "linear"
 	ActionAddReactionParamsProviderHubspot        ActionAddReactionParamsProvider = "hubspot"
 	ActionAddReactionParamsProviderSalesforce     ActionAddReactionParamsProvider = "salesforce"
@@ -150,8 +151,8 @@ type ActionSendMessageParams struct {
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "linear", "hubspot",
-	// "salesforce", "coda", "lightfield".
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield".
 	Provider ActionSendMessageParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message text
 	Text string `json:"text" api:"required"`
@@ -192,6 +193,7 @@ const (
 	ActionSendMessageParamsProviderGmailActions   ActionSendMessageParamsProvider = "gmail_actions"
 	ActionSendMessageParamsProviderGranola        ActionSendMessageParamsProvider = "granola"
 	ActionSendMessageParamsProviderFathom         ActionSendMessageParamsProvider = "fathom"
+	ActionSendMessageParamsProviderFireflies      ActionSendMessageParamsProvider = "fireflies"
 	ActionSendMessageParamsProviderLinear         ActionSendMessageParamsProvider = "linear"
 	ActionSendMessageParamsProviderHubspot        ActionSendMessageParamsProvider = "hubspot"
 	ActionSendMessageParamsProviderSalesforce     ActionSendMessageParamsProvider = "salesforce"

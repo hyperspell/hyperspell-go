@@ -115,6 +115,9 @@ const ResourceSourceGranola = shared.ResourceSourceGranola
 // Equals "fathom"
 const ResourceSourceFathom = shared.ResourceSourceFathom
 
+// Equals "fireflies"
+const ResourceSourceFireflies = shared.ResourceSourceFireflies
+
 // Equals "linear"
 const ResourceSourceLinear = shared.ResourceSourceLinear
 
