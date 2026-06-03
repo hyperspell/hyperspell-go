@@ -61,6 +61,30 @@ const NotificationTypeSuccess = shared.NotificationTypeSuccess
 // This is an alias to an internal type.
 type QueryResult = shared.QueryResult
 
+// Auditability record attached to an agentic answer.
+//
+// Gated behind `provenance=true` on the request: the cheap parts (sources, steps,
+// failed_sources) are derived from in-memory loop state, but `entities` costs one
+// indexed DB lookup, so the whole record is only built on request.
+//
+// This is an alias to an internal type.
+type QueryResultProvenance = shared.QueryResultProvenance
+
+// A canonical entity referenced by the answer's source documents.
+//
+// This is an alias to an internal type.
+type QueryResultProvenanceEntity = shared.QueryResultProvenanceEntity
+
+// A source document that informed the final answer (the post-rank result set).
+//
+// This is an alias to an internal type.
+type QueryResultProvenanceSource = shared.QueryResultProvenanceSource
+
+// One tool invocation in the agent's search trajectory (audit trail).
+//
+// This is an alias to an internal type.
+type QueryResultProvenanceStep = shared.QueryResultProvenanceStep
+
 // This is an alias to an internal type.
 type Resource = shared.Resource
 

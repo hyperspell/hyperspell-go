@@ -292,7 +292,8 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 				Weight:   hyperspell.Float(0),
 			},
 		},
-		Sources: []string{"vault"},
+		Provenance: hyperspell.Bool(true),
+		Sources:    []string{"vault"},
 	})
 	if err != nil {
 		var apierr *hyperspell.Error

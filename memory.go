@@ -735,6 +735,11 @@ type MemorySearchParams struct {
 	Answer param.Opt[bool] `json:"answer,omitzero"`
 	// Maximum number of results to return.
 	MaxResults param.Opt[int64] `json:"max_results,omitzero"`
+	// If true (effort='very_high' only), attach a provenance record to the response:
+	// the source documents and entities the answer was grounded in, the agent's search
+	// trajectory, and any sources that failed. Adds one indexed lookup; intended for
+	// auditability / compliance use cases.
+	Provenance param.Opt[bool] `json:"provenance,omitzero"`
 	// How much compute to spend on retrieval. Mirrors the dial popularized by
 	// frontier-model APIs (OpenAI reasoning_effort, etc.). 'minimal' = verbatim
 	// single-shot retrieval (fastest). 'low' = LLM rewrites the query for better
@@ -743,7 +748,7 @@ type MemorySearchParams struct {
 	// rewrite + extended refinement (up to 6 rounds). Higher = better recall, more
 	// latency, more cost.
 	//
-	// Any of "minimal", "low", "medium", "high".
+	// Any of "minimal", "low", "medium", "high", "very_high".
 	Effort MemorySearchParamsEffort `json:"effort,omitzero"`
 	// Search options for the query.
 	Options MemorySearchParamsOptions `json:"options,omitzero"`
@@ -775,10 +780,11 @@ func (r *MemorySearchParams) UnmarshalJSON(data []byte) error {
 type MemorySearchParamsEffort string
 
 const (
-	MemorySearchParamsEffortMinimal MemorySearchParamsEffort = "minimal"
-	MemorySearchParamsEffortLow     MemorySearchParamsEffort = "low"
-	MemorySearchParamsEffortMedium  MemorySearchParamsEffort = "medium"
-	MemorySearchParamsEffortHigh    MemorySearchParamsEffort = "high"
+	MemorySearchParamsEffortMinimal  MemorySearchParamsEffort = "minimal"
+	MemorySearchParamsEffortLow      MemorySearchParamsEffort = "low"
+	MemorySearchParamsEffortMedium   MemorySearchParamsEffort = "medium"
+	MemorySearchParamsEffortHigh     MemorySearchParamsEffort = "high"
+	MemorySearchParamsEffortVeryHigh MemorySearchParamsEffort = "very_high"
 )
 
 // Search options for the query.
