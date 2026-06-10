@@ -9,8 +9,10 @@ import (
 	"net/http"
 	"net/url"
 	"slices"
+	"time"
 
 	"github.com/hyperspell/hyperspell-go/internal/apijson"
+	"github.com/hyperspell/hyperspell-go/internal/apiquery"
 	"github.com/hyperspell/hyperspell-go/internal/requestconfig"
 	"github.com/hyperspell/hyperspell-go/option"
 	"github.com/hyperspell/hyperspell-go/packages/param"
@@ -49,6 +51,17 @@ func (r *EvaluateService) GetQuery(ctx context.Context, queryID string, opts ...
 	return res, err
 }
 
+// Paginate through all prior queries for the app, newest first.
+//
+// User tokens only see their own queries; admin tokens see every query in the app
+// and can narrow to a single user with the `user_id` filter.
+func (r *EvaluateService) Queries(ctx context.Context, query EvaluateQueriesParams, opts ...option.RequestOption) (res *EvaluateQueriesResponse, err error) {
+	opts = slices.Concat(r.options, opts)
+	path := "evaluate/queries"
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
+	return res, err
+}
+
 // Score an individual highlight.
 func (r *EvaluateService) ScoreHighlight(ctx context.Context, highlightID string, body EvaluateScoreHighlightParams, opts ...option.RequestOption) (res *EvaluateScoreHighlightResponse, err error) {
 	opts = slices.Concat(r.options, opts)
@@ -71,6 +84,50 @@ func (r *EvaluateService) ScoreQuery(ctx context.Context, queryID string, body E
 	path := fmt.Sprintf("evaluate/query/%s", url.PathEscape(queryID))
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
 	return res, err
+}
+
+type EvaluateQueriesResponse struct {
+	Items      []EvaluateQueriesResponseItem `json:"items" api:"required"`
+	NextCursor string                        `json:"next_cursor" api:"required"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		Items       respjson.Field
+		NextCursor  respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r EvaluateQueriesResponse) RawJSON() string { return r.JSON.raw }
+func (r *EvaluateQueriesResponse) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+type EvaluateQueriesResponseItem struct {
+	// The query string that was issued.
+	Query string `json:"query" api:"required"`
+	// The ID of the query.
+	QueryID string `json:"query_id" api:"required"`
+	// When the query was issued.
+	Time time.Time `json:"time" api:"required" format:"date-time"`
+	// The ID of the user that issued the query, if any.
+	UserID string `json:"user_id" api:"nullable"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		Query       respjson.Field
+		QueryID     respjson.Field
+		Time        respjson.Field
+		UserID      respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r EvaluateQueriesResponseItem) RawJSON() string { return r.JSON.raw }
+func (r *EvaluateQueriesResponseItem) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }
 
 type EvaluateScoreHighlightResponse struct {
@@ -111,6 +168,22 @@ type EvaluateScoreQueryResponse struct {
 func (r EvaluateScoreQueryResponse) RawJSON() string { return r.JSON.raw }
 func (r *EvaluateScoreQueryResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
+}
+
+type EvaluateQueriesParams struct {
+	Cursor param.Opt[string] `query:"cursor,omitzero" json:"-"`
+	// Filter queries by the user that issued them.
+	UserID param.Opt[string] `query:"user_id,omitzero" json:"-"`
+	Size   param.Opt[int64]  `query:"size,omitzero" json:"-"`
+	paramObj
+}
+
+// URLQuery serializes [EvaluateQueriesParams]'s query parameters as `url.Values`.
+func (r EvaluateQueriesParams) URLQuery() (v url.Values, err error) {
+	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
+		ArrayFormat:  apiquery.ArrayQueryFormatComma,
+		NestedFormat: apiquery.NestedQueryFormatBrackets,
+	})
 }
 
 type EvaluateScoreHighlightParams struct {
