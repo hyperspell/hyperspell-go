@@ -15,6 +15,7 @@ import (
 	"github.com/hyperspell/hyperspell-go/internal/apiquery"
 	"github.com/hyperspell/hyperspell-go/internal/requestconfig"
 	"github.com/hyperspell/hyperspell-go/option"
+	"github.com/hyperspell/hyperspell-go/packages/pagination"
 	"github.com/hyperspell/hyperspell-go/packages/param"
 	"github.com/hyperspell/hyperspell-go/packages/respjson"
 	"github.com/hyperspell/hyperspell-go/shared"
@@ -55,11 +56,29 @@ func (r *EvaluateService) GetQuery(ctx context.Context, queryID string, opts ...
 //
 // User tokens only see their own queries; admin tokens see every query in the app
 // and can narrow to a single user with the `user_id` filter.
-func (r *EvaluateService) Queries(ctx context.Context, query EvaluateQueriesParams, opts ...option.RequestOption) (res *EvaluateQueriesResponse, err error) {
+func (r *EvaluateService) ListQueries(ctx context.Context, query EvaluateListQueriesParams, opts ...option.RequestOption) (res *pagination.CursorPage[EvaluateListQueriesResponse], err error) {
+	var raw *http.Response
 	opts = slices.Concat(r.options, opts)
+	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	path := "evaluate/queries"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return res, err
+	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)
+	if err != nil {
+		return nil, err
+	}
+	err = cfg.Execute()
+	if err != nil {
+		return nil, err
+	}
+	res.SetPageConfig(cfg, raw)
+	return res, nil
+}
+
+// Paginate through all prior queries for the app, newest first.
+//
+// User tokens only see their own queries; admin tokens see every query in the app
+// and can narrow to a single user with the `user_id` filter.
+func (r *EvaluateService) ListQueriesAutoPaging(ctx context.Context, query EvaluateListQueriesParams, opts ...option.RequestOption) *pagination.CursorPageAutoPager[EvaluateListQueriesResponse] {
+	return pagination.NewCursorPageAutoPager(r.ListQueries(ctx, query, opts...))
 }
 
 // Score an individual highlight.
@@ -86,25 +105,7 @@ func (r *EvaluateService) ScoreQuery(ctx context.Context, queryID string, body E
 	return res, err
 }
 
-type EvaluateQueriesResponse struct {
-	Items      []EvaluateQueriesResponseItem `json:"items" api:"required"`
-	NextCursor string                        `json:"next_cursor" api:"required"`
-	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
-	JSON struct {
-		Items       respjson.Field
-		NextCursor  respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
-	} `json:"-"`
-}
-
-// Returns the unmodified JSON received from the API
-func (r EvaluateQueriesResponse) RawJSON() string { return r.JSON.raw }
-func (r *EvaluateQueriesResponse) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-type EvaluateQueriesResponseItem struct {
+type EvaluateListQueriesResponse struct {
 	// The query string that was issued.
 	Query string `json:"query" api:"required"`
 	// The ID of the query.
@@ -125,8 +126,8 @@ type EvaluateQueriesResponseItem struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r EvaluateQueriesResponseItem) RawJSON() string { return r.JSON.raw }
-func (r *EvaluateQueriesResponseItem) UnmarshalJSON(data []byte) error {
+func (r EvaluateListQueriesResponse) RawJSON() string { return r.JSON.raw }
+func (r *EvaluateListQueriesResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -170,7 +171,7 @@ func (r *EvaluateScoreQueryResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type EvaluateQueriesParams struct {
+type EvaluateListQueriesParams struct {
 	Cursor param.Opt[string] `query:"cursor,omitzero" json:"-"`
 	// Filter queries by the user that issued them.
 	UserID param.Opt[string] `query:"user_id,omitzero" json:"-"`
@@ -178,8 +179,9 @@ type EvaluateQueriesParams struct {
 	paramObj
 }
 
-// URLQuery serializes [EvaluateQueriesParams]'s query parameters as `url.Values`.
-func (r EvaluateQueriesParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [EvaluateListQueriesParams]'s query parameters as
+// `url.Values`.
+func (r EvaluateListQueriesParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

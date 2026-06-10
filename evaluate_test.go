@@ -36,7 +36,7 @@ func TestEvaluateGetQuery(t *testing.T) {
 	}
 }
 
-func TestEvaluateQueriesWithOptionalParams(t *testing.T) {
+func TestEvaluateListQueriesWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -49,7 +49,7 @@ func TestEvaluateQueriesWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.Evaluate.Queries(context.TODO(), hyperspell.EvaluateQueriesParams{
+	_, err := client.Evaluate.ListQueries(context.TODO(), hyperspell.EvaluateListQueriesParams{
 		Cursor: hyperspell.String("cursor"),
 		Size:   hyperspell.Int(0),
 		UserID: hyperspell.String("user_id"),
