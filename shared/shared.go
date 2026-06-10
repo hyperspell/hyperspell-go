@@ -99,6 +99,8 @@ type QueryResult struct {
 	// failed_sources) are derived from in-memory loop state, but `entities` costs one
 	// indexed DB lookup, so the whole record is only built on request.
 	Provenance QueryResultProvenance `json:"provenance" api:"nullable"`
+	// The query string that was issued.
+	Query string `json:"query" api:"nullable"`
 	// The ID of the query. This can be used to retrieve the query later, or add
 	// feedback to it. If the query failed, this will be None.
 	QueryID string `json:"query_id" api:"nullable"`
@@ -110,6 +112,7 @@ type QueryResult struct {
 		Answer      respjson.Field
 		Errors      respjson.Field
 		Provenance  respjson.Field
+		Query       respjson.Field
 		QueryID     respjson.Field
 		Score       respjson.Field
 		ExtraFields map[string]respjson.Field
