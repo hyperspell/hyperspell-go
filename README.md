@@ -299,8 +299,8 @@ You can use `.ListAutoPaging()` methods to iterate through items across all page
 iter := client.Memories.ListAutoPaging(context.TODO(), hyperspell.MemoryListParams{})
 // Automatically fetches more pages as needed.
 for iter.Next() {
-	resource := iter.Current()
-	fmt.Printf("%+v\n", resource)
+	memoryListResponse := iter.Current()
+	fmt.Printf("%+v\n", memoryListResponse)
 }
 if err := iter.Err(); err != nil {
 	panic(err.Error())
