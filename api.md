@@ -1,5 +1,6 @@
 # Shared Response Types
 
+- <a href="https://pkg.go.dev/github.com/hyperspell/hyperspell-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/hyperspell/hyperspell-go/shared#Metadata">Metadata</a>
 - <a href="https://pkg.go.dev/github.com/hyperspell/hyperspell-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/hyperspell/hyperspell-go/shared#QueryResult">QueryResult</a>
 
 # Connections
