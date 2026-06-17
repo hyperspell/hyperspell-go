@@ -127,7 +127,7 @@ type QueryResultDocument struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield".
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Source string `json:"source" api:"required"`
 	// Hyperdoc document type discriminator (document, message, file, event, ...).
 	Type string `json:"type" api:"required"`
@@ -81069,7 +81069,7 @@ type QueryResultProvenanceSource struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield".
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Source string  `json:"source" api:"required"`
 	Score  float64 `json:"score" api:"nullable"`
 	Title  string  `json:"title" api:"nullable"`
