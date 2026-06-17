@@ -48,7 +48,7 @@ type IntegrationWebCrawlerIndexResponse struct {
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
 	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
 	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield".
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Source IntegrationWebCrawlerIndexResponseSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
 	// "skipped".
@@ -94,6 +94,7 @@ const (
 	IntegrationWebCrawlerIndexResponseSourceSalesforce     IntegrationWebCrawlerIndexResponseSource = "salesforce"
 	IntegrationWebCrawlerIndexResponseSourceCoda           IntegrationWebCrawlerIndexResponseSource = "coda"
 	IntegrationWebCrawlerIndexResponseSourceLightfield     IntegrationWebCrawlerIndexResponseSource = "lightfield"
+	IntegrationWebCrawlerIndexResponseSourceGong           IntegrationWebCrawlerIndexResponseSource = "gong"
 )
 
 type IntegrationWebCrawlerIndexResponseStatus string
