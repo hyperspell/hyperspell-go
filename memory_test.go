@@ -268,13 +268,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 				Weight:        hyperspell.Float(0),
 			},
 			RecencyHalfLifeDays: hyperspell.Float(1),
-			Reddit: hyperspell.MemorySearchParamsOptionsReddit{
-				Period:    "hour",
-				Sort:      "relevance",
-				Subreddit: hyperspell.String("subreddit"),
-				Weight:    hyperspell.Float(0),
-			},
-			ResourceIDs: []string{"string"},
+			ResourceIDs:         []string{"string"},
 			Slack: hyperspell.MemorySearchParamsOptionsSlack{
 				Channels:        []string{"string"},
 				ExcludeArchived: hyperspell.Bool(true),
