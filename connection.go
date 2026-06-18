@@ -82,15 +82,20 @@ type ConnectionListResponseConnection struct {
 	// The connection's provider
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Provider string `json:"provider" api:"required"`
+	// Count of items in user_options.channels (Teams: workspaces selected; 0 means
+	// nothing is being indexed for integrations that require selection).
+	SelectedCount int64 `json:"selected_count"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID            respjson.Field
 		IntegrationID respjson.Field
 		Label         respjson.Field
 		Provider      respjson.Field
+		SelectedCount respjson.Field
 		ExtraFields   map[string]respjson.Field
 		raw           string
 	} `json:"-"`

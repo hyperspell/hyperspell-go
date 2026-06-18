@@ -46,8 +46,9 @@ func (r *IntegrationWebCrawlerService) Index(ctx context.Context, query Integrat
 type IntegrationWebCrawlerIndexResponse struct {
 	ResourceID string `json:"resource_id" api:"required"`
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Source IntegrationWebCrawlerIndexResponseSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
 	// "skipped".
@@ -78,13 +79,22 @@ const (
 	IntegrationWebCrawlerIndexResponseSourceGoogleMail     IntegrationWebCrawlerIndexResponseSource = "google_mail"
 	IntegrationWebCrawlerIndexResponseSourceBox            IntegrationWebCrawlerIndexResponseSource = "box"
 	IntegrationWebCrawlerIndexResponseSourceDropbox        IntegrationWebCrawlerIndexResponseSource = "dropbox"
-	IntegrationWebCrawlerIndexResponseSourceGoogleDrive    IntegrationWebCrawlerIndexResponseSource = "google_drive"
 	IntegrationWebCrawlerIndexResponseSourceGitHub         IntegrationWebCrawlerIndexResponseSource = "github"
+	IntegrationWebCrawlerIndexResponseSourceGoogleDrive    IntegrationWebCrawlerIndexResponseSource = "google_drive"
 	IntegrationWebCrawlerIndexResponseSourceVault          IntegrationWebCrawlerIndexResponseSource = "vault"
 	IntegrationWebCrawlerIndexResponseSourceWebCrawler     IntegrationWebCrawlerIndexResponseSource = "web_crawler"
 	IntegrationWebCrawlerIndexResponseSourceTrace          IntegrationWebCrawlerIndexResponseSource = "trace"
 	IntegrationWebCrawlerIndexResponseSourceMicrosoftTeams IntegrationWebCrawlerIndexResponseSource = "microsoft_teams"
 	IntegrationWebCrawlerIndexResponseSourceGmailActions   IntegrationWebCrawlerIndexResponseSource = "gmail_actions"
+	IntegrationWebCrawlerIndexResponseSourceGranola        IntegrationWebCrawlerIndexResponseSource = "granola"
+	IntegrationWebCrawlerIndexResponseSourceFathom         IntegrationWebCrawlerIndexResponseSource = "fathom"
+	IntegrationWebCrawlerIndexResponseSourceFireflies      IntegrationWebCrawlerIndexResponseSource = "fireflies"
+	IntegrationWebCrawlerIndexResponseSourceLinear         IntegrationWebCrawlerIndexResponseSource = "linear"
+	IntegrationWebCrawlerIndexResponseSourceHubspot        IntegrationWebCrawlerIndexResponseSource = "hubspot"
+	IntegrationWebCrawlerIndexResponseSourceSalesforce     IntegrationWebCrawlerIndexResponseSource = "salesforce"
+	IntegrationWebCrawlerIndexResponseSourceCoda           IntegrationWebCrawlerIndexResponseSource = "coda"
+	IntegrationWebCrawlerIndexResponseSourceLightfield     IntegrationWebCrawlerIndexResponseSource = "lightfield"
+	IntegrationWebCrawlerIndexResponseSourceGong           IntegrationWebCrawlerIndexResponseSource = "gong"
 )
 
 type IntegrationWebCrawlerIndexResponseStatus string

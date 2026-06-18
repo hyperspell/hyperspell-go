@@ -99,8 +99,9 @@ type ActionAddReactionParams struct {
 	// Integration provider (e.g., slack)
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Provider ActionAddReactionParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message timestamp to react to
 	Timestamp string `json:"timestamp" api:"required"`
@@ -128,21 +129,31 @@ const (
 	ActionAddReactionParamsProviderGoogleMail     ActionAddReactionParamsProvider = "google_mail"
 	ActionAddReactionParamsProviderBox            ActionAddReactionParamsProvider = "box"
 	ActionAddReactionParamsProviderDropbox        ActionAddReactionParamsProvider = "dropbox"
-	ActionAddReactionParamsProviderGoogleDrive    ActionAddReactionParamsProvider = "google_drive"
 	ActionAddReactionParamsProviderGitHub         ActionAddReactionParamsProvider = "github"
+	ActionAddReactionParamsProviderGoogleDrive    ActionAddReactionParamsProvider = "google_drive"
 	ActionAddReactionParamsProviderVault          ActionAddReactionParamsProvider = "vault"
 	ActionAddReactionParamsProviderWebCrawler     ActionAddReactionParamsProvider = "web_crawler"
 	ActionAddReactionParamsProviderTrace          ActionAddReactionParamsProvider = "trace"
 	ActionAddReactionParamsProviderMicrosoftTeams ActionAddReactionParamsProvider = "microsoft_teams"
 	ActionAddReactionParamsProviderGmailActions   ActionAddReactionParamsProvider = "gmail_actions"
+	ActionAddReactionParamsProviderGranola        ActionAddReactionParamsProvider = "granola"
+	ActionAddReactionParamsProviderFathom         ActionAddReactionParamsProvider = "fathom"
+	ActionAddReactionParamsProviderFireflies      ActionAddReactionParamsProvider = "fireflies"
+	ActionAddReactionParamsProviderLinear         ActionAddReactionParamsProvider = "linear"
+	ActionAddReactionParamsProviderHubspot        ActionAddReactionParamsProvider = "hubspot"
+	ActionAddReactionParamsProviderSalesforce     ActionAddReactionParamsProvider = "salesforce"
+	ActionAddReactionParamsProviderCoda           ActionAddReactionParamsProvider = "coda"
+	ActionAddReactionParamsProviderLightfield     ActionAddReactionParamsProvider = "lightfield"
+	ActionAddReactionParamsProviderGong           ActionAddReactionParamsProvider = "gong"
 )
 
 type ActionSendMessageParams struct {
 	// Integration provider (e.g., slack)
 	//
 	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "google_drive", "github", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions".
+	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
+	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
+	// "hubspot", "salesforce", "coda", "lightfield", "gong".
 	Provider ActionSendMessageParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message text
 	Text string `json:"text" api:"required"`
@@ -174,11 +185,20 @@ const (
 	ActionSendMessageParamsProviderGoogleMail     ActionSendMessageParamsProvider = "google_mail"
 	ActionSendMessageParamsProviderBox            ActionSendMessageParamsProvider = "box"
 	ActionSendMessageParamsProviderDropbox        ActionSendMessageParamsProvider = "dropbox"
-	ActionSendMessageParamsProviderGoogleDrive    ActionSendMessageParamsProvider = "google_drive"
 	ActionSendMessageParamsProviderGitHub         ActionSendMessageParamsProvider = "github"
+	ActionSendMessageParamsProviderGoogleDrive    ActionSendMessageParamsProvider = "google_drive"
 	ActionSendMessageParamsProviderVault          ActionSendMessageParamsProvider = "vault"
 	ActionSendMessageParamsProviderWebCrawler     ActionSendMessageParamsProvider = "web_crawler"
 	ActionSendMessageParamsProviderTrace          ActionSendMessageParamsProvider = "trace"
 	ActionSendMessageParamsProviderMicrosoftTeams ActionSendMessageParamsProvider = "microsoft_teams"
 	ActionSendMessageParamsProviderGmailActions   ActionSendMessageParamsProvider = "gmail_actions"
+	ActionSendMessageParamsProviderGranola        ActionSendMessageParamsProvider = "granola"
+	ActionSendMessageParamsProviderFathom         ActionSendMessageParamsProvider = "fathom"
+	ActionSendMessageParamsProviderFireflies      ActionSendMessageParamsProvider = "fireflies"
+	ActionSendMessageParamsProviderLinear         ActionSendMessageParamsProvider = "linear"
+	ActionSendMessageParamsProviderHubspot        ActionSendMessageParamsProvider = "hubspot"
+	ActionSendMessageParamsProviderSalesforce     ActionSendMessageParamsProvider = "salesforce"
+	ActionSendMessageParamsProviderCoda           ActionSendMessageParamsProvider = "coda"
+	ActionSendMessageParamsProviderLightfield     ActionSendMessageParamsProvider = "lightfield"
+	ActionSendMessageParamsProviderGong           ActionSendMessageParamsProvider = "gong"
 )
