@@ -241,7 +241,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 		Query:      "What does Hyperspell do?",
 		Answer:     hyperspell.Bool(true),
 		Effort:     hyperspell.MemorySearchParamsEffortMinimal,
-		MaxResults: hyperspell.Int(0),
+		MaxResults: hyperspell.Int(1),
 		Options: hyperspell.MemorySearchParamsOptions{
 			After:       hyperspell.Time(time.Now()),
 			AnswerModel: "llama-3.1",
@@ -261,7 +261,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 				LabelIDs: []string{"string"},
 				Weight:   hyperspell.Float(0),
 			},
-			MaxResults:  hyperspell.Int(200),
+			MaxResults:  hyperspell.Int(1),
 			MemoryTypes: []string{"procedure"},
 			Notion: hyperspell.MemorySearchParamsOptionsNotion{
 				NotionPageIDs: []string{"string"},
