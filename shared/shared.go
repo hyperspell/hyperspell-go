@@ -1470,6 +1470,7 @@ type Conversation struct {
 	// `Metadata` only the set keys survive.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
+	Title    string   `json:"title" api:"nullable"`
 	// Any of "conversation".
 	Type ConversationType `json:"type"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -1479,6 +1480,7 @@ type Conversation struct {
 		Children    respjson.Field
 		Metadata    respjson.Field
 		Text        respjson.Field
+		Title       respjson.Field
 		Type        respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
