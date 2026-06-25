@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0 (2026-06-25)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/hyperspell/hyperspell-go/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** api update ([8019648](https://github.com/hyperspell/hyperspell-go/commit/801964808086a1b7cafa8f8105db2efed7fc280e))
+* **api:** api update ([b88ec44](https://github.com/hyperspell/hyperspell-go/commit/b88ec445bea0e122ee00b32f6961eb987834affd))
+* **api:** api update ([c46cb47](https://github.com/hyperspell/hyperspell-go/commit/c46cb47659f272166f4bb648c1222a6ab5b525e6))
+
 ## 0.1.0 (2026-06-18)
 
 Full Changelog: [v0.0.2...v0.1.0](https://github.com/hyperspell/hyperspell-go/compare/v0.0.2...v0.1.0)
