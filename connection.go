@@ -43,8 +43,14 @@ func (r *ConnectionService) List(ctx context.Context, opts ...option.RequestOpti
 	return res, err
 }
 
-// Revokes Hyperspell's access the given provider and deletes all stored
-// credentials and indexed data.
+// Revoke Hyperspell's access to a provider and delete this user's stored data.
+//
+// The external OAuth/Unified revoke and the (potentially large) data purge run in
+// a background Temporal workflow; this returns `202 Accepted` immediately. A heavy
+// provider — a Gmail account can carry hundreds of thousands of chunks — plus a
+// slow third-party revoke would otherwise outrun the request timeout: the old
+// synchronous path "timed out" for the caller while still finishing server-side,
+// making the outcome invisible. Idempotent per (app, user, provider).
 func (r *ConnectionService) Revoke(ctx context.Context, connectionID string, opts ...option.RequestOption) (res *ConnectionRevokeResponse, err error) {
 	opts = slices.Concat(r.options, opts)
 	if connectionID == "" {
