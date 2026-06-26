@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/hyperspell/hyperspell-go/compare/v0.1.0...v0.2.0) (2026-06-26)
+
+
+### Features
+
+* **api:** sync generated go SDK (add Conversation.Title, refresh Revoke docs) ([e07b5c8](https://github.com/hyperspell/hyperspell-go/commit/e07b5c82a1fe3beb11f4067488dd6bfa9352481e))
+
 ## 0.1.0 (2026-06-18)
 
 Full Changelog: [v0.0.2...v0.1.0](https://github.com/hyperspell/hyperspell-go/compare/v0.0.2...v0.1.0)
