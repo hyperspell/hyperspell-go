@@ -18,6 +18,12 @@ func ValueOf[T Constant[T]]() T {
 	return t.Default()
 }
 
+type Slack string // Always "slack"
+
+func (c Slack) Default() Slack { return "slack" }
+
+func (c Slack) MarshalJSON() ([]byte, error) { return marshalString(c) }
+
 type constant[T any] interface {
 	Constant[T]
 	*T

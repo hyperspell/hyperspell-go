@@ -34,7 +34,10 @@ func NewAuthService(opts ...option.RequestOption) (r AuthService) {
 	return
 }
 
-// Endpoint to delete user.
+// Delete the calling user's data (GDPR erasure).
+//
+// Deletion is processed asynchronously. The endpoint returns `202 Accepted` with
+// an identifier for the deletion request.
 func (r *AuthService) DeleteUser(ctx context.Context, opts ...option.RequestOption) (res *AuthDeleteUserResponse, err error) {
 	opts = slices.Concat(r.options, opts)
 	path := "auth/delete"
@@ -78,12 +81,14 @@ func (r *Token) UnmarshalJSON(data []byte) error {
 }
 
 type AuthDeleteUserResponse struct {
-	Message string `json:"message" api:"required"`
-	Success bool   `json:"success" api:"required"`
+	Message    string `json:"message" api:"required"`
+	Success    bool   `json:"success" api:"required"`
+	WorkflowID string `json:"workflow_id" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Message     respjson.Field
 		Success     respjson.Field
+		WorkflowID  respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -102,17 +107,21 @@ type AuthMeResponse struct {
 	App AuthMeResponseApp `json:"app" api:"required"`
 	// All integrations available for the app
 	//
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
 	AvailableIntegrations []string `json:"available_integrations" api:"required"`
 	// All integrations installed for the user
 	//
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
 	InstalledIntegrations []string `json:"installed_integrations" api:"required"`
 	// The expiration time of the user token used to make the request
 	TokenExpiration time.Time `json:"token_expiration" api:"required" format:"date-time"`
@@ -164,6 +173,7 @@ func (r *AuthMeResponseApp) UnmarshalJSON(data []byte) error {
 type AuthUserTokenParams struct {
 	UserID string `json:"user_id" api:"required"`
 	// Token lifetime, e.g., '30m', '2h', '1d'. Defaults to 24 hours if not provided.
+	// Maximum 30 days.
 	ExpiresIn param.Opt[string] `json:"expires_in,omitzero"`
 	// Origin of the request, used for CSRF protection. If set, the token will only be
 	// valid for requests originating from this origin.

@@ -68,12 +68,13 @@ func TestMemoryListWithOptionalParams(t *testing.T) {
 		option.WithUserID("My User ID"),
 	)
 	_, err := client.Memories.List(context.TODO(), hyperspell.MemoryListParams{
-		Collection: hyperspell.String("collection"),
-		Cursor:     hyperspell.String("cursor"),
-		Filter:     hyperspell.String("filter"),
-		Size:       hyperspell.Int(0),
-		Source:     hyperspell.MemoryListParamsSourceReddit,
-		Status:     hyperspell.MemoryListParamsStatusPending,
+		Collection:    hyperspell.String("collection"),
+		Cursor:        hyperspell.String("cursor"),
+		Filter:        hyperspell.String("filter"),
+		IncludeChunks: hyperspell.Int(0),
+		Size:          hyperspell.Int(0),
+		Source:        hyperspell.MemoryListParamsSourceReddit,
+		Status:        hyperspell.MemoryListParamsStatusPending,
 	})
 	if err != nil {
 		var apierr *hyperspell.Error
@@ -195,7 +196,7 @@ func TestMemoryAddBulk(t *testing.T) {
 	}
 }
 
-func TestMemoryGet(t *testing.T) {
+func TestMemoryGetWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -212,7 +213,8 @@ func TestMemoryGet(t *testing.T) {
 		context.TODO(),
 		"resource_id",
 		hyperspell.MemoryGetParams{
-			Source: hyperspell.MemoryGetParamsSourceReddit,
+			Source:        hyperspell.MemoryGetParamsSourceReddit,
+			IncludeChunks: hyperspell.Bool(true),
 		},
 	)
 	if err != nil {
@@ -246,14 +248,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 			After:       hyperspell.Time(time.Now()),
 			AnswerModel: "llama-3.1",
 			Before:      hyperspell.Time(time.Now()),
-			Box: hyperspell.MemorySearchParamsOptionsBox{
-				Weight: hyperspell.Float(0),
-			},
-			Filter: map[string]any{},
-			GoogleCalendar: hyperspell.MemorySearchParamsOptionsGoogleCalendar{
-				CalendarID: hyperspell.String("calendar_id"),
-				Weight:     hyperspell.Float(0),
-			},
+			Filter:      map[string]any{},
 			GoogleDrive: hyperspell.MemorySearchParamsOptionsGoogleDrive{
 				Weight: hyperspell.Float(0),
 			},
@@ -277,6 +272,7 @@ func TestMemorySearchWithOptionalParams(t *testing.T) {
 				IncludePrivate:  hyperspell.Bool(true),
 				Weight:          hyperspell.Float(0),
 			},
+			Timezone: hyperspell.String("timezone"),
 			Vault: hyperspell.MemorySearchParamsOptionsVault{
 				Weight: hyperspell.Float(0),
 			},

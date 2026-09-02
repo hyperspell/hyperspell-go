@@ -25,11 +25,11 @@ func TestAutoPagination(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	iter := client.Memories.ListAutoPaging(context.TODO(), hyperspell.MemoryListParams{})
+	iter := client.ContextDocuments.ListAutoPaging(context.TODO(), hyperspell.ContextDocumentListParams{})
 	// The mock server isn't going to give us real pagination
 	for i := 0; i < 3 && iter.Next(); i++ {
-		memory := iter.Current()
-		t.Logf("%+v\n", memory.ResourceID)
+		contextDocument := iter.Current()
+		t.Logf("%+v\n", contextDocument.DocumentID)
 	}
 	if err := iter.Err(); err != nil {
 		t.Fatalf("err should be nil: %s", err.Error())

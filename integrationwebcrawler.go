@@ -45,13 +45,15 @@ func (r *IntegrationWebCrawlerService) Index(ctx context.Context, query Integrat
 
 type IntegrationWebCrawlerIndexResponse struct {
 	ResourceID string `json:"resource_id" api:"required"`
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
 	Source IntegrationWebCrawlerIndexResponseSource `json:"source" api:"required"`
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
-	// "skipped".
+	// "skipped", "filtered", "cancelled".
 	Status IntegrationWebCrawlerIndexResponseStatus `json:"status" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -72,29 +74,41 @@ func (r *IntegrationWebCrawlerIndexResponse) UnmarshalJSON(data []byte) error {
 type IntegrationWebCrawlerIndexResponseSource string
 
 const (
-	IntegrationWebCrawlerIndexResponseSourceReddit         IntegrationWebCrawlerIndexResponseSource = "reddit"
-	IntegrationWebCrawlerIndexResponseSourceNotion         IntegrationWebCrawlerIndexResponseSource = "notion"
-	IntegrationWebCrawlerIndexResponseSourceSlack          IntegrationWebCrawlerIndexResponseSource = "slack"
-	IntegrationWebCrawlerIndexResponseSourceGoogleCalendar IntegrationWebCrawlerIndexResponseSource = "google_calendar"
-	IntegrationWebCrawlerIndexResponseSourceGoogleMail     IntegrationWebCrawlerIndexResponseSource = "google_mail"
-	IntegrationWebCrawlerIndexResponseSourceBox            IntegrationWebCrawlerIndexResponseSource = "box"
-	IntegrationWebCrawlerIndexResponseSourceDropbox        IntegrationWebCrawlerIndexResponseSource = "dropbox"
-	IntegrationWebCrawlerIndexResponseSourceGitHub         IntegrationWebCrawlerIndexResponseSource = "github"
-	IntegrationWebCrawlerIndexResponseSourceGoogleDrive    IntegrationWebCrawlerIndexResponseSource = "google_drive"
-	IntegrationWebCrawlerIndexResponseSourceVault          IntegrationWebCrawlerIndexResponseSource = "vault"
-	IntegrationWebCrawlerIndexResponseSourceWebCrawler     IntegrationWebCrawlerIndexResponseSource = "web_crawler"
-	IntegrationWebCrawlerIndexResponseSourceTrace          IntegrationWebCrawlerIndexResponseSource = "trace"
-	IntegrationWebCrawlerIndexResponseSourceMicrosoftTeams IntegrationWebCrawlerIndexResponseSource = "microsoft_teams"
-	IntegrationWebCrawlerIndexResponseSourceGmailActions   IntegrationWebCrawlerIndexResponseSource = "gmail_actions"
-	IntegrationWebCrawlerIndexResponseSourceGranola        IntegrationWebCrawlerIndexResponseSource = "granola"
-	IntegrationWebCrawlerIndexResponseSourceFathom         IntegrationWebCrawlerIndexResponseSource = "fathom"
-	IntegrationWebCrawlerIndexResponseSourceFireflies      IntegrationWebCrawlerIndexResponseSource = "fireflies"
-	IntegrationWebCrawlerIndexResponseSourceLinear         IntegrationWebCrawlerIndexResponseSource = "linear"
-	IntegrationWebCrawlerIndexResponseSourceHubspot        IntegrationWebCrawlerIndexResponseSource = "hubspot"
-	IntegrationWebCrawlerIndexResponseSourceSalesforce     IntegrationWebCrawlerIndexResponseSource = "salesforce"
-	IntegrationWebCrawlerIndexResponseSourceCoda           IntegrationWebCrawlerIndexResponseSource = "coda"
-	IntegrationWebCrawlerIndexResponseSourceLightfield     IntegrationWebCrawlerIndexResponseSource = "lightfield"
-	IntegrationWebCrawlerIndexResponseSourceGong           IntegrationWebCrawlerIndexResponseSource = "gong"
+	IntegrationWebCrawlerIndexResponseSourceReddit           IntegrationWebCrawlerIndexResponseSource = "reddit"
+	IntegrationWebCrawlerIndexResponseSourceNotion           IntegrationWebCrawlerIndexResponseSource = "notion"
+	IntegrationWebCrawlerIndexResponseSourceSlack            IntegrationWebCrawlerIndexResponseSource = "slack"
+	IntegrationWebCrawlerIndexResponseSourceGoogleCalendar   IntegrationWebCrawlerIndexResponseSource = "google_calendar"
+	IntegrationWebCrawlerIndexResponseSourceGoogleMail       IntegrationWebCrawlerIndexResponseSource = "google_mail"
+	IntegrationWebCrawlerIndexResponseSourceImap             IntegrationWebCrawlerIndexResponseSource = "imap"
+	IntegrationWebCrawlerIndexResponseSourceGoogleMeet       IntegrationWebCrawlerIndexResponseSource = "google_meet"
+	IntegrationWebCrawlerIndexResponseSourceBox              IntegrationWebCrawlerIndexResponseSource = "box"
+	IntegrationWebCrawlerIndexResponseSourceDropbox          IntegrationWebCrawlerIndexResponseSource = "dropbox"
+	IntegrationWebCrawlerIndexResponseSourceGitHub           IntegrationWebCrawlerIndexResponseSource = "github"
+	IntegrationWebCrawlerIndexResponseSourceGitlab           IntegrationWebCrawlerIndexResponseSource = "gitlab"
+	IntegrationWebCrawlerIndexResponseSourceGoogleDrive      IntegrationWebCrawlerIndexResponseSource = "google_drive"
+	IntegrationWebCrawlerIndexResponseSourceVault            IntegrationWebCrawlerIndexResponseSource = "vault"
+	IntegrationWebCrawlerIndexResponseSourceWebCrawler       IntegrationWebCrawlerIndexResponseSource = "web_crawler"
+	IntegrationWebCrawlerIndexResponseSourceTrace            IntegrationWebCrawlerIndexResponseSource = "trace"
+	IntegrationWebCrawlerIndexResponseSourceMicrosoftOutlook IntegrationWebCrawlerIndexResponseSource = "microsoft_outlook"
+	IntegrationWebCrawlerIndexResponseSourceMicrosoftTeams   IntegrationWebCrawlerIndexResponseSource = "microsoft_teams"
+	IntegrationWebCrawlerIndexResponseSourceGranola          IntegrationWebCrawlerIndexResponseSource = "granola"
+	IntegrationWebCrawlerIndexResponseSourceFathom           IntegrationWebCrawlerIndexResponseSource = "fathom"
+	IntegrationWebCrawlerIndexResponseSourceFireflies        IntegrationWebCrawlerIndexResponseSource = "fireflies"
+	IntegrationWebCrawlerIndexResponseSourceFigma            IntegrationWebCrawlerIndexResponseSource = "figma"
+	IntegrationWebCrawlerIndexResponseSourceLinear           IntegrationWebCrawlerIndexResponseSource = "linear"
+	IntegrationWebCrawlerIndexResponseSourceHubspot          IntegrationWebCrawlerIndexResponseSource = "hubspot"
+	IntegrationWebCrawlerIndexResponseSourceSalesforce       IntegrationWebCrawlerIndexResponseSource = "salesforce"
+	IntegrationWebCrawlerIndexResponseSourceCoda             IntegrationWebCrawlerIndexResponseSource = "coda"
+	IntegrationWebCrawlerIndexResponseSourceConfluence       IntegrationWebCrawlerIndexResponseSource = "confluence"
+	IntegrationWebCrawlerIndexResponseSourceJira             IntegrationWebCrawlerIndexResponseSource = "jira"
+	IntegrationWebCrawlerIndexResponseSourceMetabase         IntegrationWebCrawlerIndexResponseSource = "metabase"
+	IntegrationWebCrawlerIndexResponseSourceGong             IntegrationWebCrawlerIndexResponseSource = "gong"
+	IntegrationWebCrawlerIndexResponseSourceClickup          IntegrationWebCrawlerIndexResponseSource = "clickup"
+	IntegrationWebCrawlerIndexResponseSourceLightfield       IntegrationWebCrawlerIndexResponseSource = "lightfield"
+	IntegrationWebCrawlerIndexResponseSourcePylon            IntegrationWebCrawlerIndexResponseSource = "pylon"
+	IntegrationWebCrawlerIndexResponseSourceFellow           IntegrationWebCrawlerIndexResponseSource = "fellow"
+	IntegrationWebCrawlerIndexResponseSourceOdoo             IntegrationWebCrawlerIndexResponseSource = "odoo"
+	IntegrationWebCrawlerIndexResponseSourceExternalMcp      IntegrationWebCrawlerIndexResponseSource = "external_mcp"
 )
 
 type IntegrationWebCrawlerIndexResponseStatus string
@@ -106,6 +120,8 @@ const (
 	IntegrationWebCrawlerIndexResponseStatusFailed        IntegrationWebCrawlerIndexResponseStatus = "failed"
 	IntegrationWebCrawlerIndexResponseStatusPendingReview IntegrationWebCrawlerIndexResponseStatus = "pending_review"
 	IntegrationWebCrawlerIndexResponseStatusSkipped       IntegrationWebCrawlerIndexResponseStatus = "skipped"
+	IntegrationWebCrawlerIndexResponseStatusFiltered      IntegrationWebCrawlerIndexResponseStatus = "filtered"
+	IntegrationWebCrawlerIndexResponseStatusCancelled     IntegrationWebCrawlerIndexResponseStatus = "cancelled"
 )
 
 type IntegrationWebCrawlerIndexParams struct {

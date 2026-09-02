@@ -45,12 +45,9 @@ func (r *ConnectionService) List(ctx context.Context, opts ...option.RequestOpti
 
 // Revoke Hyperspell's access to a provider and delete this user's stored data.
 //
-// The external OAuth/Unified revoke and the (potentially large) data purge run in
-// a background Temporal workflow; this returns `202 Accepted` immediately. A heavy
-// provider — a Gmail account can carry hundreds of thousands of chunks — plus a
-// slow third-party revoke would otherwise outrun the request timeout: the old
-// synchronous path "timed out" for the caller while still finishing server-side,
-// making the outcome invisible. Idempotent per (app, user, provider).
+// Revocation and deletion are processed asynchronously, so the endpoint returns
+// `202 Accepted` immediately. Repeated requests for the same app, user, and
+// provider are safe.
 func (r *ConnectionService) Revoke(ctx context.Context, connectionID string, opts ...option.RequestOption) (res *ConnectionRevokeResponse, err error) {
 	opts = slices.Concat(r.options, opts)
 	if connectionID == "" {
@@ -87,13 +84,28 @@ type ConnectionListResponseConnection struct {
 	Label string `json:"label" api:"required"`
 	// The connection's provider
 	//
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
 	Provider string `json:"provider" api:"required"`
-	// Count of items in user_options.channels (Teams: workspaces selected; 0 means
-	// nothing is being indexed for integrations that require selection).
+	// State of the historical backfill for providers that deliver history
+	// asynchronously: 'backfilling' while history is still streaming in, 'quiesced'
+	// once no backfill batch has arrived for a while (drained or stalled), 'completed'
+	// if the provider confirmed completion, and 'unknown' when the provider has not
+	// reported a backfill state.
+	//
+	// Any of "backfilling", "quiesced", "completed", "unknown".
+	BackfillState string `json:"backfill_state"`
+	// 'user' for a personal connection; 'app' for an org-wide (app-level) connection
+	// installed once by an app admin and shared with every user of the app.
+	//
+	// Any of "user", "app".
+	Scope string `json:"scope"`
+	// Number of items selected for this connection. For integrations that require
+	// selection, 0 means nothing is being indexed.
 	SelectedCount int64 `json:"selected_count"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -101,6 +113,8 @@ type ConnectionListResponseConnection struct {
 		IntegrationID respjson.Field
 		Label         respjson.Field
 		Provider      respjson.Field
+		BackfillState respjson.Field
+		Scope         respjson.Field
 		SelectedCount respjson.Field
 		ExtraFields   map[string]respjson.Field
 		raw           string

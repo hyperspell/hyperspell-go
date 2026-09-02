@@ -64,6 +64,7 @@ import (
 func main() {
 	client := hyperspell.NewClient(
 		option.WithAPIKey("My API Key"), // defaults to os.LookupEnv("HYPERSPELL_API_KEY")
+		option.WithUserID("My User ID"),
 	)
 	memoryStatus, err := client.Memories.Add(context.TODO(), hyperspell.MemoryAddParams{
 		Text: "...",
@@ -296,11 +297,11 @@ This library provides some conveniences for working with paginated list endpoint
 You can use `.ListAutoPaging()` methods to iterate through items across all pages:
 
 ```go
-iter := client.Memories.ListAutoPaging(context.TODO(), hyperspell.MemoryListParams{})
+iter := client.ContextDocuments.ListAutoPaging(context.TODO(), hyperspell.ContextDocumentListParams{})
 // Automatically fetches more pages as needed.
 for iter.Next() {
-	memoryListResponse := iter.Current()
-	fmt.Printf("%+v\n", memoryListResponse)
+	contextDocumentListResponse := iter.Current()
+	fmt.Printf("%+v\n", contextDocumentListResponse)
 }
 if err := iter.Err(); err != nil {
 	panic(err.Error())
@@ -311,10 +312,10 @@ Or you can use simple `.List()` methods to fetch a single page and receive a sta
 with additional helper methods like `.GetNextPage()`, e.g.:
 
 ```go
-page, err := client.Memories.List(context.TODO(), hyperspell.MemoryListParams{})
+page, err := client.ContextDocuments.List(context.TODO(), hyperspell.ContextDocumentListParams{})
 for page != nil {
-	for _, memory := range page.Items {
-		fmt.Printf("%+v\n", memory)
+	for _, contextDocument := range page.Documents {
+		fmt.Printf("%+v\n", contextDocument)
 	}
 	page, err = page.GetNextPage()
 }

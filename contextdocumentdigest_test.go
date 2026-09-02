@@ -7,13 +7,14 @@ import (
 	"errors"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/hyperspell/hyperspell-go"
 	"github.com/hyperspell/hyperspell-go/internal/testutil"
 	"github.com/hyperspell/hyperspell-go/option"
 )
 
-func TestActionAddReactionWithOptionalParams(t *testing.T) {
+func TestContextDocumentDigestListWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -26,12 +27,9 @@ func TestActionAddReactionWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.Actions.AddReaction(context.TODO(), hyperspell.ActionAddReactionParams{
-		Channel:    "channel",
-		Name:       "name",
-		Provider:   "slack",
-		Timestamp:  "timestamp",
-		Connection: hyperspell.String("connection"),
+	_, err := client.ContextDocuments.Digests.List(context.TODO(), hyperspell.ContextDocumentDigestListParams{
+		Limit:  hyperspell.Int(0),
+		Period: hyperspell.String("period"),
 	})
 	if err != nil {
 		var apierr *hyperspell.Error
@@ -42,7 +40,7 @@ func TestActionAddReactionWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestActionSendMessageWithOptionalParams(t *testing.T) {
+func TestContextDocumentDigestGenerateWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -55,12 +53,11 @@ func TestActionSendMessageWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.Actions.SendMessage(context.TODO(), hyperspell.ActionSendMessageParams{
-		Provider:   "slack",
-		Text:       "text",
-		Channel:    hyperspell.String("channel"),
-		Connection: hyperspell.String("connection"),
-		Parent:     hyperspell.String("parent"),
+	_, err := client.ContextDocuments.Digests.Generate(context.TODO(), hyperspell.ContextDocumentDigestGenerateParams{
+		Period:      hyperspell.String("period"),
+		Sources:     []string{"string"},
+		WindowEnd:   hyperspell.Time(time.Now()),
+		WindowStart: hyperspell.Time(time.Now()),
 	})
 	if err != nil {
 		var apierr *hyperspell.Error

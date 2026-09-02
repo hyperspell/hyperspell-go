@@ -26,10 +26,8 @@ import (
 // automatically. You should not instantiate this service directly, and instead use
 // the [NewIntegrationService] method instead.
 type IntegrationService struct {
-	options        []option.RequestOption
-	GoogleCalendar IntegrationGoogleCalendarService
-	WebCrawler     IntegrationWebCrawlerService
-	Slack          IntegrationSlackService
+	options    []option.RequestOption
+	WebCrawler IntegrationWebCrawlerService
 }
 
 // NewIntegrationService generates a new service that applies the given options to
@@ -38,9 +36,7 @@ type IntegrationService struct {
 func NewIntegrationService(opts ...option.RequestOption) (r IntegrationService) {
 	r = IntegrationService{}
 	r.options = opts
-	r.GoogleCalendar = NewIntegrationGoogleCalendarService(opts...)
 	r.WebCrawler = NewIntegrationWebCrawlerService(opts...)
-	r.Slack = NewIntegrationSlackService(opts...)
 	return
 }
 
@@ -95,27 +91,57 @@ type IntegrationListResponseIntegration struct {
 	Name string `json:"name" api:"required"`
 	// The integration's provider
 	//
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
 	Provider string `json:"provider" api:"required"`
 	// Whether this integration only supports write actions (no sync)
 	ActionsOnly bool `json:"actions_only"`
+	// Whether indexing waits until the user selects at least one channel.
+	ChannelSelectionRequired bool `json:"channel_selection_required"`
+	// Whether this app already has a scope='app' (service-account/bot) connection for
+	// this integration. Informational only: a shared connection no longer blocks
+	// personal OAuth — shared and personal connections can coexist.
+	ConnectedViaServiceAccount bool `json:"connected_via_service_account"`
+	// Whether a new personal connection waits for the user to select at least one
+	// folder before indexing begins. Shared service-account connections are exempt.
+	FolderSelectionRequired bool `json:"folder_selection_required"`
+	// Whether private channels are included by default when no explicit channel
+	// selection is provided.
+	PrivateChannelsIncluded bool `json:"private_channels_included"`
+	// Whether public channels are included by default when no explicit channel
+	// selection is provided.
+	PublicChannelsIncluded bool `json:"public_channels_included"`
 	// Whether the user must select channels before indexing starts
 	RequiresChannelSelection bool `json:"requires_channel_selection"`
+	// Whether the integration allows users to choose specific channels to index.
+	// Unless selection is required, an empty selection indexes all channels.
+	SupportsChannelSelection bool `json:"supports_channel_selection"`
+	// Whether the integration supports listing folders and configuring per-folder sync
+	// policies.
+	SupportsFolderSelection bool `json:"supports_folder_selection"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ID                       respjson.Field
-		AllowMultipleConnections respjson.Field
-		AuthProvider             respjson.Field
-		Icon                     respjson.Field
-		Name                     respjson.Field
-		Provider                 respjson.Field
-		ActionsOnly              respjson.Field
-		RequiresChannelSelection respjson.Field
-		ExtraFields              map[string]respjson.Field
-		raw                      string
+		ID                         respjson.Field
+		AllowMultipleConnections   respjson.Field
+		AuthProvider               respjson.Field
+		Icon                       respjson.Field
+		Name                       respjson.Field
+		Provider                   respjson.Field
+		ActionsOnly                respjson.Field
+		ChannelSelectionRequired   respjson.Field
+		ConnectedViaServiceAccount respjson.Field
+		FolderSelectionRequired    respjson.Field
+		PrivateChannelsIncluded    respjson.Field
+		PublicChannelsIncluded     respjson.Field
+		RequiresChannelSelection   respjson.Field
+		SupportsChannelSelection   respjson.Field
+		SupportsFolderSelection    respjson.Field
+		ExtraFields                map[string]respjson.Field
+		raw                        string
 	} `json:"-"`
 }
 

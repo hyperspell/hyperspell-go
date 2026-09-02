@@ -278,6 +278,6 @@ func WithAPIKey(value string) RequestOption {
 func WithUserID(value string) RequestOption {
 	return requestconfig.RequestOptionFunc(func(r *requestconfig.RequestConfig) error {
 		r.UserID = value
-		return r.Apply(WithHeader("X-As-User", r.UserID))
+		return r.Apply(WithHeader("X-As-User", value))
 	})
 }
