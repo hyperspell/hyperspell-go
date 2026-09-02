@@ -17,16 +17,17 @@ import (
 // interacting with the hyperspell API. You should not instantiate this client
 // directly, and instead use the [NewClient] method instead.
 type Client struct {
-	options      []option.RequestOption
-	Connections  ConnectionService
-	Folders      FolderService
-	Integrations IntegrationService
-	Memories     MemoryService
-	Evaluate     EvaluateService
-	Actions      ActionService
-	Sessions     SessionService
-	Vaults       VaultService
-	Auth         AuthService
+	options          []option.RequestOption
+	Connections      ConnectionService
+	Folders          FolderService
+	Integrations     IntegrationService
+	ContextDocuments ContextDocumentService
+	Memories         MemoryService
+	Evaluate         EvaluateService
+	Actions          ActionService
+	Sessions         SessionService
+	Vaults           VaultService
+	Auth             AuthService
 }
 
 // DefaultClientOptions read from the environment (HYPERSPELL_API_KEY,
@@ -62,6 +63,7 @@ func NewClient(opts ...option.RequestOption) (r Client) {
 	r.Connections = NewConnectionService(opts...)
 	r.Folders = NewFolderService(opts...)
 	r.Integrations = NewIntegrationService(opts...)
+	r.ContextDocuments = NewContextDocumentService(opts...)
 	r.Memories = NewMemoryService(opts...)
 	r.Evaluate = NewEvaluateService(opts...)
 	r.Actions = NewActionService(opts...)

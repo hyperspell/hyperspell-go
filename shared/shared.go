@@ -25,15 +25,10 @@ type Blob struct {
 	Data     string `json:"data" api:"required"`
 	Mimetype string `json:"mimetype" api:"required"`
 	ID       string `json:"id"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "blob".
 	Type BlobType `json:"type"`
@@ -55,25 +50,29 @@ func (r *Blob) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Blob) ImplCalloutChildUnion()   {}
-func (Blob) ImplChunkChildUnion()     {}
-func (Blob) ImplCompanyChildUnion()   {}
-func (Blob) ImplDealChildUnion()      {}
-func (Blob) ImplDocumentChildUnion()  {}
-func (Blob) ImplEquationChildUnion()  {}
-func (Blob) ImplEventChildUnion()     {}
-func (Blob) ImplFileChildUnion()      {}
-func (Blob) ImplFootnoteChildUnion()  {}
-func (Blob) ImplHeadingChildUnion()   {}
-func (Blob) ImplListItemChildUnion()  {}
-func (Blob) ImplMessageChildUnion()   {}
-func (Blob) ImplParagraphChildUnion() {}
-func (Blob) ImplPersonChildUnion()    {}
-func (Blob) ImplQuoteChildUnion()     {}
-func (Blob) ImplTableCellChildUnion() {}
-func (Blob) ImplTaskChildUnion()      {}
-func (Blob) ImplToDoChildUnion()      {}
-func (Blob) ImplWebsiteChildUnion()   {}
+func (Blob) ImplCalloutChildUnion()                               {}
+func (Blob) ImplChunkChildUnion()                                 {}
+func (Blob) ImplCompanyChildUnion()                               {}
+func (Blob) ImplDealChildUnion()                                  {}
+func (Blob) ImplDocumentChildUnion()                              {}
+func (Blob) ImplEquationChildUnion()                              {}
+func (Blob) ImplEventChildUnion()                                 {}
+func (Blob) ImplFileChildUnion()                                  {}
+func (Blob) ImplFootnoteChildUnion()                              {}
+func (Blob) ImplHeadingChildUnion()                               {}
+func (Blob) ImplListItemChildUnion()                              {}
+func (Blob) ImplMessageChildUnion()                               {}
+func (Blob) ImplPageChildUnion()                                  {}
+func (Blob) ImplParagraphChildUnion()                             {}
+func (Blob) ImplPersonChildUnion()                                {}
+func (Blob) ImplQuoteChildUnion()                                 {}
+func (Blob) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Blob) ImplTableCellChildUnion()                             {}
+func (Blob) ImplTaskChildUnion()                                  {}
+func (Blob) ImplToDoChildUnion()                                  {}
+func (Blob) ImplWebsiteChildUnion()                               {}
+func (Blob) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Blob) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type BlobType string
 
@@ -84,15 +83,10 @@ const (
 type Callout struct {
 	ID       string              `json:"id"`
 	Children []CalloutChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	Title    string   `json:"title" api:"nullable"`
@@ -117,31 +111,35 @@ func (r *Callout) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Callout) ImplCalloutChildUnion()   {}
-func (Callout) ImplChunkChildUnion()     {}
-func (Callout) ImplCompanyChildUnion()   {}
-func (Callout) ImplDealChildUnion()      {}
-func (Callout) ImplDocumentChildUnion()  {}
-func (Callout) ImplEquationChildUnion()  {}
-func (Callout) ImplEventChildUnion()     {}
-func (Callout) ImplFileChildUnion()      {}
-func (Callout) ImplFootnoteChildUnion()  {}
-func (Callout) ImplHeadingChildUnion()   {}
-func (Callout) ImplListItemChildUnion()  {}
-func (Callout) ImplMessageChildUnion()   {}
-func (Callout) ImplParagraphChildUnion() {}
-func (Callout) ImplPersonChildUnion()    {}
-func (Callout) ImplQuoteChildUnion()     {}
-func (Callout) ImplTableCellChildUnion() {}
-func (Callout) ImplTaskChildUnion()      {}
-func (Callout) ImplToDoChildUnion()      {}
-func (Callout) ImplWebsiteChildUnion()   {}
+func (Callout) ImplCalloutChildUnion()                               {}
+func (Callout) ImplChunkChildUnion()                                 {}
+func (Callout) ImplCompanyChildUnion()                               {}
+func (Callout) ImplDealChildUnion()                                  {}
+func (Callout) ImplDocumentChildUnion()                              {}
+func (Callout) ImplEquationChildUnion()                              {}
+func (Callout) ImplEventChildUnion()                                 {}
+func (Callout) ImplFileChildUnion()                                  {}
+func (Callout) ImplFootnoteChildUnion()                              {}
+func (Callout) ImplHeadingChildUnion()                               {}
+func (Callout) ImplListItemChildUnion()                              {}
+func (Callout) ImplMessageChildUnion()                               {}
+func (Callout) ImplPageChildUnion()                                  {}
+func (Callout) ImplParagraphChildUnion()                             {}
+func (Callout) ImplPersonChildUnion()                                {}
+func (Callout) ImplQuoteChildUnion()                                 {}
+func (Callout) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Callout) ImplTableCellChildUnion()                             {}
+func (Callout) ImplTaskChildUnion()                                  {}
+func (Callout) ImplToDoChildUnion()                                  {}
+func (Callout) ImplWebsiteChildUnion()                               {}
+func (Callout) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Callout) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // CalloutChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [CalloutChildUnion.AsAny] method to switch on the variant.
 //
@@ -156,14 +154,14 @@ type CalloutChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children CalloutChildUnionChildren `json:"children"`
 	Text     string                    `json:"text"`
 	// This field is from variant [Callout].
@@ -180,6 +178,10 @@ type CalloutChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -223,6 +225,8 @@ type CalloutChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -265,6 +269,7 @@ type anyCalloutChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -309,6 +314,8 @@ func (u CalloutChildUnion) AsAny() anyCalloutChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -401,6 +408,11 @@ func (u CalloutChildUnion) AsList() (v List) {
 }
 
 func (u CalloutChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u CalloutChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -499,15 +511,10 @@ const (
 type Chunk struct {
 	ID       string            `json:"id"`
 	Children []ChunkChildUnion `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "chunk".
@@ -530,31 +537,35 @@ func (r *Chunk) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Chunk) ImplCalloutChildUnion()   {}
-func (Chunk) ImplChunkChildUnion()     {}
-func (Chunk) ImplCompanyChildUnion()   {}
-func (Chunk) ImplDealChildUnion()      {}
-func (Chunk) ImplDocumentChildUnion()  {}
-func (Chunk) ImplEquationChildUnion()  {}
-func (Chunk) ImplEventChildUnion()     {}
-func (Chunk) ImplFileChildUnion()      {}
-func (Chunk) ImplFootnoteChildUnion()  {}
-func (Chunk) ImplHeadingChildUnion()   {}
-func (Chunk) ImplListItemChildUnion()  {}
-func (Chunk) ImplMessageChildUnion()   {}
-func (Chunk) ImplParagraphChildUnion() {}
-func (Chunk) ImplPersonChildUnion()    {}
-func (Chunk) ImplQuoteChildUnion()     {}
-func (Chunk) ImplTableCellChildUnion() {}
-func (Chunk) ImplTaskChildUnion()      {}
-func (Chunk) ImplToDoChildUnion()      {}
-func (Chunk) ImplWebsiteChildUnion()   {}
+func (Chunk) ImplCalloutChildUnion()                               {}
+func (Chunk) ImplChunkChildUnion()                                 {}
+func (Chunk) ImplCompanyChildUnion()                               {}
+func (Chunk) ImplDealChildUnion()                                  {}
+func (Chunk) ImplDocumentChildUnion()                              {}
+func (Chunk) ImplEquationChildUnion()                              {}
+func (Chunk) ImplEventChildUnion()                                 {}
+func (Chunk) ImplFileChildUnion()                                  {}
+func (Chunk) ImplFootnoteChildUnion()                              {}
+func (Chunk) ImplHeadingChildUnion()                               {}
+func (Chunk) ImplListItemChildUnion()                              {}
+func (Chunk) ImplMessageChildUnion()                               {}
+func (Chunk) ImplPageChildUnion()                                  {}
+func (Chunk) ImplParagraphChildUnion()                             {}
+func (Chunk) ImplPersonChildUnion()                                {}
+func (Chunk) ImplQuoteChildUnion()                                 {}
+func (Chunk) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Chunk) ImplTableCellChildUnion()                             {}
+func (Chunk) ImplTaskChildUnion()                                  {}
+func (Chunk) ImplToDoChildUnion()                                  {}
+func (Chunk) ImplWebsiteChildUnion()                               {}
+func (Chunk) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Chunk) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // ChunkChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [ChunkChildUnion.AsAny] method to switch on the variant.
 //
@@ -569,14 +580,14 @@ type ChunkChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children ChunkChildUnionChildren `json:"children"`
 	Text     string                  `json:"text"`
 	// This field is from variant [Callout].
@@ -593,6 +604,10 @@ type ChunkChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -636,6 +651,8 @@ type ChunkChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -678,6 +695,7 @@ type anyChunkChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -722,6 +740,8 @@ func (u ChunkChildUnion) AsAny() anyChunkChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -814,6 +834,11 @@ func (u ChunkChildUnion) AsList() (v List) {
 }
 
 func (u ChunkChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ChunkChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -913,15 +938,10 @@ type Code struct {
 	Text     string `json:"text" api:"required"`
 	ID       string `json:"id"`
 	Language string `json:"language" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "code".
 	Type CodeType `json:"type"`
@@ -943,25 +963,29 @@ func (r *Code) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Code) ImplCalloutChildUnion()   {}
-func (Code) ImplChunkChildUnion()     {}
-func (Code) ImplCompanyChildUnion()   {}
-func (Code) ImplDealChildUnion()      {}
-func (Code) ImplDocumentChildUnion()  {}
-func (Code) ImplEquationChildUnion()  {}
-func (Code) ImplEventChildUnion()     {}
-func (Code) ImplFileChildUnion()      {}
-func (Code) ImplFootnoteChildUnion()  {}
-func (Code) ImplHeadingChildUnion()   {}
-func (Code) ImplListItemChildUnion()  {}
-func (Code) ImplMessageChildUnion()   {}
-func (Code) ImplParagraphChildUnion() {}
-func (Code) ImplPersonChildUnion()    {}
-func (Code) ImplQuoteChildUnion()     {}
-func (Code) ImplTableCellChildUnion() {}
-func (Code) ImplTaskChildUnion()      {}
-func (Code) ImplToDoChildUnion()      {}
-func (Code) ImplWebsiteChildUnion()   {}
+func (Code) ImplCalloutChildUnion()                               {}
+func (Code) ImplChunkChildUnion()                                 {}
+func (Code) ImplCompanyChildUnion()                               {}
+func (Code) ImplDealChildUnion()                                  {}
+func (Code) ImplDocumentChildUnion()                              {}
+func (Code) ImplEquationChildUnion()                              {}
+func (Code) ImplEventChildUnion()                                 {}
+func (Code) ImplFileChildUnion()                                  {}
+func (Code) ImplFootnoteChildUnion()                              {}
+func (Code) ImplHeadingChildUnion()                               {}
+func (Code) ImplListItemChildUnion()                              {}
+func (Code) ImplMessageChildUnion()                               {}
+func (Code) ImplPageChildUnion()                                  {}
+func (Code) ImplParagraphChildUnion()                             {}
+func (Code) ImplPersonChildUnion()                                {}
+func (Code) ImplQuoteChildUnion()                                 {}
+func (Code) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Code) ImplTableCellChildUnion()                             {}
+func (Code) ImplTaskChildUnion()                                  {}
+func (Code) ImplToDoChildUnion()                                  {}
+func (Code) ImplWebsiteChildUnion()                               {}
+func (Code) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Code) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type CodeType string
 
@@ -973,15 +997,10 @@ type Comment struct {
 	Text      string    `json:"text" api:"required"`
 	ID        string    `json:"id"`
 	CreatedAt time.Time `json:"created_at" api:"nullable" format:"date-time"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "comment".
 	Type CommentType `json:"type"`
@@ -1003,25 +1022,29 @@ func (r *Comment) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Comment) ImplCalloutChildUnion()   {}
-func (Comment) ImplChunkChildUnion()     {}
-func (Comment) ImplCompanyChildUnion()   {}
-func (Comment) ImplDealChildUnion()      {}
-func (Comment) ImplDocumentChildUnion()  {}
-func (Comment) ImplEquationChildUnion()  {}
-func (Comment) ImplEventChildUnion()     {}
-func (Comment) ImplFileChildUnion()      {}
-func (Comment) ImplFootnoteChildUnion()  {}
-func (Comment) ImplHeadingChildUnion()   {}
-func (Comment) ImplListItemChildUnion()  {}
-func (Comment) ImplMessageChildUnion()   {}
-func (Comment) ImplParagraphChildUnion() {}
-func (Comment) ImplPersonChildUnion()    {}
-func (Comment) ImplQuoteChildUnion()     {}
-func (Comment) ImplTableCellChildUnion() {}
-func (Comment) ImplTaskChildUnion()      {}
-func (Comment) ImplToDoChildUnion()      {}
-func (Comment) ImplWebsiteChildUnion()   {}
+func (Comment) ImplCalloutChildUnion()                               {}
+func (Comment) ImplChunkChildUnion()                                 {}
+func (Comment) ImplCompanyChildUnion()                               {}
+func (Comment) ImplDealChildUnion()                                  {}
+func (Comment) ImplDocumentChildUnion()                              {}
+func (Comment) ImplEquationChildUnion()                              {}
+func (Comment) ImplEventChildUnion()                                 {}
+func (Comment) ImplFileChildUnion()                                  {}
+func (Comment) ImplFootnoteChildUnion()                              {}
+func (Comment) ImplHeadingChildUnion()                               {}
+func (Comment) ImplListItemChildUnion()                              {}
+func (Comment) ImplMessageChildUnion()                               {}
+func (Comment) ImplPageChildUnion()                                  {}
+func (Comment) ImplParagraphChildUnion()                             {}
+func (Comment) ImplPersonChildUnion()                                {}
+func (Comment) ImplQuoteChildUnion()                                 {}
+func (Comment) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Comment) ImplTableCellChildUnion()                             {}
+func (Comment) ImplTaskChildUnion()                                  {}
+func (Comment) ImplToDoChildUnion()                                  {}
+func (Comment) ImplWebsiteChildUnion()                               {}
+func (Comment) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Comment) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type CommentType string
 
@@ -1029,7 +1052,7 @@ const (
 	CommentTypeComment CommentType = "comment"
 )
 
-// A CRM company/account record (ENG-2476/D10).
+// A CRM company or account record.
 type Company struct {
 	ID          string              `json:"id"`
 	Address     string              `json:"address" api:"nullable"`
@@ -1042,15 +1065,10 @@ type Company struct {
 	ImageURL    string              `json:"image_url" api:"nullable"`
 	Industry    string              `json:"industry" api:"nullable"`
 	IsActive    bool                `json:"is_active" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata     Metadata `json:"metadata" api:"nullable"`
 	Name         string   `json:"name" api:"nullable"`
 	PhoneNumbers []string `json:"phone_numbers" api:"nullable"`
@@ -1098,9 +1116,9 @@ func (Company) ImplMemoryGetResponseDocumentUnion()      {}
 
 // CompanyChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [CompanyChildUnion.AsAny] method to switch on the variant.
 //
@@ -1115,14 +1133,14 @@ type CompanyChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children CompanyChildUnionChildren `json:"children"`
 	Text     string                    `json:"text"`
 	// This field is from variant [Callout].
@@ -1139,6 +1157,10 @@ type CompanyChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -1182,6 +1204,8 @@ type CompanyChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -1224,6 +1248,7 @@ type anyCompanyChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -1268,6 +1293,8 @@ func (u CompanyChildUnion) AsAny() anyCompanyChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -1360,6 +1387,11 @@ func (u CompanyChildUnion) AsList() (v List) {
 }
 
 func (u CompanyChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u CompanyChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -1459,31 +1491,28 @@ type Conversation struct {
 	ID       string    `json:"id"`
 	Channel  string    `json:"channel" api:"nullable"`
 	Children []Message `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
-	Metadata Metadata `json:"metadata" api:"nullable"`
-	Text     string   `json:"text" api:"nullable"`
-	Title    string   `json:"title" api:"nullable"`
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata     Metadata `json:"metadata" api:"nullable"`
+	Participants []Person `json:"participants" api:"nullable"`
+	Text         string   `json:"text" api:"nullable"`
+	Title        string   `json:"title" api:"nullable"`
 	// Any of "conversation".
 	Type ConversationType `json:"type"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ID          respjson.Field
-		Channel     respjson.Field
-		Children    respjson.Field
-		Metadata    respjson.Field
-		Text        respjson.Field
-		Title       respjson.Field
-		Type        respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
+		ID           respjson.Field
+		Channel      respjson.Field
+		Children     respjson.Field
+		Metadata     respjson.Field
+		Participants respjson.Field
+		Text         respjson.Field
+		Title        respjson.Field
+		Type         respjson.Field
+		ExtraFields  map[string]respjson.Field
+		raw          string
 	} `json:"-"`
 }
 
@@ -1503,7 +1532,7 @@ const (
 	ConversationTypeConversation ConversationType = "conversation"
 )
 
-// A CRM deal/opportunity record (ENG-2476/D10).
+// A CRM deal or opportunity record.
 type Deal struct {
 	ID         string           `json:"id"`
 	Amount     float64          `json:"amount" api:"nullable"`
@@ -1514,15 +1543,10 @@ type Deal struct {
 	Currency   string           `json:"currency" api:"nullable"`
 	DealSource string           `json:"deal_source" api:"nullable"`
 	LostReason string           `json:"lost_reason" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata    Metadata `json:"metadata" api:"nullable"`
 	Name        string   `json:"name" api:"nullable"`
 	Pipeline    string   `json:"pipeline" api:"nullable"`
@@ -1570,9 +1594,9 @@ func (Deal) ImplMemoryGetResponseDocumentUnion()      {}
 
 // DealChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [DealChildUnion.AsAny] method to switch on the variant.
 //
@@ -1587,14 +1611,14 @@ type DealChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children DealChildUnionChildren `json:"children"`
 	Text     string                 `json:"text"`
 	// This field is from variant [Callout].
@@ -1611,6 +1635,10 @@ type DealChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -1654,6 +1682,8 @@ type DealChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -1696,6 +1726,7 @@ type anyDealChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -1740,6 +1771,8 @@ func (u DealChildUnion) AsAny() anyDealChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -1832,6 +1865,11 @@ func (u DealChildUnion) AsList() (v List) {
 }
 
 func (u DealChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u DealChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -1929,15 +1967,10 @@ const (
 
 type Divider struct {
 	ID string `json:"id"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "divider".
 	Type DividerType `json:"type"`
@@ -1957,25 +1990,29 @@ func (r *Divider) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Divider) ImplCalloutChildUnion()   {}
-func (Divider) ImplChunkChildUnion()     {}
-func (Divider) ImplCompanyChildUnion()   {}
-func (Divider) ImplDealChildUnion()      {}
-func (Divider) ImplDocumentChildUnion()  {}
-func (Divider) ImplEquationChildUnion()  {}
-func (Divider) ImplEventChildUnion()     {}
-func (Divider) ImplFileChildUnion()      {}
-func (Divider) ImplFootnoteChildUnion()  {}
-func (Divider) ImplHeadingChildUnion()   {}
-func (Divider) ImplListItemChildUnion()  {}
-func (Divider) ImplMessageChildUnion()   {}
-func (Divider) ImplParagraphChildUnion() {}
-func (Divider) ImplPersonChildUnion()    {}
-func (Divider) ImplQuoteChildUnion()     {}
-func (Divider) ImplTableCellChildUnion() {}
-func (Divider) ImplTaskChildUnion()      {}
-func (Divider) ImplToDoChildUnion()      {}
-func (Divider) ImplWebsiteChildUnion()   {}
+func (Divider) ImplCalloutChildUnion()                               {}
+func (Divider) ImplChunkChildUnion()                                 {}
+func (Divider) ImplCompanyChildUnion()                               {}
+func (Divider) ImplDealChildUnion()                                  {}
+func (Divider) ImplDocumentChildUnion()                              {}
+func (Divider) ImplEquationChildUnion()                              {}
+func (Divider) ImplEventChildUnion()                                 {}
+func (Divider) ImplFileChildUnion()                                  {}
+func (Divider) ImplFootnoteChildUnion()                              {}
+func (Divider) ImplHeadingChildUnion()                               {}
+func (Divider) ImplListItemChildUnion()                              {}
+func (Divider) ImplMessageChildUnion()                               {}
+func (Divider) ImplPageChildUnion()                                  {}
+func (Divider) ImplParagraphChildUnion()                             {}
+func (Divider) ImplPersonChildUnion()                                {}
+func (Divider) ImplQuoteChildUnion()                                 {}
+func (Divider) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Divider) ImplTableCellChildUnion()                             {}
+func (Divider) ImplTaskChildUnion()                                  {}
+func (Divider) ImplToDoChildUnion()                                  {}
+func (Divider) ImplWebsiteChildUnion()                               {}
+func (Divider) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Divider) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type DividerType string
 
@@ -1986,15 +2023,10 @@ const (
 type Document struct {
 	ID       string               `json:"id"`
 	Children []DocumentChildUnion `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	Title    string   `json:"title" api:"nullable"`
@@ -2025,9 +2057,9 @@ func (Document) ImplMemoryGetResponseDocumentUnion()      {}
 
 // DocumentChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [DocumentChildUnion.AsAny] method to switch on the variant.
 //
@@ -2042,14 +2074,14 @@ type DocumentChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children DocumentChildUnionChildren `json:"children"`
 	Text     string                     `json:"text"`
 	// This field is from variant [Callout].
@@ -2066,6 +2098,10 @@ type DocumentChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -2109,6 +2145,8 @@ type DocumentChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -2151,6 +2189,7 @@ type anyDocumentChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -2195,6 +2234,8 @@ func (u DocumentChildUnion) AsAny() anyDocumentChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -2287,6 +2328,11 @@ func (u DocumentChildUnion) AsList() (v List) {
 }
 
 func (u DocumentChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u DocumentChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -2385,15 +2431,10 @@ const (
 type Equation struct {
 	ID       string               `json:"id"`
 	Children []EquationChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "equation".
@@ -2416,31 +2457,35 @@ func (r *Equation) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Equation) ImplCalloutChildUnion()   {}
-func (Equation) ImplChunkChildUnion()     {}
-func (Equation) ImplCompanyChildUnion()   {}
-func (Equation) ImplDealChildUnion()      {}
-func (Equation) ImplDocumentChildUnion()  {}
-func (Equation) ImplEquationChildUnion()  {}
-func (Equation) ImplEventChildUnion()     {}
-func (Equation) ImplFileChildUnion()      {}
-func (Equation) ImplFootnoteChildUnion()  {}
-func (Equation) ImplHeadingChildUnion()   {}
-func (Equation) ImplListItemChildUnion()  {}
-func (Equation) ImplMessageChildUnion()   {}
-func (Equation) ImplParagraphChildUnion() {}
-func (Equation) ImplPersonChildUnion()    {}
-func (Equation) ImplQuoteChildUnion()     {}
-func (Equation) ImplTableCellChildUnion() {}
-func (Equation) ImplTaskChildUnion()      {}
-func (Equation) ImplToDoChildUnion()      {}
-func (Equation) ImplWebsiteChildUnion()   {}
+func (Equation) ImplCalloutChildUnion()                               {}
+func (Equation) ImplChunkChildUnion()                                 {}
+func (Equation) ImplCompanyChildUnion()                               {}
+func (Equation) ImplDealChildUnion()                                  {}
+func (Equation) ImplDocumentChildUnion()                              {}
+func (Equation) ImplEquationChildUnion()                              {}
+func (Equation) ImplEventChildUnion()                                 {}
+func (Equation) ImplFileChildUnion()                                  {}
+func (Equation) ImplFootnoteChildUnion()                              {}
+func (Equation) ImplHeadingChildUnion()                               {}
+func (Equation) ImplListItemChildUnion()                              {}
+func (Equation) ImplMessageChildUnion()                               {}
+func (Equation) ImplPageChildUnion()                                  {}
+func (Equation) ImplParagraphChildUnion()                             {}
+func (Equation) ImplPersonChildUnion()                                {}
+func (Equation) ImplQuoteChildUnion()                                 {}
+func (Equation) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Equation) ImplTableCellChildUnion()                             {}
+func (Equation) ImplTaskChildUnion()                                  {}
+func (Equation) ImplToDoChildUnion()                                  {}
+func (Equation) ImplWebsiteChildUnion()                               {}
+func (Equation) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Equation) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // EquationChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [EquationChildUnion.AsAny] method to switch on the variant.
 //
@@ -2455,14 +2500,14 @@ type EquationChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children EquationChildUnionChildren `json:"children"`
 	Text     string                     `json:"text"`
 	// This field is from variant [Callout].
@@ -2479,6 +2524,10 @@ type EquationChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -2522,6 +2571,8 @@ type EquationChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -2564,6 +2615,7 @@ type anyEquationChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -2608,6 +2660,8 @@ func (u EquationChildUnion) AsAny() anyEquationChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -2700,6 +2754,11 @@ func (u EquationChildUnion) AsList() (v List) {
 }
 
 func (u EquationChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u EquationChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -2802,15 +2861,10 @@ type Event struct {
 	EndAt      time.Time         `json:"end_at" api:"nullable" format:"date-time"`
 	Location   string            `json:"location" api:"nullable"`
 	MeetingURL string            `json:"meeting_url" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata  `json:"metadata" api:"nullable"`
 	StartAt  time.Time `json:"start_at" api:"nullable" format:"date-time"`
 	Text     string    `json:"text" api:"nullable"`
@@ -2847,9 +2901,9 @@ func (Event) ImplMemoryGetResponseDocumentUnion()      {}
 
 // EventChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [EventChildUnion.AsAny] method to switch on the variant.
 //
@@ -2864,14 +2918,14 @@ type EventChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children EventChildUnionChildren `json:"children"`
 	Text     string                  `json:"text"`
 	// This field is from variant [Callout].
@@ -2888,6 +2942,10 @@ type EventChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -2931,6 +2989,8 @@ type EventChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -2973,6 +3033,7 @@ type anyEventChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -3017,6 +3078,8 @@ func (u EventChildUnion) AsAny() anyEventChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -3109,6 +3172,11 @@ func (u EventChildUnion) AsList() (v List) {
 }
 
 func (u EventChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u EventChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -3209,15 +3277,12 @@ type File struct {
 	Filename    string           `json:"filename" api:"required"`
 	ID          string           `json:"id"`
 	Children    []FileChildUnion `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Whether the stored readable body is a capped preview of the full file.
+	ContentTruncated bool `json:"content_truncated" api:"nullable"`
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Path     []string `json:"path" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
@@ -3226,17 +3291,18 @@ type File struct {
 	Type FileType `json:"type"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ContentType respjson.Field
-		Filename    respjson.Field
-		ID          respjson.Field
-		Children    respjson.Field
-		Metadata    respjson.Field
-		Path        respjson.Field
-		Text        respjson.Field
-		Title       respjson.Field
-		Type        respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
+		ContentType      respjson.Field
+		Filename         respjson.Field
+		ID               respjson.Field
+		Children         respjson.Field
+		ContentTruncated respjson.Field
+		Metadata         respjson.Field
+		Path             respjson.Field
+		Text             respjson.Field
+		Title            respjson.Field
+		Type             respjson.Field
+		ExtraFields      map[string]respjson.Field
+		raw              string
 	} `json:"-"`
 }
 
@@ -3252,9 +3318,9 @@ func (File) ImplMemoryGetResponseDocumentUnion()      {}
 
 // FileChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [FileChildUnion.AsAny] method to switch on the variant.
 //
@@ -3269,14 +3335,14 @@ type FileChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children FileChildUnionChildren `json:"children"`
 	Text     string                 `json:"text"`
 	// This field is from variant [Callout].
@@ -3293,6 +3359,10 @@ type FileChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -3336,6 +3406,8 @@ type FileChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -3378,6 +3450,7 @@ type anyFileChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -3422,6 +3495,8 @@ func (u FileChildUnion) AsAny() anyFileChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -3514,6 +3589,11 @@ func (u FileChildUnion) AsList() (v List) {
 }
 
 func (u FileChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u FileChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -3612,15 +3692,10 @@ const (
 type Footnote struct {
 	ID       string               `json:"id"`
 	Children []FootnoteChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "footnote".
@@ -3643,31 +3718,35 @@ func (r *Footnote) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Footnote) ImplCalloutChildUnion()   {}
-func (Footnote) ImplChunkChildUnion()     {}
-func (Footnote) ImplCompanyChildUnion()   {}
-func (Footnote) ImplDealChildUnion()      {}
-func (Footnote) ImplDocumentChildUnion()  {}
-func (Footnote) ImplEquationChildUnion()  {}
-func (Footnote) ImplEventChildUnion()     {}
-func (Footnote) ImplFileChildUnion()      {}
-func (Footnote) ImplFootnoteChildUnion()  {}
-func (Footnote) ImplHeadingChildUnion()   {}
-func (Footnote) ImplListItemChildUnion()  {}
-func (Footnote) ImplMessageChildUnion()   {}
-func (Footnote) ImplParagraphChildUnion() {}
-func (Footnote) ImplPersonChildUnion()    {}
-func (Footnote) ImplQuoteChildUnion()     {}
-func (Footnote) ImplTableCellChildUnion() {}
-func (Footnote) ImplTaskChildUnion()      {}
-func (Footnote) ImplToDoChildUnion()      {}
-func (Footnote) ImplWebsiteChildUnion()   {}
+func (Footnote) ImplCalloutChildUnion()                               {}
+func (Footnote) ImplChunkChildUnion()                                 {}
+func (Footnote) ImplCompanyChildUnion()                               {}
+func (Footnote) ImplDealChildUnion()                                  {}
+func (Footnote) ImplDocumentChildUnion()                              {}
+func (Footnote) ImplEquationChildUnion()                              {}
+func (Footnote) ImplEventChildUnion()                                 {}
+func (Footnote) ImplFileChildUnion()                                  {}
+func (Footnote) ImplFootnoteChildUnion()                              {}
+func (Footnote) ImplHeadingChildUnion()                               {}
+func (Footnote) ImplListItemChildUnion()                              {}
+func (Footnote) ImplMessageChildUnion()                               {}
+func (Footnote) ImplPageChildUnion()                                  {}
+func (Footnote) ImplParagraphChildUnion()                             {}
+func (Footnote) ImplPersonChildUnion()                                {}
+func (Footnote) ImplQuoteChildUnion()                                 {}
+func (Footnote) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Footnote) ImplTableCellChildUnion()                             {}
+func (Footnote) ImplTaskChildUnion()                                  {}
+func (Footnote) ImplToDoChildUnion()                                  {}
+func (Footnote) ImplWebsiteChildUnion()                               {}
+func (Footnote) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Footnote) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // FootnoteChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [FootnoteChildUnion.AsAny] method to switch on the variant.
 //
@@ -3682,14 +3761,14 @@ type FootnoteChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children FootnoteChildUnionChildren `json:"children"`
 	Text     string                     `json:"text"`
 	// This field is from variant [Callout].
@@ -3706,6 +3785,10 @@ type FootnoteChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -3749,6 +3832,8 @@ type FootnoteChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -3791,6 +3876,7 @@ type anyFootnoteChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -3835,6 +3921,8 @@ func (u FootnoteChildUnion) AsAny() anyFootnoteChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -3927,6 +4015,11 @@ func (u FootnoteChildUnion) AsList() (v List) {
 }
 
 func (u FootnoteChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u FootnoteChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -4026,15 +4119,10 @@ type Heading struct {
 	Level    int64               `json:"level" api:"required"`
 	ID       string              `json:"id"`
 	Children []HeadingChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "heading".
@@ -4058,31 +4146,35 @@ func (r *Heading) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Heading) ImplCalloutChildUnion()   {}
-func (Heading) ImplChunkChildUnion()     {}
-func (Heading) ImplCompanyChildUnion()   {}
-func (Heading) ImplDealChildUnion()      {}
-func (Heading) ImplDocumentChildUnion()  {}
-func (Heading) ImplEquationChildUnion()  {}
-func (Heading) ImplEventChildUnion()     {}
-func (Heading) ImplFileChildUnion()      {}
-func (Heading) ImplFootnoteChildUnion()  {}
-func (Heading) ImplHeadingChildUnion()   {}
-func (Heading) ImplListItemChildUnion()  {}
-func (Heading) ImplMessageChildUnion()   {}
-func (Heading) ImplParagraphChildUnion() {}
-func (Heading) ImplPersonChildUnion()    {}
-func (Heading) ImplQuoteChildUnion()     {}
-func (Heading) ImplTableCellChildUnion() {}
-func (Heading) ImplTaskChildUnion()      {}
-func (Heading) ImplToDoChildUnion()      {}
-func (Heading) ImplWebsiteChildUnion()   {}
+func (Heading) ImplCalloutChildUnion()                               {}
+func (Heading) ImplChunkChildUnion()                                 {}
+func (Heading) ImplCompanyChildUnion()                               {}
+func (Heading) ImplDealChildUnion()                                  {}
+func (Heading) ImplDocumentChildUnion()                              {}
+func (Heading) ImplEquationChildUnion()                              {}
+func (Heading) ImplEventChildUnion()                                 {}
+func (Heading) ImplFileChildUnion()                                  {}
+func (Heading) ImplFootnoteChildUnion()                              {}
+func (Heading) ImplHeadingChildUnion()                               {}
+func (Heading) ImplListItemChildUnion()                              {}
+func (Heading) ImplMessageChildUnion()                               {}
+func (Heading) ImplPageChildUnion()                                  {}
+func (Heading) ImplParagraphChildUnion()                             {}
+func (Heading) ImplPersonChildUnion()                                {}
+func (Heading) ImplQuoteChildUnion()                                 {}
+func (Heading) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Heading) ImplTableCellChildUnion()                             {}
+func (Heading) ImplTaskChildUnion()                                  {}
+func (Heading) ImplToDoChildUnion()                                  {}
+func (Heading) ImplWebsiteChildUnion()                               {}
+func (Heading) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Heading) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // HeadingChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [HeadingChildUnion.AsAny] method to switch on the variant.
 //
@@ -4097,14 +4189,14 @@ type HeadingChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children HeadingChildUnionChildren `json:"children"`
 	Text     string                    `json:"text"`
 	// This field is from variant [Callout].
@@ -4121,6 +4213,10 @@ type HeadingChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -4164,6 +4260,8 @@ type HeadingChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -4206,6 +4304,7 @@ type anyHeadingChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -4250,6 +4349,8 @@ func (u HeadingChildUnion) AsAny() anyHeadingChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -4342,6 +4443,11 @@ func (u HeadingChildUnion) AsList() (v List) {
 }
 
 func (u HeadingChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u HeadingChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -4441,15 +4547,10 @@ type Image struct {
 	Src  string `json:"src" api:"required"`
 	Text string `json:"text" api:"required"`
 	ID   string `json:"id"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "image".
 	Type ImageType `json:"type"`
@@ -4471,25 +4572,29 @@ func (r *Image) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Image) ImplCalloutChildUnion()   {}
-func (Image) ImplChunkChildUnion()     {}
-func (Image) ImplCompanyChildUnion()   {}
-func (Image) ImplDealChildUnion()      {}
-func (Image) ImplDocumentChildUnion()  {}
-func (Image) ImplEquationChildUnion()  {}
-func (Image) ImplEventChildUnion()     {}
-func (Image) ImplFileChildUnion()      {}
-func (Image) ImplFootnoteChildUnion()  {}
-func (Image) ImplHeadingChildUnion()   {}
-func (Image) ImplListItemChildUnion()  {}
-func (Image) ImplMessageChildUnion()   {}
-func (Image) ImplParagraphChildUnion() {}
-func (Image) ImplPersonChildUnion()    {}
-func (Image) ImplQuoteChildUnion()     {}
-func (Image) ImplTableCellChildUnion() {}
-func (Image) ImplTaskChildUnion()      {}
-func (Image) ImplToDoChildUnion()      {}
-func (Image) ImplWebsiteChildUnion()   {}
+func (Image) ImplCalloutChildUnion()                               {}
+func (Image) ImplChunkChildUnion()                                 {}
+func (Image) ImplCompanyChildUnion()                               {}
+func (Image) ImplDealChildUnion()                                  {}
+func (Image) ImplDocumentChildUnion()                              {}
+func (Image) ImplEquationChildUnion()                              {}
+func (Image) ImplEventChildUnion()                                 {}
+func (Image) ImplFileChildUnion()                                  {}
+func (Image) ImplFootnoteChildUnion()                              {}
+func (Image) ImplHeadingChildUnion()                               {}
+func (Image) ImplListItemChildUnion()                              {}
+func (Image) ImplMessageChildUnion()                               {}
+func (Image) ImplPageChildUnion()                                  {}
+func (Image) ImplParagraphChildUnion()                             {}
+func (Image) ImplPersonChildUnion()                                {}
+func (Image) ImplQuoteChildUnion()                                 {}
+func (Image) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Image) ImplTableCellChildUnion()                             {}
+func (Image) ImplTaskChildUnion()                                  {}
+func (Image) ImplToDoChildUnion()                                  {}
+func (Image) ImplWebsiteChildUnion()                               {}
+func (Image) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Image) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type ImageType string
 
@@ -4499,15 +4604,10 @@ const (
 
 type LineBreak struct {
 	ID string `json:"id"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "line_break".
 	Type LineBreakType `json:"type"`
@@ -4527,25 +4627,29 @@ func (r *LineBreak) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (LineBreak) ImplCalloutChildUnion()   {}
-func (LineBreak) ImplChunkChildUnion()     {}
-func (LineBreak) ImplCompanyChildUnion()   {}
-func (LineBreak) ImplDealChildUnion()      {}
-func (LineBreak) ImplDocumentChildUnion()  {}
-func (LineBreak) ImplEquationChildUnion()  {}
-func (LineBreak) ImplEventChildUnion()     {}
-func (LineBreak) ImplFileChildUnion()      {}
-func (LineBreak) ImplFootnoteChildUnion()  {}
-func (LineBreak) ImplHeadingChildUnion()   {}
-func (LineBreak) ImplListItemChildUnion()  {}
-func (LineBreak) ImplMessageChildUnion()   {}
-func (LineBreak) ImplParagraphChildUnion() {}
-func (LineBreak) ImplPersonChildUnion()    {}
-func (LineBreak) ImplQuoteChildUnion()     {}
-func (LineBreak) ImplTableCellChildUnion() {}
-func (LineBreak) ImplTaskChildUnion()      {}
-func (LineBreak) ImplToDoChildUnion()      {}
-func (LineBreak) ImplWebsiteChildUnion()   {}
+func (LineBreak) ImplCalloutChildUnion()                               {}
+func (LineBreak) ImplChunkChildUnion()                                 {}
+func (LineBreak) ImplCompanyChildUnion()                               {}
+func (LineBreak) ImplDealChildUnion()                                  {}
+func (LineBreak) ImplDocumentChildUnion()                              {}
+func (LineBreak) ImplEquationChildUnion()                              {}
+func (LineBreak) ImplEventChildUnion()                                 {}
+func (LineBreak) ImplFileChildUnion()                                  {}
+func (LineBreak) ImplFootnoteChildUnion()                              {}
+func (LineBreak) ImplHeadingChildUnion()                               {}
+func (LineBreak) ImplListItemChildUnion()                              {}
+func (LineBreak) ImplMessageChildUnion()                               {}
+func (LineBreak) ImplPageChildUnion()                                  {}
+func (LineBreak) ImplParagraphChildUnion()                             {}
+func (LineBreak) ImplPersonChildUnion()                                {}
+func (LineBreak) ImplQuoteChildUnion()                                 {}
+func (LineBreak) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (LineBreak) ImplTableCellChildUnion()                             {}
+func (LineBreak) ImplTaskChildUnion()                                  {}
+func (LineBreak) ImplToDoChildUnion()                                  {}
+func (LineBreak) ImplWebsiteChildUnion()                               {}
+func (LineBreak) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (LineBreak) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type LineBreakType string
 
@@ -4557,15 +4661,10 @@ type Link struct {
 	Text string `json:"text" api:"required"`
 	URL  string `json:"url" api:"required"`
 	ID   string `json:"id"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "link".
 	Type LinkType `json:"type"`
@@ -4587,25 +4686,29 @@ func (r *Link) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Link) ImplCalloutChildUnion()   {}
-func (Link) ImplChunkChildUnion()     {}
-func (Link) ImplCompanyChildUnion()   {}
-func (Link) ImplDealChildUnion()      {}
-func (Link) ImplDocumentChildUnion()  {}
-func (Link) ImplEquationChildUnion()  {}
-func (Link) ImplEventChildUnion()     {}
-func (Link) ImplFileChildUnion()      {}
-func (Link) ImplFootnoteChildUnion()  {}
-func (Link) ImplHeadingChildUnion()   {}
-func (Link) ImplListItemChildUnion()  {}
-func (Link) ImplMessageChildUnion()   {}
-func (Link) ImplParagraphChildUnion() {}
-func (Link) ImplPersonChildUnion()    {}
-func (Link) ImplQuoteChildUnion()     {}
-func (Link) ImplTableCellChildUnion() {}
-func (Link) ImplTaskChildUnion()      {}
-func (Link) ImplToDoChildUnion()      {}
-func (Link) ImplWebsiteChildUnion()   {}
+func (Link) ImplCalloutChildUnion()                               {}
+func (Link) ImplChunkChildUnion()                                 {}
+func (Link) ImplCompanyChildUnion()                               {}
+func (Link) ImplDealChildUnion()                                  {}
+func (Link) ImplDocumentChildUnion()                              {}
+func (Link) ImplEquationChildUnion()                              {}
+func (Link) ImplEventChildUnion()                                 {}
+func (Link) ImplFileChildUnion()                                  {}
+func (Link) ImplFootnoteChildUnion()                              {}
+func (Link) ImplHeadingChildUnion()                               {}
+func (Link) ImplListItemChildUnion()                              {}
+func (Link) ImplMessageChildUnion()                               {}
+func (Link) ImplPageChildUnion()                                  {}
+func (Link) ImplParagraphChildUnion()                             {}
+func (Link) ImplPersonChildUnion()                                {}
+func (Link) ImplQuoteChildUnion()                                 {}
+func (Link) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Link) ImplTableCellChildUnion()                             {}
+func (Link) ImplTaskChildUnion()                                  {}
+func (Link) ImplToDoChildUnion()                                  {}
+func (Link) ImplWebsiteChildUnion()                               {}
+func (Link) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Link) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type LinkType string
 
@@ -4616,15 +4719,10 @@ const (
 type List struct {
 	ID       string           `json:"id"`
 	Children []ListChildUnion `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Ordered  bool     `json:"ordered"`
 	Text     string   `json:"text" api:"nullable"`
@@ -4649,28 +4747,34 @@ func (r *List) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (List) ImplCalloutChildUnion()   {}
-func (List) ImplChunkChildUnion()     {}
-func (List) ImplCompanyChildUnion()   {}
-func (List) ImplDealChildUnion()      {}
-func (List) ImplDocumentChildUnion()  {}
-func (List) ImplEquationChildUnion()  {}
-func (List) ImplEventChildUnion()     {}
-func (List) ImplFileChildUnion()      {}
-func (List) ImplFootnoteChildUnion()  {}
-func (List) ImplHeadingChildUnion()   {}
-func (List) ImplListItemChildUnion()  {}
-func (List) ImplMessageChildUnion()   {}
-func (List) ImplParagraphChildUnion() {}
-func (List) ImplPersonChildUnion()    {}
-func (List) ImplQuoteChildUnion()     {}
-func (List) ImplTableCellChildUnion() {}
-func (List) ImplTaskChildUnion()      {}
-func (List) ImplToDoChildUnion()      {}
-func (List) ImplWebsiteChildUnion()   {}
+func (List) ImplCalloutChildUnion()                               {}
+func (List) ImplChunkChildUnion()                                 {}
+func (List) ImplCompanyChildUnion()                               {}
+func (List) ImplDealChildUnion()                                  {}
+func (List) ImplDocumentChildUnion()                              {}
+func (List) ImplEquationChildUnion()                              {}
+func (List) ImplEventChildUnion()                                 {}
+func (List) ImplFileChildUnion()                                  {}
+func (List) ImplFootnoteChildUnion()                              {}
+func (List) ImplHeadingChildUnion()                               {}
+func (List) ImplListItemChildUnion()                              {}
+func (List) ImplMessageChildUnion()                               {}
+func (List) ImplPageChildUnion()                                  {}
+func (List) ImplParagraphChildUnion()                             {}
+func (List) ImplPersonChildUnion()                                {}
+func (List) ImplQuoteChildUnion()                                 {}
+func (List) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (List) ImplTableCellChildUnion()                             {}
+func (List) ImplTaskChildUnion()                                  {}
+func (List) ImplToDoChildUnion()                                  {}
+func (List) ImplWebsiteChildUnion()                               {}
+func (List) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (List) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // ListChildUnion contains all possible properties and values from [ListItem],
 // [ToDo].
+//
+// Use the [ListChildUnion.AsAny] method to switch on the variant.
 //
 // Use the methods beginning with 'As' to cast the union to one of its variants.
 type ListChildUnion struct {
@@ -4680,7 +4784,8 @@ type ListChildUnion struct {
 	// This field is from variant [ListItem].
 	Metadata Metadata `json:"metadata"`
 	Text     string   `json:"text"`
-	Type     string   `json:"type"`
+	// Any of "list_item", "todo".
+	Type string `json:"type"`
 	// This field is from variant [ToDo].
 	Checked bool `json:"checked"`
 	JSON    struct {
@@ -4694,12 +4799,36 @@ type ListChildUnion struct {
 	} `json:"-"`
 }
 
+// anyListChild is implemented by each variant of [ListChildUnion] to add type
+// safety for the return type of [ListChildUnion.AsAny]
+type anyListChild interface {
+	ImplListChildUnion()
+}
+
+// Use the following switch statement to find the correct variant
+//
+//	switch variant := ListChildUnion.AsAny().(type) {
+//	case shared.ListItem:
+//	case shared.ToDo:
+//	default:
+//	  fmt.Errorf("no variant present")
+//	}
+func (u ListChildUnion) AsAny() anyListChild {
+	switch u.Type {
+	case "list_item":
+		return u.AsListItem()
+	case "todo":
+		return u.AsTodo()
+	}
+	return nil
+}
+
 func (u ListChildUnion) AsListItem() (v ListItem) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
 
-func (u ListChildUnion) AsToDo() (v ToDo) {
+func (u ListChildUnion) AsTodo() (v ToDo) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -4743,15 +4872,10 @@ const (
 type ListItem struct {
 	ID       string               `json:"id"`
 	Children []ListItemChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "list_item".
@@ -4774,31 +4898,36 @@ func (r *ListItem) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ListItem) ImplCalloutChildUnion()   {}
-func (ListItem) ImplChunkChildUnion()     {}
-func (ListItem) ImplCompanyChildUnion()   {}
-func (ListItem) ImplDealChildUnion()      {}
-func (ListItem) ImplDocumentChildUnion()  {}
-func (ListItem) ImplEquationChildUnion()  {}
-func (ListItem) ImplEventChildUnion()     {}
-func (ListItem) ImplFileChildUnion()      {}
-func (ListItem) ImplFootnoteChildUnion()  {}
-func (ListItem) ImplHeadingChildUnion()   {}
-func (ListItem) ImplListItemChildUnion()  {}
-func (ListItem) ImplMessageChildUnion()   {}
-func (ListItem) ImplParagraphChildUnion() {}
-func (ListItem) ImplPersonChildUnion()    {}
-func (ListItem) ImplQuoteChildUnion()     {}
-func (ListItem) ImplTableCellChildUnion() {}
-func (ListItem) ImplTaskChildUnion()      {}
-func (ListItem) ImplToDoChildUnion()      {}
-func (ListItem) ImplWebsiteChildUnion()   {}
+func (ListItem) ImplCalloutChildUnion()                               {}
+func (ListItem) ImplChunkChildUnion()                                 {}
+func (ListItem) ImplCompanyChildUnion()                               {}
+func (ListItem) ImplDealChildUnion()                                  {}
+func (ListItem) ImplDocumentChildUnion()                              {}
+func (ListItem) ImplEquationChildUnion()                              {}
+func (ListItem) ImplEventChildUnion()                                 {}
+func (ListItem) ImplFileChildUnion()                                  {}
+func (ListItem) ImplFootnoteChildUnion()                              {}
+func (ListItem) ImplHeadingChildUnion()                               {}
+func (ListItem) ImplListChildUnion()                                  {}
+func (ListItem) ImplListItemChildUnion()                              {}
+func (ListItem) ImplMessageChildUnion()                               {}
+func (ListItem) ImplPageChildUnion()                                  {}
+func (ListItem) ImplParagraphChildUnion()                             {}
+func (ListItem) ImplPersonChildUnion()                                {}
+func (ListItem) ImplQuoteChildUnion()                                 {}
+func (ListItem) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (ListItem) ImplTableCellChildUnion()                             {}
+func (ListItem) ImplTaskChildUnion()                                  {}
+func (ListItem) ImplToDoChildUnion()                                  {}
+func (ListItem) ImplWebsiteChildUnion()                               {}
+func (ListItem) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (ListItem) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // ListItemChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [ListItemChildUnion.AsAny] method to switch on the variant.
 //
@@ -4813,14 +4942,14 @@ type ListItemChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children ListItemChildUnionChildren `json:"children"`
 	Text     string                     `json:"text"`
 	// This field is from variant [Callout].
@@ -4837,6 +4966,10 @@ type ListItemChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -4880,6 +5013,8 @@ type ListItemChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -4922,6 +5057,7 @@ type anyListItemChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -4966,6 +5102,8 @@ func (u ListItemChildUnion) AsAny() anyListItemChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -5058,6 +5196,11 @@ func (u ListItemChildUnion) AsList() (v List) {
 }
 
 func (u ListItemChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ListItemChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -5165,15 +5308,10 @@ type Message struct {
 	ExternalID     string   `json:"external_id" api:"nullable"`
 	IsSelf         bool     `json:"is_self" api:"nullable"`
 	MentionedUsers []Person `json:"mentioned_users" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata   Metadata `json:"metadata" api:"nullable"`
 	NumReplies int64    `json:"num_replies" api:"nullable"`
 	// The replies or comments to the message
@@ -5223,9 +5361,9 @@ func (Message) ImplMemoryGetResponseDocumentUnion()      {}
 
 // MessageChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [MessageChildUnion.AsAny] method to switch on the variant.
 //
@@ -5240,14 +5378,14 @@ type MessageChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children MessageChildUnionChildren `json:"children"`
 	Text     string                    `json:"text"`
 	// This field is from variant [Callout].
@@ -5264,6 +5402,10 @@ type MessageChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -5307,6 +5449,8 @@ type MessageChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -5349,6 +5493,7 @@ type anyMessageChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -5393,6 +5538,8 @@ func (u MessageChildUnion) AsAny() anyMessageChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -5489,6 +5636,11 @@ func (u MessageChildUnion) AsListItem() (v ListItem) {
 	return
 }
 
+func (u MessageChildUnion) AsPage() (v Page) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
 func (u MessageChildUnion) AsParagraph() (v Paragraph) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
@@ -5580,15 +5732,10 @@ const (
 	MessageTypeMessage MessageType = "message"
 )
 
-// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+// Optional annotations carried by a hyperdoc node.
 //
-// Out-of-band annotations that travel with a block but aren't part of its content:
-// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-// types get added here as typed fields as the need arises.
-//
-// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-// `metadata` (None) is dropped from serialization entirely, and within a populated
-// `Metadata` only the set keys survive.
+// Includes source provenance and human edit attribution. Unset metadata is omitted
+// from serialized responses.
 type Metadata struct {
 	EditedBy string           `json:"edited_by" api:"nullable"`
 	Sources  []MetadataSource `json:"sources" api:"nullable"`
@@ -5607,14 +5754,10 @@ func (r *Metadata) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// A reference to a memory/chunk that a block's content is grounded in (ENG-1390).
+// A reference to source content that supports a block.
 //
-// Chunks are the unit persisted to the DB — extracted memories become chunks when
-// indexed — so `chunk_id` is the stable pointer back to the source. `resource_id`
-// and `source` locate the originating document; `score` carries optional retrieval
-// relevance. Kept deliberately self-contained (plain `str` for `source` rather
-// than the `DocumentProviders` enum) so the hyperdoc format stays free of
-// app-layer imports.
+// `chunk_id` identifies the supporting content. `resource_id` and `source`
+// identify its document, and `score` optionally records relevance.
 type MetadataSource struct {
 	ChunkID    string  `json:"chunk_id" api:"required"`
 	ResourceID string  `json:"resource_id" api:"nullable"`
@@ -5637,27 +5780,26 @@ func (r *MetadataSource) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type Paragraph struct {
-	ID       string                `json:"id"`
-	Children []ParagraphChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+type Page struct {
+	ID       string           `json:"id"`
+	Children []PageChildUnion `json:"children" api:"nullable"`
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
-	Metadata Metadata `json:"metadata" api:"nullable"`
-	Text     string   `json:"text" api:"nullable"`
-	// Any of "paragraph".
-	Type ParagraphType `json:"type"`
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata   Metadata `json:"metadata" api:"nullable"`
+	PageNumber int64    `json:"page_number" api:"nullable"`
+	PreviewURL string   `json:"preview_url" api:"nullable"`
+	Text       string   `json:"text" api:"nullable"`
+	// Any of "page".
+	Type PageType `json:"type"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
 		Children    respjson.Field
 		Metadata    respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		Text        respjson.Field
 		Type        respjson.Field
 		ExtraFields map[string]respjson.Field
@@ -5666,41 +5808,45 @@ type Paragraph struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r Paragraph) RawJSON() string { return r.JSON.raw }
-func (r *Paragraph) UnmarshalJSON(data []byte) error {
+func (r Page) RawJSON() string { return r.JSON.raw }
+func (r *Page) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Paragraph) ImplCalloutChildUnion()   {}
-func (Paragraph) ImplChunkChildUnion()     {}
-func (Paragraph) ImplCompanyChildUnion()   {}
-func (Paragraph) ImplDealChildUnion()      {}
-func (Paragraph) ImplDocumentChildUnion()  {}
-func (Paragraph) ImplEquationChildUnion()  {}
-func (Paragraph) ImplEventChildUnion()     {}
-func (Paragraph) ImplFileChildUnion()      {}
-func (Paragraph) ImplFootnoteChildUnion()  {}
-func (Paragraph) ImplHeadingChildUnion()   {}
-func (Paragraph) ImplListItemChildUnion()  {}
-func (Paragraph) ImplMessageChildUnion()   {}
-func (Paragraph) ImplParagraphChildUnion() {}
-func (Paragraph) ImplPersonChildUnion()    {}
-func (Paragraph) ImplQuoteChildUnion()     {}
-func (Paragraph) ImplTableCellChildUnion() {}
-func (Paragraph) ImplTaskChildUnion()      {}
-func (Paragraph) ImplToDoChildUnion()      {}
-func (Paragraph) ImplWebsiteChildUnion()   {}
+func (Page) ImplCalloutChildUnion()                               {}
+func (Page) ImplChunkChildUnion()                                 {}
+func (Page) ImplCompanyChildUnion()                               {}
+func (Page) ImplDealChildUnion()                                  {}
+func (Page) ImplDocumentChildUnion()                              {}
+func (Page) ImplEquationChildUnion()                              {}
+func (Page) ImplEventChildUnion()                                 {}
+func (Page) ImplFileChildUnion()                                  {}
+func (Page) ImplFootnoteChildUnion()                              {}
+func (Page) ImplHeadingChildUnion()                               {}
+func (Page) ImplListItemChildUnion()                              {}
+func (Page) ImplMessageChildUnion()                               {}
+func (Page) ImplPageChildUnion()                                  {}
+func (Page) ImplParagraphChildUnion()                             {}
+func (Page) ImplPersonChildUnion()                                {}
+func (Page) ImplQuoteChildUnion()                                 {}
+func (Page) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Page) ImplTableCellChildUnion()                             {}
+func (Page) ImplTaskChildUnion()                                  {}
+func (Page) ImplToDoChildUnion()                                  {}
+func (Page) ImplWebsiteChildUnion()                               {}
+func (Page) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Page) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
-// ParagraphChildUnion contains all possible properties and values from [Blob],
+// PageChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
-// Use the [ParagraphChildUnion.AsAny] method to switch on the variant.
+// Use the [PageChildUnion.AsAny] method to switch on the variant.
 //
 // Use the methods beginning with 'As' to cast the union to one of its variants.
-type ParagraphChildUnion struct {
+type PageChildUnion struct {
 	// This field is from variant [Blob].
 	Data string `json:"data"`
 	// This field is from variant [Blob].
@@ -5710,16 +5856,16 @@ type ParagraphChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
-	Children ParagraphChildUnionChildren `json:"children"`
-	Text     string                      `json:"text"`
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
+	Children PageChildUnionChildren `json:"children"`
+	Text     string                 `json:"text"`
 	// This field is from variant [Callout].
 	Title string `json:"title"`
 	// This field is from variant [Code].
@@ -5734,6 +5880,10 @@ type ParagraphChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -5777,6 +5927,434 @@ type ParagraphChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
+		HasHeader   respjson.Field
+		Align       respjson.Field
+		Marks       respjson.Field
+		Checked     respjson.Field
+		ToolCallID  respjson.Field
+		ToolName    respjson.Field
+		Args        respjson.Field
+		Output      respjson.Field
+		IsError     respjson.Field
+		MessageType respjson.Field
+		Role        respjson.Field
+		Timestamp   respjson.Field
+		End         respjson.Field
+		Speaker     respjson.Field
+		Start       respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// anyPageChild is implemented by each variant of [PageChildUnion] to add type
+// safety for the return type of [PageChildUnion.AsAny]
+type anyPageChild interface {
+	ImplPageChildUnion()
+}
+
+// Use the following switch statement to find the correct variant
+//
+//	switch variant := PageChildUnion.AsAny().(type) {
+//	case shared.Blob:
+//	case shared.Callout:
+//	case shared.Chunk:
+//	case shared.Code:
+//	case shared.Comment:
+//	case shared.Divider:
+//	case shared.Equation:
+//	case shared.Footnote:
+//	case shared.Heading:
+//	case shared.Image:
+//	case shared.Link:
+//	case shared.LineBreak:
+//	case shared.List:
+//	case shared.ListItem:
+//	case shared.Page:
+//	case shared.Paragraph:
+//	case shared.Quote:
+//	case shared.Table:
+//	case shared.TableCell:
+//	case shared.TableRow:
+//	case shared.Text:
+//	case shared.ToDo:
+//	case shared.ToolCall:
+//	case shared.ToolResult:
+//	case shared.TraceMessage:
+//	case shared.Utterance:
+//	default:
+//	  fmt.Errorf("no variant present")
+//	}
+func (u PageChildUnion) AsAny() anyPageChild {
+	switch u.Type {
+	case "blob":
+		return u.AsBlob()
+	case "callout":
+		return u.AsCallout()
+	case "chunk":
+		return u.AsChunk()
+	case "code":
+		return u.AsCode()
+	case "comment":
+		return u.AsComment()
+	case "divider":
+		return u.AsDivider()
+	case "equation":
+		return u.AsEquation()
+	case "footnote":
+		return u.AsFootnote()
+	case "heading":
+		return u.AsHeading()
+	case "image":
+		return u.AsImage()
+	case "link":
+		return u.AsLink()
+	case "line_break":
+		return u.AsLineBreak()
+	case "list":
+		return u.AsList()
+	case "list_item":
+		return u.AsListItem()
+	case "page":
+		return u.AsPage()
+	case "paragraph":
+		return u.AsParagraph()
+	case "quote":
+		return u.AsQuote()
+	case "table":
+		return u.AsTable()
+	case "table_cell":
+		return u.AsTableCell()
+	case "table_row":
+		return u.AsTableRow()
+	case "text":
+		return u.AsText()
+	case "todo":
+		return u.AsTodo()
+	case "tool_call":
+		return u.AsToolCall()
+	case "tool_result":
+		return u.AsToolResult()
+	case "trace_message":
+		return u.AsTraceMessage()
+	case "utterance":
+		return u.AsUtterance()
+	}
+	return nil
+}
+
+func (u PageChildUnion) AsBlob() (v Blob) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsCallout() (v Callout) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsChunk() (v Chunk) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsCode() (v Code) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsComment() (v Comment) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsDivider() (v Divider) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsEquation() (v Equation) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsFootnote() (v Footnote) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsHeading() (v Heading) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsImage() (v Image) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsLink() (v Link) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsLineBreak() (v LineBreak) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsList() (v List) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsPage() (v Page) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsParagraph() (v Paragraph) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsQuote() (v Quote) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsTable() (v Table) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsTableCell() (v TableCell) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsTableRow() (v TableRow) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsText() (v Text) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsTodo() (v ToDo) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsToolCall() (v ToolCall) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsToolResult() (v ToolResult) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsTraceMessage() (v TraceMessage) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PageChildUnion) AsUtterance() (v Utterance) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+// Returns the unmodified JSON received from the API
+func (u PageChildUnion) RawJSON() string { return u.JSON.raw }
+
+func (r *PageChildUnion) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// PageChildUnionChildren is an implicit subunion of [PageChildUnion].
+// PageChildUnionChildren provides convenient access to the sub-properties of the
+// union.
+//
+// For type safety it is recommended to directly use a variant of the
+// [PageChildUnion].
+//
+// If the underlying value is not a json object, one of the following properties
+// will be valid: OfChildren]
+type PageChildUnionChildren struct {
+	// This field will be present if the value is a [[]CalloutChildUnion] instead of an
+	// object.
+	OfChildren []CalloutChildUnion `json:",inline"`
+	JSON       struct {
+		OfChildren respjson.Field
+		raw        string
+	} `json:"-"`
+}
+
+func (r *PageChildUnionChildren) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+type PageType string
+
+const (
+	PageTypePage PageType = "page"
+)
+
+type Paragraph struct {
+	ID       string                `json:"id"`
+	Children []ParagraphChildUnion `json:"children" api:"nullable"`
+	// Optional annotations carried by a hyperdoc node.
+	//
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata Metadata `json:"metadata" api:"nullable"`
+	Text     string   `json:"text" api:"nullable"`
+	// Any of "paragraph".
+	Type ParagraphType `json:"type"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		ID          respjson.Field
+		Children    respjson.Field
+		Metadata    respjson.Field
+		Text        respjson.Field
+		Type        respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r Paragraph) RawJSON() string { return r.JSON.raw }
+func (r *Paragraph) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+func (Paragraph) ImplCalloutChildUnion()                               {}
+func (Paragraph) ImplChunkChildUnion()                                 {}
+func (Paragraph) ImplCompanyChildUnion()                               {}
+func (Paragraph) ImplDealChildUnion()                                  {}
+func (Paragraph) ImplDocumentChildUnion()                              {}
+func (Paragraph) ImplEquationChildUnion()                              {}
+func (Paragraph) ImplEventChildUnion()                                 {}
+func (Paragraph) ImplFileChildUnion()                                  {}
+func (Paragraph) ImplFootnoteChildUnion()                              {}
+func (Paragraph) ImplHeadingChildUnion()                               {}
+func (Paragraph) ImplListItemChildUnion()                              {}
+func (Paragraph) ImplMessageChildUnion()                               {}
+func (Paragraph) ImplPageChildUnion()                                  {}
+func (Paragraph) ImplParagraphChildUnion()                             {}
+func (Paragraph) ImplPersonChildUnion()                                {}
+func (Paragraph) ImplQuoteChildUnion()                                 {}
+func (Paragraph) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Paragraph) ImplTableCellChildUnion()                             {}
+func (Paragraph) ImplTaskChildUnion()                                  {}
+func (Paragraph) ImplToDoChildUnion()                                  {}
+func (Paragraph) ImplWebsiteChildUnion()                               {}
+func (Paragraph) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Paragraph) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+
+// ParagraphChildUnion contains all possible properties and values from [Blob],
+// [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
+//
+// Use the [ParagraphChildUnion.AsAny] method to switch on the variant.
+//
+// Use the methods beginning with 'As' to cast the union to one of its variants.
+type ParagraphChildUnion struct {
+	// This field is from variant [Blob].
+	Data string `json:"data"`
+	// This field is from variant [Blob].
+	Mimetype string `json:"mimetype"`
+	ID       string `json:"id"`
+	// This field is from variant [Blob].
+	Metadata Metadata `json:"metadata"`
+	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
+	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
+	Type string `json:"type"`
+	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
+	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
+	Children ParagraphChildUnionChildren `json:"children"`
+	Text     string                      `json:"text"`
+	// This field is from variant [Callout].
+	Title string `json:"title"`
+	// This field is from variant [Code].
+	Language string `json:"language"`
+	// This field is from variant [Comment].
+	CreatedAt time.Time `json:"created_at"`
+	// This field is from variant [Heading].
+	Level int64 `json:"level"`
+	// This field is from variant [Image].
+	Src string `json:"src"`
+	// This field is from variant [Link].
+	URL string `json:"url"`
+	// This field is from variant [List].
+	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
+	// This field is from variant [Table].
+	HasHeader bool `json:"has_header"`
+	// This field is from variant [TableCell].
+	Align TableCellAlign `json:"align"`
+	// This field is from variant [Text].
+	Marks []string `json:"marks"`
+	// This field is from variant [ToDo].
+	Checked    bool   `json:"checked"`
+	ToolCallID string `json:"tool_call_id"`
+	ToolName   string `json:"tool_name"`
+	// This field is from variant [ToolCall].
+	Args map[string]any `json:"args"`
+	// This field is from variant [ToolResult].
+	Output ToolResultOutputUnion `json:"output"`
+	// This field is from variant [ToolResult].
+	IsError bool `json:"is_error"`
+	// This field is from variant [TraceMessage].
+	MessageType TraceMessageMessageType `json:"message_type"`
+	// This field is from variant [TraceMessage].
+	Role TraceMessageRole `json:"role"`
+	// This field is from variant [TraceMessage].
+	Timestamp time.Time `json:"timestamp"`
+	// This field is from variant [Utterance].
+	End float64 `json:"end"`
+	// This field is from variant [Utterance].
+	Speaker Person `json:"speaker"`
+	// This field is from variant [Utterance].
+	Start float64 `json:"start"`
+	JSON  struct {
+		Data        respjson.Field
+		Mimetype    respjson.Field
+		ID          respjson.Field
+		Metadata    respjson.Field
+		Type        respjson.Field
+		Children    respjson.Field
+		Text        respjson.Field
+		Title       respjson.Field
+		Language    respjson.Field
+		CreatedAt   respjson.Field
+		Level       respjson.Field
+		Src         respjson.Field
+		URL         respjson.Field
+		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -5819,6 +6397,7 @@ type anyParagraphChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -5863,6 +6442,8 @@ func (u ParagraphChildUnion) AsAny() anyParagraphChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -5955,6 +6536,11 @@ func (u ParagraphChildUnion) AsList() (v List) {
 }
 
 func (u ParagraphChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ParagraphChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -6054,6 +6640,7 @@ type Person struct {
 	ID          string             `json:"id"`
 	Address     string             `json:"address" api:"nullable"`
 	AltNames    []string           `json:"alt_names" api:"nullable"`
+	BuyingRoles []string           `json:"buying_roles" api:"nullable"`
 	Children    []PersonChildUnion `json:"children"`
 	Company     string             `json:"company" api:"nullable"`
 	CompanyIDs  []string           `json:"company_ids" api:"nullable"`
@@ -6061,51 +6648,79 @@ type Person struct {
 	DealIDs     []string           `json:"deal_ids" api:"nullable"`
 	Email       string             `json:"email" api:"nullable"`
 	// All known email addresses; `email` holds the primary one
-	Emails   []string `json:"emails" api:"nullable"`
-	ImageURL string   `json:"image_url" api:"nullable"`
-	JobTitle string   `json:"job_title" api:"nullable"`
-	LinkURLs []string `json:"link_urls" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	Emails                 []string `json:"emails" api:"nullable"`
+	EmploymentRole         string   `json:"employment_role" api:"nullable"`
+	EmploymentSeniority    string   `json:"employment_seniority" api:"nullable"`
+	EmploymentSubRole      string   `json:"employment_sub_role" api:"nullable"`
+	ImageURL               string   `json:"image_url" api:"nullable"`
+	Industry               string   `json:"industry" api:"nullable"`
+	IsAppUser              bool     `json:"is_app_user" api:"nullable"`
+	IsBot                  bool     `json:"is_bot" api:"nullable"`
+	JobTitle               string   `json:"job_title" api:"nullable"`
+	LastSalesActivityAt    string   `json:"last_sales_activity_at" api:"nullable"`
+	LastSalesActivityType  string   `json:"last_sales_activity_type" api:"nullable"`
+	LeadStatus             string   `json:"lead_status" api:"nullable"`
+	LifecycleStage         string   `json:"lifecycle_stage" api:"nullable"`
+	LinkURLs               []string `json:"link_urls" api:"nullable"`
+	LinkedinURL            string   `json:"linkedin_url" api:"nullable"`
+	MarketingContactStatus string   `json:"marketing_contact_status" api:"nullable"`
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
-	Metadata     Metadata `json:"metadata" api:"nullable"`
-	Name         string   `json:"name" api:"nullable"`
-	PhoneNumbers []string `json:"phone_numbers" api:"nullable"`
-	Tags         []string `json:"tags" api:"nullable"`
-	Text         string   `json:"text" api:"nullable"`
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata       Metadata `json:"metadata" api:"nullable"`
+	Name           string   `json:"name" api:"nullable"`
+	OriginalSource string   `json:"original_source" api:"nullable"`
+	Persona        string   `json:"persona" api:"nullable"`
+	PhoneNumbers   []string `json:"phone_numbers" api:"nullable"`
+	Tags           []string `json:"tags" api:"nullable"`
+	Text           string   `json:"text" api:"nullable"`
+	Timezone       string   `json:"timezone" api:"nullable"`
 	// Any of "person".
 	Type     PersonType `json:"type"`
 	Username string     `json:"username" api:"nullable"`
+	Website  string     `json:"website" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ID           respjson.Field
-		Address      respjson.Field
-		AltNames     respjson.Field
-		Children     respjson.Field
-		Company      respjson.Field
-		CompanyIDs   respjson.Field
-		DateOfBirth  respjson.Field
-		DealIDs      respjson.Field
-		Email        respjson.Field
-		Emails       respjson.Field
-		ImageURL     respjson.Field
-		JobTitle     respjson.Field
-		LinkURLs     respjson.Field
-		Metadata     respjson.Field
-		Name         respjson.Field
-		PhoneNumbers respjson.Field
-		Tags         respjson.Field
-		Text         respjson.Field
-		Type         respjson.Field
-		Username     respjson.Field
-		ExtraFields  map[string]respjson.Field
-		raw          string
+		ID                     respjson.Field
+		Address                respjson.Field
+		AltNames               respjson.Field
+		BuyingRoles            respjson.Field
+		Children               respjson.Field
+		Company                respjson.Field
+		CompanyIDs             respjson.Field
+		DateOfBirth            respjson.Field
+		DealIDs                respjson.Field
+		Email                  respjson.Field
+		Emails                 respjson.Field
+		EmploymentRole         respjson.Field
+		EmploymentSeniority    respjson.Field
+		EmploymentSubRole      respjson.Field
+		ImageURL               respjson.Field
+		Industry               respjson.Field
+		IsAppUser              respjson.Field
+		IsBot                  respjson.Field
+		JobTitle               respjson.Field
+		LastSalesActivityAt    respjson.Field
+		LastSalesActivityType  respjson.Field
+		LeadStatus             respjson.Field
+		LifecycleStage         respjson.Field
+		LinkURLs               respjson.Field
+		LinkedinURL            respjson.Field
+		MarketingContactStatus respjson.Field
+		Metadata               respjson.Field
+		Name                   respjson.Field
+		OriginalSource         respjson.Field
+		Persona                respjson.Field
+		PhoneNumbers           respjson.Field
+		Tags                   respjson.Field
+		Text                   respjson.Field
+		Timezone               respjson.Field
+		Type                   respjson.Field
+		Username               respjson.Field
+		Website                respjson.Field
+		ExtraFields            map[string]respjson.Field
+		raw                    string
 	} `json:"-"`
 }
 
@@ -6121,9 +6736,9 @@ func (Person) ImplMemoryGetResponseDocumentUnion()      {}
 
 // PersonChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [PersonChildUnion.AsAny] method to switch on the variant.
 //
@@ -6138,14 +6753,14 @@ type PersonChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children PersonChildUnionChildren `json:"children"`
 	Text     string                   `json:"text"`
 	// This field is from variant [Callout].
@@ -6162,6 +6777,10 @@ type PersonChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -6205,6 +6824,8 @@ type PersonChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -6247,6 +6868,7 @@ type anyPersonChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -6291,6 +6913,8 @@ func (u PersonChildUnion) AsAny() anyPersonChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -6387,6 +7011,11 @@ func (u PersonChildUnion) AsListItem() (v ListItem) {
 	return
 }
 
+func (u PersonChildUnion) AsPage() (v Page) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
 func (u PersonChildUnion) AsParagraph() (v Paragraph) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
@@ -6478,11 +7107,7 @@ const (
 	PersonTypePerson PersonType = "person"
 )
 
-// Auditability record attached to an agentic answer.
-//
-// Gated behind `provenance=true` on the request: the cheap parts (sources, steps,
-// failed_sources) are derived from in-memory loop state, but `entities` costs one
-// indexed DB lookup, so the whole record is only built on request.
+// Auditability record returned when requested for a supported query.
 type Provenance struct {
 	Entities      []ProvenanceEntity `json:"entities"`
 	FailedSources []string           `json:"failed_sources"`
@@ -6526,24 +7151,36 @@ func (r *ProvenanceEntity) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// A source document that informed the final answer (the post-rank result set).
+// A source document that informed the final answer.
+//
+// Includes available retrieval details such as title and relevance score.
 type ProvenanceSource struct {
 	ResourceID string `json:"resource_id" api:"required"`
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
-	Source ProvenanceSourceSource `json:"source" api:"required"`
-	Score  float64                `json:"score" api:"nullable"`
-	Title  string                 `json:"title" api:"nullable"`
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
+	Source        ProvenanceSourceSource `json:"source" api:"required"`
+	ChunkID       string                 `json:"chunk_id" api:"nullable"`
+	ContentSha256 string                 `json:"content_sha256" api:"nullable"`
+	Owner         string                 `json:"owner" api:"nullable"`
+	Score         float64                `json:"score" api:"nullable"`
+	Span          []any                  `json:"span" api:"nullable"`
+	Title         string                 `json:"title" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ResourceID  respjson.Field
-		Source      respjson.Field
-		Score       respjson.Field
-		Title       respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
+		ResourceID    respjson.Field
+		Source        respjson.Field
+		ChunkID       respjson.Field
+		ContentSha256 respjson.Field
+		Owner         respjson.Field
+		Score         respjson.Field
+		Span          respjson.Field
+		Title         respjson.Field
+		ExtraFields   map[string]respjson.Field
+		raw           string
 	} `json:"-"`
 }
 
@@ -6556,29 +7193,41 @@ func (r *ProvenanceSource) UnmarshalJSON(data []byte) error {
 type ProvenanceSourceSource string
 
 const (
-	ProvenanceSourceSourceReddit         ProvenanceSourceSource = "reddit"
-	ProvenanceSourceSourceNotion         ProvenanceSourceSource = "notion"
-	ProvenanceSourceSourceSlack          ProvenanceSourceSource = "slack"
-	ProvenanceSourceSourceGoogleCalendar ProvenanceSourceSource = "google_calendar"
-	ProvenanceSourceSourceGoogleMail     ProvenanceSourceSource = "google_mail"
-	ProvenanceSourceSourceBox            ProvenanceSourceSource = "box"
-	ProvenanceSourceSourceDropbox        ProvenanceSourceSource = "dropbox"
-	ProvenanceSourceSourceGitHub         ProvenanceSourceSource = "github"
-	ProvenanceSourceSourceGoogleDrive    ProvenanceSourceSource = "google_drive"
-	ProvenanceSourceSourceVault          ProvenanceSourceSource = "vault"
-	ProvenanceSourceSourceWebCrawler     ProvenanceSourceSource = "web_crawler"
-	ProvenanceSourceSourceTrace          ProvenanceSourceSource = "trace"
-	ProvenanceSourceSourceMicrosoftTeams ProvenanceSourceSource = "microsoft_teams"
-	ProvenanceSourceSourceGmailActions   ProvenanceSourceSource = "gmail_actions"
-	ProvenanceSourceSourceGranola        ProvenanceSourceSource = "granola"
-	ProvenanceSourceSourceFathom         ProvenanceSourceSource = "fathom"
-	ProvenanceSourceSourceFireflies      ProvenanceSourceSource = "fireflies"
-	ProvenanceSourceSourceLinear         ProvenanceSourceSource = "linear"
-	ProvenanceSourceSourceHubspot        ProvenanceSourceSource = "hubspot"
-	ProvenanceSourceSourceSalesforce     ProvenanceSourceSource = "salesforce"
-	ProvenanceSourceSourceCoda           ProvenanceSourceSource = "coda"
-	ProvenanceSourceSourceLightfield     ProvenanceSourceSource = "lightfield"
-	ProvenanceSourceSourceGong           ProvenanceSourceSource = "gong"
+	ProvenanceSourceSourceReddit           ProvenanceSourceSource = "reddit"
+	ProvenanceSourceSourceNotion           ProvenanceSourceSource = "notion"
+	ProvenanceSourceSourceSlack            ProvenanceSourceSource = "slack"
+	ProvenanceSourceSourceGoogleCalendar   ProvenanceSourceSource = "google_calendar"
+	ProvenanceSourceSourceGoogleMail       ProvenanceSourceSource = "google_mail"
+	ProvenanceSourceSourceImap             ProvenanceSourceSource = "imap"
+	ProvenanceSourceSourceGoogleMeet       ProvenanceSourceSource = "google_meet"
+	ProvenanceSourceSourceBox              ProvenanceSourceSource = "box"
+	ProvenanceSourceSourceDropbox          ProvenanceSourceSource = "dropbox"
+	ProvenanceSourceSourceGitHub           ProvenanceSourceSource = "github"
+	ProvenanceSourceSourceGitlab           ProvenanceSourceSource = "gitlab"
+	ProvenanceSourceSourceGoogleDrive      ProvenanceSourceSource = "google_drive"
+	ProvenanceSourceSourceVault            ProvenanceSourceSource = "vault"
+	ProvenanceSourceSourceWebCrawler       ProvenanceSourceSource = "web_crawler"
+	ProvenanceSourceSourceTrace            ProvenanceSourceSource = "trace"
+	ProvenanceSourceSourceMicrosoftOutlook ProvenanceSourceSource = "microsoft_outlook"
+	ProvenanceSourceSourceMicrosoftTeams   ProvenanceSourceSource = "microsoft_teams"
+	ProvenanceSourceSourceGranola          ProvenanceSourceSource = "granola"
+	ProvenanceSourceSourceFathom           ProvenanceSourceSource = "fathom"
+	ProvenanceSourceSourceFireflies        ProvenanceSourceSource = "fireflies"
+	ProvenanceSourceSourceFigma            ProvenanceSourceSource = "figma"
+	ProvenanceSourceSourceLinear           ProvenanceSourceSource = "linear"
+	ProvenanceSourceSourceHubspot          ProvenanceSourceSource = "hubspot"
+	ProvenanceSourceSourceSalesforce       ProvenanceSourceSource = "salesforce"
+	ProvenanceSourceSourceCoda             ProvenanceSourceSource = "coda"
+	ProvenanceSourceSourceConfluence       ProvenanceSourceSource = "confluence"
+	ProvenanceSourceSourceJira             ProvenanceSourceSource = "jira"
+	ProvenanceSourceSourceMetabase         ProvenanceSourceSource = "metabase"
+	ProvenanceSourceSourceGong             ProvenanceSourceSource = "gong"
+	ProvenanceSourceSourceClickup          ProvenanceSourceSource = "clickup"
+	ProvenanceSourceSourceLightfield       ProvenanceSourceSource = "lightfield"
+	ProvenanceSourceSourcePylon            ProvenanceSourceSource = "pylon"
+	ProvenanceSourceSourceFellow           ProvenanceSourceSource = "fellow"
+	ProvenanceSourceSourceOdoo             ProvenanceSourceSource = "odoo"
+	ProvenanceSourceSourceExternalMcp      ProvenanceSourceSource = "external_mcp"
 )
 
 // One tool invocation in the agent's search trajectory (audit trail).
@@ -6611,17 +7260,16 @@ func (r *ProvenanceStep) UnmarshalJSON(data []byte) error {
 type QueryResult struct {
 	// The answer to the query, if the request was set to answer.
 	Answer string `json:"answer" api:"nullable"`
-	// The matching documents, each carrying its hyperdoc tree plus query-path
-	// score/highlights/summary (ENG-2479 Phase 4).
+	// Privacy notice set when cross-user alpha mode ran. Callers must display it
+	// alongside the synthesized answer.
+	Disclaimer string `json:"disclaimer" api:"nullable"`
+	// The matching documents, each carrying its hyperdoc tree plus query-path score,
+	// highlights, and summary.
 	Documents []ScoredDocumentResponse `json:"documents"`
 	// Errors that occurred during the query. These are meant to help the developer
 	// debug the query, and are not meant to be shown to the user.
 	Errors []map[string]string `json:"errors" api:"nullable"`
-	// Auditability record attached to an agentic answer.
-	//
-	// Gated behind `provenance=true` on the request: the cheap parts (sources, steps,
-	// failed_sources) are derived from in-memory loop state, but `entities` costs one
-	// indexed DB lookup, so the whole record is only built on request.
+	// Auditability record returned when requested for a supported query.
 	Provenance Provenance `json:"provenance" api:"nullable"`
 	// The query string that was issued.
 	Query string `json:"query" api:"nullable"`
@@ -6633,6 +7281,7 @@ type QueryResult struct {
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Answer      respjson.Field
+		Disclaimer  respjson.Field
 		Documents   respjson.Field
 		Errors      respjson.Field
 		Provenance  respjson.Field
@@ -6653,15 +7302,10 @@ func (r *QueryResult) UnmarshalJSON(data []byte) error {
 type Quote struct {
 	ID       string            `json:"id"`
 	Children []QuoteChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "quote".
@@ -6684,31 +7328,35 @@ func (r *Quote) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Quote) ImplCalloutChildUnion()   {}
-func (Quote) ImplChunkChildUnion()     {}
-func (Quote) ImplCompanyChildUnion()   {}
-func (Quote) ImplDealChildUnion()      {}
-func (Quote) ImplDocumentChildUnion()  {}
-func (Quote) ImplEquationChildUnion()  {}
-func (Quote) ImplEventChildUnion()     {}
-func (Quote) ImplFileChildUnion()      {}
-func (Quote) ImplFootnoteChildUnion()  {}
-func (Quote) ImplHeadingChildUnion()   {}
-func (Quote) ImplListItemChildUnion()  {}
-func (Quote) ImplMessageChildUnion()   {}
-func (Quote) ImplParagraphChildUnion() {}
-func (Quote) ImplPersonChildUnion()    {}
-func (Quote) ImplQuoteChildUnion()     {}
-func (Quote) ImplTableCellChildUnion() {}
-func (Quote) ImplTaskChildUnion()      {}
-func (Quote) ImplToDoChildUnion()      {}
-func (Quote) ImplWebsiteChildUnion()   {}
+func (Quote) ImplCalloutChildUnion()                               {}
+func (Quote) ImplChunkChildUnion()                                 {}
+func (Quote) ImplCompanyChildUnion()                               {}
+func (Quote) ImplDealChildUnion()                                  {}
+func (Quote) ImplDocumentChildUnion()                              {}
+func (Quote) ImplEquationChildUnion()                              {}
+func (Quote) ImplEventChildUnion()                                 {}
+func (Quote) ImplFileChildUnion()                                  {}
+func (Quote) ImplFootnoteChildUnion()                              {}
+func (Quote) ImplHeadingChildUnion()                               {}
+func (Quote) ImplListItemChildUnion()                              {}
+func (Quote) ImplMessageChildUnion()                               {}
+func (Quote) ImplPageChildUnion()                                  {}
+func (Quote) ImplParagraphChildUnion()                             {}
+func (Quote) ImplPersonChildUnion()                                {}
+func (Quote) ImplQuoteChildUnion()                                 {}
+func (Quote) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Quote) ImplTableCellChildUnion()                             {}
+func (Quote) ImplTaskChildUnion()                                  {}
+func (Quote) ImplToDoChildUnion()                                  {}
+func (Quote) ImplWebsiteChildUnion()                               {}
+func (Quote) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Quote) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // QuoteChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [QuoteChildUnion.AsAny] method to switch on the variant.
 //
@@ -6723,14 +7371,14 @@ type QuoteChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children QuoteChildUnionChildren `json:"children"`
 	Text     string                  `json:"text"`
 	// This field is from variant [Callout].
@@ -6747,6 +7395,10 @@ type QuoteChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -6790,6 +7442,8 @@ type QuoteChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -6832,6 +7486,7 @@ type anyQuoteChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -6876,6 +7531,8 @@ func (u QuoteChildUnion) AsAny() anyQuoteChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -6972,6 +7629,11 @@ func (u QuoteChildUnion) AsListItem() (v ListItem) {
 	return
 }
 
+func (u QuoteChildUnion) AsPage() (v Page) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
 func (u QuoteChildUnion) AsParagraph() (v Paragraph) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
@@ -7063,21 +7725,25 @@ const (
 	QuoteTypeQuote QuoteType = "quote"
 )
 
-// A `DocumentResponse` plus the query-path fields a `ScoredDocument` carries
-// (ENG-2479): relevance score, matched highlights, and the concatenated summary of
-// those highlights.
+// A document response with its relevance score, matched highlights, and a summary
+// of those highlights.
 type ScoredDocumentResponse struct {
 	// The full hyperdoc tree. Switch on `type` for the document frame and recurse
-	// `children` for the body — see the `<Hyperdoc />` renderer.
+	// through `children` for the body.
 	Document   ScoredDocumentResponseDocumentUnion `json:"document" api:"required"`
 	ResourceID string                              `json:"resource_id" api:"required"`
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
+	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "imap",
+	// "google_meet", "box", "dropbox", "github", "gitlab", "google_drive", "vault",
+	// "web_crawler", "trace", "microsoft_outlook", "microsoft_teams", "granola",
+	// "fathom", "fireflies", "figma", "linear", "hubspot", "salesforce", "coda",
+	// "confluence", "jira", "metabase", "gong", "clickup", "lightfield", "pylon",
+	// "fellow", "odoo", "external_mcp".
 	Source ScoredDocumentResponseSource `json:"source" api:"required"`
 	// Hyperdoc document type discriminator (document, message, file, event, ...).
 	Type string `json:"type" api:"required"`
+	// Extracted memories (chunks with summaries) for this document, in document order.
+	// Present only when explicitly requested via `include_chunks`; omitted otherwise.
+	Chunks []ScoredDocumentResponseChunk `json:"chunks" api:"nullable"`
 	// The document's collection, if any.
 	Collection string `json:"collection" api:"nullable"`
 	// The document's own date (e.g. email sent date, event date).
@@ -7086,7 +7752,7 @@ type ScoredDocumentResponse struct {
 	Highlights []any `json:"highlights"`
 	// When Hyperspell first indexed the document.
 	IngestedAt time.Time `json:"ingested_at" api:"nullable" format:"date-time"`
-	// When the source document was last modified.
+	// When the source document was last modified, if supplied by the source.
 	LastModifiedAt time.Time `json:"last_modified_at" api:"nullable" format:"date-time"`
 	// Filterable custom metadata attached to the document.
 	Metadata map[string]any `json:"metadata"`
@@ -7095,7 +7761,7 @@ type ScoredDocumentResponse struct {
 	// Indexing status of the document.
 	//
 	// Any of "pending", "processing", "completed", "failed", "pending_review",
-	// "skipped".
+	// "skipped", "filtered", "cancelled".
 	Status ScoredDocumentResponseStatus `json:"status" api:"nullable"`
 	// Concatenated text of the matched highlights.
 	Summary string `json:"summary" api:"nullable"`
@@ -7107,6 +7773,7 @@ type ScoredDocumentResponse struct {
 		ResourceID     respjson.Field
 		Source         respjson.Field
 		Type           respjson.Field
+		Chunks         respjson.Field
 		Collection     respjson.Field
 		DocumentDate   respjson.Field
 		Highlights     respjson.Field
@@ -7130,7 +7797,8 @@ func (r *ScoredDocumentResponse) UnmarshalJSON(data []byte) error {
 
 // ScoredDocumentResponseDocumentUnion contains all possible properties and values
 // from [Document], [Website], [Task], [Person], [Message], [Event], [File],
-// [Conversation], [Trace], [Transcript], [Company], [Deal].
+// [Conversation], [Trace], [Transcript], [Company], [Deal],
+// [ScoredDocumentResponseDocumentInvoice].
 //
 // Use the [ScoredDocumentResponseDocumentUnion.AsAny] method to switch on the
 // variant.
@@ -7141,14 +7809,15 @@ type ScoredDocumentResponseDocumentUnion struct {
 	// This field is a union of [[]DocumentChildUnion], [[]WebsiteChildUnion],
 	// [[]TaskChildUnion], [[]PersonChildUnion], [[]MessageChildUnion],
 	// [[]EventChildUnion], [[]FileChildUnion], [[]Message], [[]TraceChildUnion],
-	// [[]Utterance], [[]CompanyChildUnion], [[]DealChildUnion]
+	// [[]Utterance], [[]CompanyChildUnion], [[]DealChildUnion],
+	// [[]ScoredDocumentResponseDocumentInvoiceChildUnion]
 	Children ScoredDocumentResponseDocumentUnionChildren `json:"children"`
 	// This field is from variant [Document].
 	Metadata Metadata `json:"metadata"`
 	Text     string   `json:"text"`
 	Title    string   `json:"title"`
 	// Any of "document", "website", "task", "person", "message", "event", "file",
-	// "conversation", "trace", "transcript", "company", "deal".
+	// "conversation", "trace", "transcript", "company", "deal", "invoice".
 	Type string `json:"type"`
 	// This field is from variant [Website].
 	URL         string `json:"url"`
@@ -7160,15 +7829,15 @@ type ScoredDocumentResponseDocumentUnion struct {
 	Language string `json:"language"`
 	// This field is from variant [Task].
 	Comments []Message `json:"comments"`
-	// This field is from variant [Task].
-	DueAt time.Time `json:"due_at"`
+	DueAt    time.Time `json:"due_at"`
 	// This field is from variant [Task].
 	Priority TaskPriority `json:"priority"`
-	// This field is from variant [Task].
-	Status  TaskStatus `json:"status"`
-	Address string     `json:"address"`
+	Status   string       `json:"status"`
+	Address  string       `json:"address"`
 	// This field is from variant [Person].
 	AltNames []string `json:"alt_names"`
+	// This field is from variant [Person].
+	BuyingRoles []string `json:"buying_roles"`
 	// This field is from variant [Person].
 	Company    string   `json:"company"`
 	CompanyIDs []string `json:"company_ids"`
@@ -7179,14 +7848,44 @@ type ScoredDocumentResponseDocumentUnion struct {
 	Email  string   `json:"email"`
 	Emails []string `json:"emails"`
 	// This field is from variant [Person].
+	EmploymentRole string `json:"employment_role"`
+	// This field is from variant [Person].
+	EmploymentSeniority string `json:"employment_seniority"`
+	// This field is from variant [Person].
+	EmploymentSubRole string `json:"employment_sub_role"`
+	Industry          string `json:"industry"`
+	// This field is from variant [Person].
+	IsAppUser bool `json:"is_app_user"`
+	// This field is from variant [Person].
+	IsBot bool `json:"is_bot"`
+	// This field is from variant [Person].
 	JobTitle string `json:"job_title"`
 	// This field is from variant [Person].
-	LinkURLs     []string `json:"link_urls"`
-	Name         string   `json:"name"`
+	LastSalesActivityAt string `json:"last_sales_activity_at"`
+	// This field is from variant [Person].
+	LastSalesActivityType string `json:"last_sales_activity_type"`
+	// This field is from variant [Person].
+	LeadStatus string `json:"lead_status"`
+	// This field is from variant [Person].
+	LifecycleStage string `json:"lifecycle_stage"`
+	// This field is from variant [Person].
+	LinkURLs []string `json:"link_urls"`
+	// This field is from variant [Person].
+	LinkedinURL string `json:"linkedin_url"`
+	// This field is from variant [Person].
+	MarketingContactStatus string `json:"marketing_contact_status"`
+	Name                   string `json:"name"`
+	// This field is from variant [Person].
+	OriginalSource string `json:"original_source"`
+	// This field is from variant [Person].
+	Persona      string   `json:"persona"`
 	PhoneNumbers []string `json:"phone_numbers"`
 	Tags         []string `json:"tags"`
+	Timezone     string   `json:"timezone"`
 	// This field is from variant [Person].
 	Username string `json:"username"`
+	// This field is from variant [Person].
+	Website string `json:"website"`
 	// This field is from variant [Message].
 	Date time.Time `json:"date"`
 	// This field is from variant [Message].
@@ -7223,30 +7922,26 @@ type ScoredDocumentResponseDocumentUnion struct {
 	// This field is from variant [File].
 	Filename string `json:"filename"`
 	// This field is from variant [File].
-	Path []string `json:"path"`
+	ContentTruncated bool `json:"content_truncated"`
+	// This field is from variant [File].
+	Path         []string `json:"path"`
+	Participants []Person `json:"participants"`
 	// This field is from variant [Transcript].
 	EndedAt time.Time `json:"ended_at"`
-	// This field is from variant [Transcript].
-	Participants []Person `json:"participants"`
 	// This field is from variant [Transcript].
 	StartedAt  time.Time `json:"started_at"`
 	ContactIDs []string  `json:"contact_ids"`
 	// This field is from variant [Company].
 	Employees int64 `json:"employees"`
 	// This field is from variant [Company].
-	Industry string `json:"industry"`
-	// This field is from variant [Company].
 	IsActive bool `json:"is_active"`
-	// This field is from variant [Company].
-	Timezone string `json:"timezone"`
 	// This field is from variant [Company].
 	Websites []string `json:"websites"`
 	// This field is from variant [Deal].
 	Amount float64 `json:"amount"`
 	// This field is from variant [Deal].
 	ClosedAt time.Time `json:"closed_at"`
-	// This field is from variant [Deal].
-	Currency string `json:"currency"`
+	Currency string    `json:"currency"`
 	// This field is from variant [Deal].
 	DealSource string `json:"deal_source"`
 	// This field is from variant [Deal].
@@ -7259,74 +7954,144 @@ type ScoredDocumentResponseDocumentUnion struct {
 	Stage string `json:"stage"`
 	// This field is from variant [Deal].
 	WonReason string `json:"won_reason"`
-	JSON      struct {
-		ID             respjson.Field
-		Children       respjson.Field
-		Metadata       respjson.Field
-		Text           respjson.Field
-		Title          respjson.Field
-		Type           respjson.Field
-		URL            respjson.Field
-		Description    respjson.Field
-		Favicon        respjson.Field
-		ImageURL       respjson.Field
-		Language       respjson.Field
-		Comments       respjson.Field
-		DueAt          respjson.Field
-		Priority       respjson.Field
-		Status         respjson.Field
-		Address        respjson.Field
-		AltNames       respjson.Field
-		Company        respjson.Field
-		CompanyIDs     respjson.Field
-		DateOfBirth    respjson.Field
-		DealIDs        respjson.Field
-		Email          respjson.Field
-		Emails         respjson.Field
-		JobTitle       respjson.Field
-		LinkURLs       respjson.Field
-		Name           respjson.Field
-		PhoneNumbers   respjson.Field
-		Tags           respjson.Field
-		Username       respjson.Field
-		Date           respjson.Field
-		Sender         respjson.Field
-		Channel        respjson.Field
-		ExternalID     respjson.Field
-		IsSelf         respjson.Field
-		MentionedUsers respjson.Field
-		NumReplies     respjson.Field
-		Replies        respjson.Field
-		ThreadID       respjson.Field
-		UpdatedAt      respjson.Field
-		Upvotes        respjson.Field
-		Attendees      respjson.Field
-		EndAt          respjson.Field
-		Location       respjson.Field
-		MeetingURL     respjson.Field
-		StartAt        respjson.Field
-		ContentType    respjson.Field
-		Filename       respjson.Field
-		Path           respjson.Field
-		EndedAt        respjson.Field
-		Participants   respjson.Field
-		StartedAt      respjson.Field
-		ContactIDs     respjson.Field
-		Employees      respjson.Field
-		Industry       respjson.Field
-		IsActive       respjson.Field
-		Timezone       respjson.Field
-		Websites       respjson.Field
-		Amount         respjson.Field
-		ClosedAt       respjson.Field
-		Currency       respjson.Field
-		DealSource     respjson.Field
-		LostReason     respjson.Field
-		Pipeline       respjson.Field
-		Probability    respjson.Field
-		Stage          respjson.Field
-		WonReason      respjson.Field
-		raw            string
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	AttachmentNames []string `json:"attachment_names"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	BalanceAmount float64 `json:"balance_amount"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	CancelledAt time.Time `json:"cancelled_at"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	ContactID string `json:"contact_id"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	ContactName string `json:"contact_name"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	InvoiceType string `json:"invoice_type"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	Notes string `json:"notes"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	Number string `json:"number"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	OrganizationID string `json:"organization_id"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	PaidAmount float64 `json:"paid_amount"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	PaidAt time.Time `json:"paid_at"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	PostedAt time.Time `json:"posted_at"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	Reference string `json:"reference"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	RefundAmount float64 `json:"refund_amount"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	RefundReason string `json:"refund_reason"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	RefundedAt time.Time `json:"refunded_at"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	TaxAmount float64 `json:"tax_amount"`
+	// This field is from variant [ScoredDocumentResponseDocumentInvoice].
+	TotalAmount float64 `json:"total_amount"`
+	JSON        struct {
+		ID                     respjson.Field
+		Children               respjson.Field
+		Metadata               respjson.Field
+		Text                   respjson.Field
+		Title                  respjson.Field
+		Type                   respjson.Field
+		URL                    respjson.Field
+		Description            respjson.Field
+		Favicon                respjson.Field
+		ImageURL               respjson.Field
+		Language               respjson.Field
+		Comments               respjson.Field
+		DueAt                  respjson.Field
+		Priority               respjson.Field
+		Status                 respjson.Field
+		Address                respjson.Field
+		AltNames               respjson.Field
+		BuyingRoles            respjson.Field
+		Company                respjson.Field
+		CompanyIDs             respjson.Field
+		DateOfBirth            respjson.Field
+		DealIDs                respjson.Field
+		Email                  respjson.Field
+		Emails                 respjson.Field
+		EmploymentRole         respjson.Field
+		EmploymentSeniority    respjson.Field
+		EmploymentSubRole      respjson.Field
+		Industry               respjson.Field
+		IsAppUser              respjson.Field
+		IsBot                  respjson.Field
+		JobTitle               respjson.Field
+		LastSalesActivityAt    respjson.Field
+		LastSalesActivityType  respjson.Field
+		LeadStatus             respjson.Field
+		LifecycleStage         respjson.Field
+		LinkURLs               respjson.Field
+		LinkedinURL            respjson.Field
+		MarketingContactStatus respjson.Field
+		Name                   respjson.Field
+		OriginalSource         respjson.Field
+		Persona                respjson.Field
+		PhoneNumbers           respjson.Field
+		Tags                   respjson.Field
+		Timezone               respjson.Field
+		Username               respjson.Field
+		Website                respjson.Field
+		Date                   respjson.Field
+		Sender                 respjson.Field
+		Channel                respjson.Field
+		ExternalID             respjson.Field
+		IsSelf                 respjson.Field
+		MentionedUsers         respjson.Field
+		NumReplies             respjson.Field
+		Replies                respjson.Field
+		ThreadID               respjson.Field
+		UpdatedAt              respjson.Field
+		Upvotes                respjson.Field
+		Attendees              respjson.Field
+		EndAt                  respjson.Field
+		Location               respjson.Field
+		MeetingURL             respjson.Field
+		StartAt                respjson.Field
+		ContentType            respjson.Field
+		Filename               respjson.Field
+		ContentTruncated       respjson.Field
+		Path                   respjson.Field
+		Participants           respjson.Field
+		EndedAt                respjson.Field
+		StartedAt              respjson.Field
+		ContactIDs             respjson.Field
+		Employees              respjson.Field
+		IsActive               respjson.Field
+		Websites               respjson.Field
+		Amount                 respjson.Field
+		ClosedAt               respjson.Field
+		Currency               respjson.Field
+		DealSource             respjson.Field
+		LostReason             respjson.Field
+		Pipeline               respjson.Field
+		Probability            respjson.Field
+		Stage                  respjson.Field
+		WonReason              respjson.Field
+		AttachmentNames        respjson.Field
+		BalanceAmount          respjson.Field
+		CancelledAt            respjson.Field
+		ContactID              respjson.Field
+		ContactName            respjson.Field
+		InvoiceType            respjson.Field
+		Notes                  respjson.Field
+		Number                 respjson.Field
+		OrganizationID         respjson.Field
+		PaidAmount             respjson.Field
+		PaidAt                 respjson.Field
+		PostedAt               respjson.Field
+		Reference              respjson.Field
+		RefundAmount           respjson.Field
+		RefundReason           respjson.Field
+		RefundedAt             respjson.Field
+		TaxAmount              respjson.Field
+		TotalAmount            respjson.Field
+		raw                    string
 	} `json:"-"`
 }
 
@@ -7352,6 +8117,7 @@ type anyScoredDocumentResponseDocument interface {
 //	case shared.Transcript:
 //	case shared.Company:
 //	case shared.Deal:
+//	case shared.ScoredDocumentResponseDocumentInvoice:
 //	default:
 //	  fmt.Errorf("no variant present")
 //	}
@@ -7381,6 +8147,8 @@ func (u ScoredDocumentResponseDocumentUnion) AsAny() anyScoredDocumentResponseDo
 		return u.AsCompany()
 	case "deal":
 		return u.AsDeal()
+	case "invoice":
+		return u.AsInvoice()
 	}
 	return nil
 }
@@ -7445,6 +8213,11 @@ func (u ScoredDocumentResponseDocumentUnion) AsDeal() (v Deal) {
 	return
 }
 
+func (u ScoredDocumentResponseDocumentUnion) AsInvoice() (v ScoredDocumentResponseDocumentInvoice) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
 // Returns the unmodified JSON received from the API
 func (u ScoredDocumentResponseDocumentUnion) RawJSON() string { return u.JSON.raw }
 
@@ -7476,184 +8249,93 @@ func (r *ScoredDocumentResponseDocumentUnionChildren) UnmarshalJSON(data []byte)
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type ScoredDocumentResponseSource string
-
-const (
-	ScoredDocumentResponseSourceReddit         ScoredDocumentResponseSource = "reddit"
-	ScoredDocumentResponseSourceNotion         ScoredDocumentResponseSource = "notion"
-	ScoredDocumentResponseSourceSlack          ScoredDocumentResponseSource = "slack"
-	ScoredDocumentResponseSourceGoogleCalendar ScoredDocumentResponseSource = "google_calendar"
-	ScoredDocumentResponseSourceGoogleMail     ScoredDocumentResponseSource = "google_mail"
-	ScoredDocumentResponseSourceBox            ScoredDocumentResponseSource = "box"
-	ScoredDocumentResponseSourceDropbox        ScoredDocumentResponseSource = "dropbox"
-	ScoredDocumentResponseSourceGitHub         ScoredDocumentResponseSource = "github"
-	ScoredDocumentResponseSourceGoogleDrive    ScoredDocumentResponseSource = "google_drive"
-	ScoredDocumentResponseSourceVault          ScoredDocumentResponseSource = "vault"
-	ScoredDocumentResponseSourceWebCrawler     ScoredDocumentResponseSource = "web_crawler"
-	ScoredDocumentResponseSourceTrace          ScoredDocumentResponseSource = "trace"
-	ScoredDocumentResponseSourceMicrosoftTeams ScoredDocumentResponseSource = "microsoft_teams"
-	ScoredDocumentResponseSourceGmailActions   ScoredDocumentResponseSource = "gmail_actions"
-	ScoredDocumentResponseSourceGranola        ScoredDocumentResponseSource = "granola"
-	ScoredDocumentResponseSourceFathom         ScoredDocumentResponseSource = "fathom"
-	ScoredDocumentResponseSourceFireflies      ScoredDocumentResponseSource = "fireflies"
-	ScoredDocumentResponseSourceLinear         ScoredDocumentResponseSource = "linear"
-	ScoredDocumentResponseSourceHubspot        ScoredDocumentResponseSource = "hubspot"
-	ScoredDocumentResponseSourceSalesforce     ScoredDocumentResponseSource = "salesforce"
-	ScoredDocumentResponseSourceCoda           ScoredDocumentResponseSource = "coda"
-	ScoredDocumentResponseSourceLightfield     ScoredDocumentResponseSource = "lightfield"
-	ScoredDocumentResponseSourceGong           ScoredDocumentResponseSource = "gong"
-)
-
-// Indexing status of the document.
-type ScoredDocumentResponseStatus string
-
-const (
-	ScoredDocumentResponseStatusPending       ScoredDocumentResponseStatus = "pending"
-	ScoredDocumentResponseStatusProcessing    ScoredDocumentResponseStatus = "processing"
-	ScoredDocumentResponseStatusCompleted     ScoredDocumentResponseStatus = "completed"
-	ScoredDocumentResponseStatusFailed        ScoredDocumentResponseStatus = "failed"
-	ScoredDocumentResponseStatusPendingReview ScoredDocumentResponseStatus = "pending_review"
-	ScoredDocumentResponseStatusSkipped       ScoredDocumentResponseStatus = "skipped"
-)
-
-type Table struct {
-	ID       string     `json:"id"`
-	Children []TableRow `json:"children"`
-	// Whether the first row should be treated as a header
-	HasHeader bool `json:"has_header"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
-	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
-	Metadata Metadata `json:"metadata" api:"nullable"`
-	Text     string   `json:"text" api:"nullable"`
-	// Any of "table".
-	Type TableType `json:"type"`
-	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
-	JSON struct {
-		ID          respjson.Field
-		Children    respjson.Field
-		HasHeader   respjson.Field
-		Metadata    respjson.Field
-		Text        respjson.Field
-		Type        respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
-	} `json:"-"`
-}
-
-// Returns the unmodified JSON received from the API
-func (r Table) RawJSON() string { return r.JSON.raw }
-func (r *Table) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-func (Table) ImplCalloutChildUnion()   {}
-func (Table) ImplChunkChildUnion()     {}
-func (Table) ImplCompanyChildUnion()   {}
-func (Table) ImplDealChildUnion()      {}
-func (Table) ImplDocumentChildUnion()  {}
-func (Table) ImplEquationChildUnion()  {}
-func (Table) ImplEventChildUnion()     {}
-func (Table) ImplFileChildUnion()      {}
-func (Table) ImplFootnoteChildUnion()  {}
-func (Table) ImplHeadingChildUnion()   {}
-func (Table) ImplListItemChildUnion()  {}
-func (Table) ImplMessageChildUnion()   {}
-func (Table) ImplParagraphChildUnion() {}
-func (Table) ImplPersonChildUnion()    {}
-func (Table) ImplQuoteChildUnion()     {}
-func (Table) ImplTableCellChildUnion() {}
-func (Table) ImplTaskChildUnion()      {}
-func (Table) ImplToDoChildUnion()      {}
-func (Table) ImplWebsiteChildUnion()   {}
-
-type TableType string
-
-const (
-	TableTypeTable TableType = "table"
-)
-
-type TableCell struct {
-	ID string `json:"id"`
-	// Any of "left", "center", "right".
-	Align    TableCellAlign        `json:"align"`
-	Children []TableCellChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
-	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
-	Metadata Metadata `json:"metadata" api:"nullable"`
-	Text     string   `json:"text" api:"nullable"`
-	// Any of "table_cell".
-	Type TableCellType `json:"type"`
-	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
-	JSON struct {
-		ID          respjson.Field
-		Align       respjson.Field
-		Children    respjson.Field
-		Metadata    respjson.Field
-		Text        respjson.Field
-		Type        respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
-	} `json:"-"`
-}
-
-// Returns the unmodified JSON received from the API
-func (r TableCell) RawJSON() string { return r.JSON.raw }
-func (r *TableCell) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-func (TableCell) ImplCalloutChildUnion()   {}
-func (TableCell) ImplChunkChildUnion()     {}
-func (TableCell) ImplCompanyChildUnion()   {}
-func (TableCell) ImplDealChildUnion()      {}
-func (TableCell) ImplDocumentChildUnion()  {}
-func (TableCell) ImplEquationChildUnion()  {}
-func (TableCell) ImplEventChildUnion()     {}
-func (TableCell) ImplFileChildUnion()      {}
-func (TableCell) ImplFootnoteChildUnion()  {}
-func (TableCell) ImplHeadingChildUnion()   {}
-func (TableCell) ImplListItemChildUnion()  {}
-func (TableCell) ImplMessageChildUnion()   {}
-func (TableCell) ImplParagraphChildUnion() {}
-func (TableCell) ImplPersonChildUnion()    {}
-func (TableCell) ImplQuoteChildUnion()     {}
-func (TableCell) ImplTableCellChildUnion() {}
-func (TableCell) ImplTaskChildUnion()      {}
-func (TableCell) ImplToDoChildUnion()      {}
-func (TableCell) ImplWebsiteChildUnion()   {}
-
-type TableCellAlign string
-
-const (
-	TableCellAlignLeft   TableCellAlign = "left"
-	TableCellAlignCenter TableCellAlign = "center"
-	TableCellAlignRight  TableCellAlign = "right"
-)
-
-// TableCellChildUnion contains all possible properties and values from [Blob],
-// [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// A customer invoice, vendor bill, or credit memo.
 //
-// Use the [TableCellChildUnion.AsAny] method to switch on the variant.
+// Line items are included in `children`.
+type ScoredDocumentResponseDocumentInvoice struct {
+	ID              string                                            `json:"id"`
+	AttachmentNames []string                                          `json:"attachment_names" api:"nullable"`
+	BalanceAmount   float64                                           `json:"balance_amount" api:"nullable"`
+	CancelledAt     time.Time                                         `json:"cancelled_at" api:"nullable" format:"date-time"`
+	Children        []ScoredDocumentResponseDocumentInvoiceChildUnion `json:"children"`
+	ContactID       string                                            `json:"contact_id" api:"nullable"`
+	ContactName     string                                            `json:"contact_name" api:"nullable"`
+	Currency        string                                            `json:"currency" api:"nullable"`
+	DueAt           time.Time                                         `json:"due_at" api:"nullable" format:"date-time"`
+	InvoiceType     string                                            `json:"invoice_type" api:"nullable"`
+	// Optional annotations carried by a hyperdoc node.
+	//
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata       Metadata  `json:"metadata" api:"nullable"`
+	Notes          string    `json:"notes" api:"nullable"`
+	Number         string    `json:"number" api:"nullable"`
+	OrganizationID string    `json:"organization_id" api:"nullable"`
+	PaidAmount     float64   `json:"paid_amount" api:"nullable"`
+	PaidAt         time.Time `json:"paid_at" api:"nullable" format:"date-time"`
+	PostedAt       time.Time `json:"posted_at" api:"nullable" format:"date-time"`
+	Reference      string    `json:"reference" api:"nullable"`
+	RefundAmount   float64   `json:"refund_amount" api:"nullable"`
+	RefundReason   string    `json:"refund_reason" api:"nullable"`
+	RefundedAt     time.Time `json:"refunded_at" api:"nullable" format:"date-time"`
+	Status         string    `json:"status" api:"nullable"`
+	TaxAmount      float64   `json:"tax_amount" api:"nullable"`
+	Text           string    `json:"text" api:"nullable"`
+	TotalAmount    float64   `json:"total_amount" api:"nullable"`
+	// Any of "invoice".
+	Type string `json:"type"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		ID              respjson.Field
+		AttachmentNames respjson.Field
+		BalanceAmount   respjson.Field
+		CancelledAt     respjson.Field
+		Children        respjson.Field
+		ContactID       respjson.Field
+		ContactName     respjson.Field
+		Currency        respjson.Field
+		DueAt           respjson.Field
+		InvoiceType     respjson.Field
+		Metadata        respjson.Field
+		Notes           respjson.Field
+		Number          respjson.Field
+		OrganizationID  respjson.Field
+		PaidAmount      respjson.Field
+		PaidAt          respjson.Field
+		PostedAt        respjson.Field
+		Reference       respjson.Field
+		RefundAmount    respjson.Field
+		RefundReason    respjson.Field
+		RefundedAt      respjson.Field
+		Status          respjson.Field
+		TaxAmount       respjson.Field
+		Text            respjson.Field
+		TotalAmount     respjson.Field
+		Type            respjson.Field
+		ExtraFields     map[string]respjson.Field
+		raw             string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r ScoredDocumentResponseDocumentInvoice) RawJSON() string { return r.JSON.raw }
+func (r *ScoredDocumentResponseDocumentInvoice) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+func (ScoredDocumentResponseDocumentInvoice) ImplScoredDocumentResponseDocumentUnion() {}
+
+// ScoredDocumentResponseDocumentInvoiceChildUnion contains all possible properties
+// and values from [Blob], [Callout], [Chunk], [Code], [Comment], [Divider],
+// [Equation], [Footnote], [Heading], [Image], [Link], [LineBreak], [List],
+// [ListItem], [Page], [Paragraph], [Quote], [Table], [TableCell], [TableRow],
+// [Text], [ToDo], [ToolCall], [ToolResult], [TraceMessage], [Utterance].
+//
+// Use the [ScoredDocumentResponseDocumentInvoiceChildUnion.AsAny] method to switch
+// on the variant.
 //
 // Use the methods beginning with 'As' to cast the union to one of its variants.
-type TableCellChildUnion struct {
+type ScoredDocumentResponseDocumentInvoiceChildUnion struct {
 	// This field is from variant [Blob].
 	Data string `json:"data"`
 	// This field is from variant [Blob].
@@ -7663,16 +8345,16 @@ type TableCellChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
-	Children TableCellChildUnionChildren `json:"children"`
-	Text     string                      `json:"text"`
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
+	Children ScoredDocumentResponseDocumentInvoiceChildUnionChildren `json:"children"`
+	Text     string                                                  `json:"text"`
 	// This field is from variant [Callout].
 	Title string `json:"title"`
 	// This field is from variant [Code].
@@ -7687,6 +8369,10 @@ type TableCellChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -7730,6 +8416,580 @@ type TableCellChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
+		HasHeader   respjson.Field
+		Align       respjson.Field
+		Marks       respjson.Field
+		Checked     respjson.Field
+		ToolCallID  respjson.Field
+		ToolName    respjson.Field
+		Args        respjson.Field
+		Output      respjson.Field
+		IsError     respjson.Field
+		MessageType respjson.Field
+		Role        respjson.Field
+		Timestamp   respjson.Field
+		End         respjson.Field
+		Speaker     respjson.Field
+		Start       respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// anyScoredDocumentResponseDocumentInvoiceChild is implemented by each variant of
+// [ScoredDocumentResponseDocumentInvoiceChildUnion] to add type safety for the
+// return type of [ScoredDocumentResponseDocumentInvoiceChildUnion.AsAny]
+type anyScoredDocumentResponseDocumentInvoiceChild interface {
+	ImplScoredDocumentResponseDocumentInvoiceChildUnion()
+}
+
+// Use the following switch statement to find the correct variant
+//
+//	switch variant := ScoredDocumentResponseDocumentInvoiceChildUnion.AsAny().(type) {
+//	case shared.Blob:
+//	case shared.Callout:
+//	case shared.Chunk:
+//	case shared.Code:
+//	case shared.Comment:
+//	case shared.Divider:
+//	case shared.Equation:
+//	case shared.Footnote:
+//	case shared.Heading:
+//	case shared.Image:
+//	case shared.Link:
+//	case shared.LineBreak:
+//	case shared.List:
+//	case shared.ListItem:
+//	case shared.Page:
+//	case shared.Paragraph:
+//	case shared.Quote:
+//	case shared.Table:
+//	case shared.TableCell:
+//	case shared.TableRow:
+//	case shared.Text:
+//	case shared.ToDo:
+//	case shared.ToolCall:
+//	case shared.ToolResult:
+//	case shared.TraceMessage:
+//	case shared.Utterance:
+//	default:
+//	  fmt.Errorf("no variant present")
+//	}
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsAny() anyScoredDocumentResponseDocumentInvoiceChild {
+	switch u.Type {
+	case "blob":
+		return u.AsBlob()
+	case "callout":
+		return u.AsCallout()
+	case "chunk":
+		return u.AsChunk()
+	case "code":
+		return u.AsCode()
+	case "comment":
+		return u.AsComment()
+	case "divider":
+		return u.AsDivider()
+	case "equation":
+		return u.AsEquation()
+	case "footnote":
+		return u.AsFootnote()
+	case "heading":
+		return u.AsHeading()
+	case "image":
+		return u.AsImage()
+	case "link":
+		return u.AsLink()
+	case "line_break":
+		return u.AsLineBreak()
+	case "list":
+		return u.AsList()
+	case "list_item":
+		return u.AsListItem()
+	case "page":
+		return u.AsPage()
+	case "paragraph":
+		return u.AsParagraph()
+	case "quote":
+		return u.AsQuote()
+	case "table":
+		return u.AsTable()
+	case "table_cell":
+		return u.AsTableCell()
+	case "table_row":
+		return u.AsTableRow()
+	case "text":
+		return u.AsText()
+	case "todo":
+		return u.AsTodo()
+	case "tool_call":
+		return u.AsToolCall()
+	case "tool_result":
+		return u.AsToolResult()
+	case "trace_message":
+		return u.AsTraceMessage()
+	case "utterance":
+		return u.AsUtterance()
+	}
+	return nil
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsBlob() (v Blob) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsCallout() (v Callout) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsChunk() (v Chunk) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsCode() (v Code) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsComment() (v Comment) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsDivider() (v Divider) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsEquation() (v Equation) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsFootnote() (v Footnote) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsHeading() (v Heading) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsImage() (v Image) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsLink() (v Link) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsLineBreak() (v LineBreak) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsList() (v List) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsPage() (v Page) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsParagraph() (v Paragraph) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsQuote() (v Quote) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsTable() (v Table) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsTableCell() (v TableCell) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsTableRow() (v TableRow) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsText() (v Text) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsTodo() (v ToDo) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsToolCall() (v ToolCall) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsToolResult() (v ToolResult) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsTraceMessage() (v TraceMessage) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) AsUtterance() (v Utterance) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+// Returns the unmodified JSON received from the API
+func (u ScoredDocumentResponseDocumentInvoiceChildUnion) RawJSON() string { return u.JSON.raw }
+
+func (r *ScoredDocumentResponseDocumentInvoiceChildUnion) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// ScoredDocumentResponseDocumentInvoiceChildUnionChildren is an implicit subunion
+// of [ScoredDocumentResponseDocumentInvoiceChildUnion].
+// ScoredDocumentResponseDocumentInvoiceChildUnionChildren provides convenient
+// access to the sub-properties of the union.
+//
+// For type safety it is recommended to directly use a variant of the
+// [ScoredDocumentResponseDocumentInvoiceChildUnion].
+//
+// If the underlying value is not a json object, one of the following properties
+// will be valid: OfChildren]
+type ScoredDocumentResponseDocumentInvoiceChildUnionChildren struct {
+	// This field will be present if the value is a [[]CalloutChildUnion] instead of an
+	// object.
+	OfChildren []CalloutChildUnion `json:",inline"`
+	JSON       struct {
+		OfChildren respjson.Field
+		raw        string
+	} `json:"-"`
+}
+
+func (r *ScoredDocumentResponseDocumentInvoiceChildUnionChildren) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+type ScoredDocumentResponseSource string
+
+const (
+	ScoredDocumentResponseSourceReddit           ScoredDocumentResponseSource = "reddit"
+	ScoredDocumentResponseSourceNotion           ScoredDocumentResponseSource = "notion"
+	ScoredDocumentResponseSourceSlack            ScoredDocumentResponseSource = "slack"
+	ScoredDocumentResponseSourceGoogleCalendar   ScoredDocumentResponseSource = "google_calendar"
+	ScoredDocumentResponseSourceGoogleMail       ScoredDocumentResponseSource = "google_mail"
+	ScoredDocumentResponseSourceImap             ScoredDocumentResponseSource = "imap"
+	ScoredDocumentResponseSourceGoogleMeet       ScoredDocumentResponseSource = "google_meet"
+	ScoredDocumentResponseSourceBox              ScoredDocumentResponseSource = "box"
+	ScoredDocumentResponseSourceDropbox          ScoredDocumentResponseSource = "dropbox"
+	ScoredDocumentResponseSourceGitHub           ScoredDocumentResponseSource = "github"
+	ScoredDocumentResponseSourceGitlab           ScoredDocumentResponseSource = "gitlab"
+	ScoredDocumentResponseSourceGoogleDrive      ScoredDocumentResponseSource = "google_drive"
+	ScoredDocumentResponseSourceVault            ScoredDocumentResponseSource = "vault"
+	ScoredDocumentResponseSourceWebCrawler       ScoredDocumentResponseSource = "web_crawler"
+	ScoredDocumentResponseSourceTrace            ScoredDocumentResponseSource = "trace"
+	ScoredDocumentResponseSourceMicrosoftOutlook ScoredDocumentResponseSource = "microsoft_outlook"
+	ScoredDocumentResponseSourceMicrosoftTeams   ScoredDocumentResponseSource = "microsoft_teams"
+	ScoredDocumentResponseSourceGranola          ScoredDocumentResponseSource = "granola"
+	ScoredDocumentResponseSourceFathom           ScoredDocumentResponseSource = "fathom"
+	ScoredDocumentResponseSourceFireflies        ScoredDocumentResponseSource = "fireflies"
+	ScoredDocumentResponseSourceFigma            ScoredDocumentResponseSource = "figma"
+	ScoredDocumentResponseSourceLinear           ScoredDocumentResponseSource = "linear"
+	ScoredDocumentResponseSourceHubspot          ScoredDocumentResponseSource = "hubspot"
+	ScoredDocumentResponseSourceSalesforce       ScoredDocumentResponseSource = "salesforce"
+	ScoredDocumentResponseSourceCoda             ScoredDocumentResponseSource = "coda"
+	ScoredDocumentResponseSourceConfluence       ScoredDocumentResponseSource = "confluence"
+	ScoredDocumentResponseSourceJira             ScoredDocumentResponseSource = "jira"
+	ScoredDocumentResponseSourceMetabase         ScoredDocumentResponseSource = "metabase"
+	ScoredDocumentResponseSourceGong             ScoredDocumentResponseSource = "gong"
+	ScoredDocumentResponseSourceClickup          ScoredDocumentResponseSource = "clickup"
+	ScoredDocumentResponseSourceLightfield       ScoredDocumentResponseSource = "lightfield"
+	ScoredDocumentResponseSourcePylon            ScoredDocumentResponseSource = "pylon"
+	ScoredDocumentResponseSourceFellow           ScoredDocumentResponseSource = "fellow"
+	ScoredDocumentResponseSourceOdoo             ScoredDocumentResponseSource = "odoo"
+	ScoredDocumentResponseSourceExternalMcp      ScoredDocumentResponseSource = "external_mcp"
+)
+
+// A searchable chunk extracted from a document during ingestion.
+//
+// `summary` is null when no summary was generated for the chunk.
+type ScoredDocumentResponseChunk struct {
+	// Stable identifier of the chunk.
+	ChunkID string `json:"chunk_id" api:"required"`
+	// LLM-generated summary of the chunk, if one was produced.
+	Summary string `json:"summary" api:"nullable"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		ChunkID     respjson.Field
+		Summary     respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r ScoredDocumentResponseChunk) RawJSON() string { return r.JSON.raw }
+func (r *ScoredDocumentResponseChunk) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// Indexing status of the document.
+type ScoredDocumentResponseStatus string
+
+const (
+	ScoredDocumentResponseStatusPending       ScoredDocumentResponseStatus = "pending"
+	ScoredDocumentResponseStatusProcessing    ScoredDocumentResponseStatus = "processing"
+	ScoredDocumentResponseStatusCompleted     ScoredDocumentResponseStatus = "completed"
+	ScoredDocumentResponseStatusFailed        ScoredDocumentResponseStatus = "failed"
+	ScoredDocumentResponseStatusPendingReview ScoredDocumentResponseStatus = "pending_review"
+	ScoredDocumentResponseStatusSkipped       ScoredDocumentResponseStatus = "skipped"
+	ScoredDocumentResponseStatusFiltered      ScoredDocumentResponseStatus = "filtered"
+	ScoredDocumentResponseStatusCancelled     ScoredDocumentResponseStatus = "cancelled"
+)
+
+type Table struct {
+	ID       string     `json:"id"`
+	Children []TableRow `json:"children"`
+	// Whether the first row should be treated as a header
+	HasHeader bool `json:"has_header"`
+	// Optional annotations carried by a hyperdoc node.
+	//
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata Metadata `json:"metadata" api:"nullable"`
+	Text     string   `json:"text" api:"nullable"`
+	// Any of "table".
+	Type TableType `json:"type"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		ID          respjson.Field
+		Children    respjson.Field
+		HasHeader   respjson.Field
+		Metadata    respjson.Field
+		Text        respjson.Field
+		Type        respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r Table) RawJSON() string { return r.JSON.raw }
+func (r *Table) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+func (Table) ImplCalloutChildUnion()                               {}
+func (Table) ImplChunkChildUnion()                                 {}
+func (Table) ImplCompanyChildUnion()                               {}
+func (Table) ImplDealChildUnion()                                  {}
+func (Table) ImplDocumentChildUnion()                              {}
+func (Table) ImplEquationChildUnion()                              {}
+func (Table) ImplEventChildUnion()                                 {}
+func (Table) ImplFileChildUnion()                                  {}
+func (Table) ImplFootnoteChildUnion()                              {}
+func (Table) ImplHeadingChildUnion()                               {}
+func (Table) ImplListItemChildUnion()                              {}
+func (Table) ImplMessageChildUnion()                               {}
+func (Table) ImplPageChildUnion()                                  {}
+func (Table) ImplParagraphChildUnion()                             {}
+func (Table) ImplPersonChildUnion()                                {}
+func (Table) ImplQuoteChildUnion()                                 {}
+func (Table) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Table) ImplTableCellChildUnion()                             {}
+func (Table) ImplTaskChildUnion()                                  {}
+func (Table) ImplToDoChildUnion()                                  {}
+func (Table) ImplWebsiteChildUnion()                               {}
+func (Table) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Table) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+
+type TableType string
+
+const (
+	TableTypeTable TableType = "table"
+)
+
+type TableCell struct {
+	ID string `json:"id"`
+	// Any of "left", "center", "right".
+	Align    TableCellAlign        `json:"align"`
+	Children []TableCellChildUnion `json:"children" api:"nullable"`
+	// Optional annotations carried by a hyperdoc node.
+	//
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
+	Metadata Metadata `json:"metadata" api:"nullable"`
+	Text     string   `json:"text" api:"nullable"`
+	// Any of "table_cell".
+	Type TableCellType `json:"type"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		ID          respjson.Field
+		Align       respjson.Field
+		Children    respjson.Field
+		Metadata    respjson.Field
+		Text        respjson.Field
+		Type        respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r TableCell) RawJSON() string { return r.JSON.raw }
+func (r *TableCell) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+func (TableCell) ImplCalloutChildUnion()                               {}
+func (TableCell) ImplChunkChildUnion()                                 {}
+func (TableCell) ImplCompanyChildUnion()                               {}
+func (TableCell) ImplDealChildUnion()                                  {}
+func (TableCell) ImplDocumentChildUnion()                              {}
+func (TableCell) ImplEquationChildUnion()                              {}
+func (TableCell) ImplEventChildUnion()                                 {}
+func (TableCell) ImplFileChildUnion()                                  {}
+func (TableCell) ImplFootnoteChildUnion()                              {}
+func (TableCell) ImplHeadingChildUnion()                               {}
+func (TableCell) ImplListItemChildUnion()                              {}
+func (TableCell) ImplMessageChildUnion()                               {}
+func (TableCell) ImplPageChildUnion()                                  {}
+func (TableCell) ImplParagraphChildUnion()                             {}
+func (TableCell) ImplPersonChildUnion()                                {}
+func (TableCell) ImplQuoteChildUnion()                                 {}
+func (TableCell) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (TableCell) ImplTableCellChildUnion()                             {}
+func (TableCell) ImplTaskChildUnion()                                  {}
+func (TableCell) ImplToDoChildUnion()                                  {}
+func (TableCell) ImplWebsiteChildUnion()                               {}
+func (TableCell) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (TableCell) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+
+type TableCellAlign string
+
+const (
+	TableCellAlignLeft   TableCellAlign = "left"
+	TableCellAlignCenter TableCellAlign = "center"
+	TableCellAlignRight  TableCellAlign = "right"
+)
+
+// TableCellChildUnion contains all possible properties and values from [Blob],
+// [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
+//
+// Use the [TableCellChildUnion.AsAny] method to switch on the variant.
+//
+// Use the methods beginning with 'As' to cast the union to one of its variants.
+type TableCellChildUnion struct {
+	// This field is from variant [Blob].
+	Data string `json:"data"`
+	// This field is from variant [Blob].
+	Mimetype string `json:"mimetype"`
+	ID       string `json:"id"`
+	// This field is from variant [Blob].
+	Metadata Metadata `json:"metadata"`
+	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
+	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
+	Type string `json:"type"`
+	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
+	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
+	Children TableCellChildUnionChildren `json:"children"`
+	Text     string                      `json:"text"`
+	// This field is from variant [Callout].
+	Title string `json:"title"`
+	// This field is from variant [Code].
+	Language string `json:"language"`
+	// This field is from variant [Comment].
+	CreatedAt time.Time `json:"created_at"`
+	// This field is from variant [Heading].
+	Level int64 `json:"level"`
+	// This field is from variant [Image].
+	Src string `json:"src"`
+	// This field is from variant [Link].
+	URL string `json:"url"`
+	// This field is from variant [List].
+	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
+	// This field is from variant [Table].
+	HasHeader bool `json:"has_header"`
+	// This field is from variant [TableCell].
+	Align TableCellAlign `json:"align"`
+	// This field is from variant [Text].
+	Marks []string `json:"marks"`
+	// This field is from variant [ToDo].
+	Checked    bool   `json:"checked"`
+	ToolCallID string `json:"tool_call_id"`
+	ToolName   string `json:"tool_name"`
+	// This field is from variant [ToolCall].
+	Args map[string]any `json:"args"`
+	// This field is from variant [ToolResult].
+	Output ToolResultOutputUnion `json:"output"`
+	// This field is from variant [ToolResult].
+	IsError bool `json:"is_error"`
+	// This field is from variant [TraceMessage].
+	MessageType TraceMessageMessageType `json:"message_type"`
+	// This field is from variant [TraceMessage].
+	Role TraceMessageRole `json:"role"`
+	// This field is from variant [TraceMessage].
+	Timestamp time.Time `json:"timestamp"`
+	// This field is from variant [Utterance].
+	End float64 `json:"end"`
+	// This field is from variant [Utterance].
+	Speaker Person `json:"speaker"`
+	// This field is from variant [Utterance].
+	Start float64 `json:"start"`
+	JSON  struct {
+		Data        respjson.Field
+		Mimetype    respjson.Field
+		ID          respjson.Field
+		Metadata    respjson.Field
+		Type        respjson.Field
+		Children    respjson.Field
+		Text        respjson.Field
+		Title       respjson.Field
+		Language    respjson.Field
+		CreatedAt   respjson.Field
+		Level       respjson.Field
+		Src         respjson.Field
+		URL         respjson.Field
+		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -7772,6 +9032,7 @@ type anyTableCellChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -7816,6 +9077,8 @@ func (u TableCellChildUnion) AsAny() anyTableCellChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -7908,6 +9171,11 @@ func (u TableCellChildUnion) AsList() (v List) {
 }
 
 func (u TableCellChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u TableCellChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -8006,15 +9274,10 @@ const (
 type TableRow struct {
 	ID       string      `json:"id"`
 	Children []TableCell `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "table_row".
@@ -8037,25 +9300,29 @@ func (r *TableRow) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (TableRow) ImplCalloutChildUnion()   {}
-func (TableRow) ImplChunkChildUnion()     {}
-func (TableRow) ImplCompanyChildUnion()   {}
-func (TableRow) ImplDealChildUnion()      {}
-func (TableRow) ImplDocumentChildUnion()  {}
-func (TableRow) ImplEquationChildUnion()  {}
-func (TableRow) ImplEventChildUnion()     {}
-func (TableRow) ImplFileChildUnion()      {}
-func (TableRow) ImplFootnoteChildUnion()  {}
-func (TableRow) ImplHeadingChildUnion()   {}
-func (TableRow) ImplListItemChildUnion()  {}
-func (TableRow) ImplMessageChildUnion()   {}
-func (TableRow) ImplParagraphChildUnion() {}
-func (TableRow) ImplPersonChildUnion()    {}
-func (TableRow) ImplQuoteChildUnion()     {}
-func (TableRow) ImplTableCellChildUnion() {}
-func (TableRow) ImplTaskChildUnion()      {}
-func (TableRow) ImplToDoChildUnion()      {}
-func (TableRow) ImplWebsiteChildUnion()   {}
+func (TableRow) ImplCalloutChildUnion()                               {}
+func (TableRow) ImplChunkChildUnion()                                 {}
+func (TableRow) ImplCompanyChildUnion()                               {}
+func (TableRow) ImplDealChildUnion()                                  {}
+func (TableRow) ImplDocumentChildUnion()                              {}
+func (TableRow) ImplEquationChildUnion()                              {}
+func (TableRow) ImplEventChildUnion()                                 {}
+func (TableRow) ImplFileChildUnion()                                  {}
+func (TableRow) ImplFootnoteChildUnion()                              {}
+func (TableRow) ImplHeadingChildUnion()                               {}
+func (TableRow) ImplListItemChildUnion()                              {}
+func (TableRow) ImplMessageChildUnion()                               {}
+func (TableRow) ImplPageChildUnion()                                  {}
+func (TableRow) ImplParagraphChildUnion()                             {}
+func (TableRow) ImplPersonChildUnion()                                {}
+func (TableRow) ImplQuoteChildUnion()                                 {}
+func (TableRow) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (TableRow) ImplTableCellChildUnion()                             {}
+func (TableRow) ImplTaskChildUnion()                                  {}
+func (TableRow) ImplToDoChildUnion()                                  {}
+func (TableRow) ImplWebsiteChildUnion()                               {}
+func (TableRow) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (TableRow) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type TableRowType string
 
@@ -8068,15 +9335,10 @@ type Task struct {
 	Children []TaskChildUnion `json:"children"`
 	Comments []Message        `json:"comments" api:"nullable"`
 	DueAt    time.Time        `json:"due_at" api:"nullable" format:"date-time"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "urgent", "high", "medium", "low".
 	Priority TaskPriority `json:"priority" api:"nullable"`
@@ -8113,9 +9375,9 @@ func (Task) ImplMemoryGetResponseDocumentUnion()      {}
 
 // TaskChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [TaskChildUnion.AsAny] method to switch on the variant.
 //
@@ -8130,14 +9392,14 @@ type TaskChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children TaskChildUnionChildren `json:"children"`
 	Text     string                 `json:"text"`
 	// This field is from variant [Callout].
@@ -8154,6 +9416,10 @@ type TaskChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -8197,6 +9463,8 @@ type TaskChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -8239,6 +9507,7 @@ type anyTaskChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -8283,6 +9552,8 @@ func (u TaskChildUnion) AsAny() anyTaskChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -8375,6 +9646,11 @@ func (u TaskChildUnion) AsList() (v List) {
 }
 
 func (u TaskChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u TaskChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -8493,15 +9769,10 @@ type Text struct {
 	ID   string `json:"id"`
 	// Any of "bold", "italic", "underline", "strikethrough", "code", "math".
 	Marks []string `json:"marks" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "text".
 	Type TextType `json:"type"`
@@ -8523,25 +9794,29 @@ func (r *Text) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Text) ImplCalloutChildUnion()   {}
-func (Text) ImplChunkChildUnion()     {}
-func (Text) ImplCompanyChildUnion()   {}
-func (Text) ImplDealChildUnion()      {}
-func (Text) ImplDocumentChildUnion()  {}
-func (Text) ImplEquationChildUnion()  {}
-func (Text) ImplEventChildUnion()     {}
-func (Text) ImplFileChildUnion()      {}
-func (Text) ImplFootnoteChildUnion()  {}
-func (Text) ImplHeadingChildUnion()   {}
-func (Text) ImplListItemChildUnion()  {}
-func (Text) ImplMessageChildUnion()   {}
-func (Text) ImplParagraphChildUnion() {}
-func (Text) ImplPersonChildUnion()    {}
-func (Text) ImplQuoteChildUnion()     {}
-func (Text) ImplTableCellChildUnion() {}
-func (Text) ImplTaskChildUnion()      {}
-func (Text) ImplToDoChildUnion()      {}
-func (Text) ImplWebsiteChildUnion()   {}
+func (Text) ImplCalloutChildUnion()                               {}
+func (Text) ImplChunkChildUnion()                                 {}
+func (Text) ImplCompanyChildUnion()                               {}
+func (Text) ImplDealChildUnion()                                  {}
+func (Text) ImplDocumentChildUnion()                              {}
+func (Text) ImplEquationChildUnion()                              {}
+func (Text) ImplEventChildUnion()                                 {}
+func (Text) ImplFileChildUnion()                                  {}
+func (Text) ImplFootnoteChildUnion()                              {}
+func (Text) ImplHeadingChildUnion()                               {}
+func (Text) ImplListItemChildUnion()                              {}
+func (Text) ImplMessageChildUnion()                               {}
+func (Text) ImplPageChildUnion()                                  {}
+func (Text) ImplParagraphChildUnion()                             {}
+func (Text) ImplPersonChildUnion()                                {}
+func (Text) ImplQuoteChildUnion()                                 {}
+func (Text) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Text) ImplTableCellChildUnion()                             {}
+func (Text) ImplTaskChildUnion()                                  {}
+func (Text) ImplToDoChildUnion()                                  {}
+func (Text) ImplWebsiteChildUnion()                               {}
+func (Text) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Text) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type TextType string
 
@@ -8553,15 +9828,10 @@ type ToDo struct {
 	ID       string           `json:"id"`
 	Checked  bool             `json:"checked"`
 	Children []ToDoChildUnion `json:"children" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	// Any of "todo".
@@ -8585,31 +9855,36 @@ func (r *ToDo) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ToDo) ImplCalloutChildUnion()   {}
-func (ToDo) ImplChunkChildUnion()     {}
-func (ToDo) ImplCompanyChildUnion()   {}
-func (ToDo) ImplDealChildUnion()      {}
-func (ToDo) ImplDocumentChildUnion()  {}
-func (ToDo) ImplEquationChildUnion()  {}
-func (ToDo) ImplEventChildUnion()     {}
-func (ToDo) ImplFileChildUnion()      {}
-func (ToDo) ImplFootnoteChildUnion()  {}
-func (ToDo) ImplHeadingChildUnion()   {}
-func (ToDo) ImplListItemChildUnion()  {}
-func (ToDo) ImplMessageChildUnion()   {}
-func (ToDo) ImplParagraphChildUnion() {}
-func (ToDo) ImplPersonChildUnion()    {}
-func (ToDo) ImplQuoteChildUnion()     {}
-func (ToDo) ImplTableCellChildUnion() {}
-func (ToDo) ImplTaskChildUnion()      {}
-func (ToDo) ImplToDoChildUnion()      {}
-func (ToDo) ImplWebsiteChildUnion()   {}
+func (ToDo) ImplCalloutChildUnion()                               {}
+func (ToDo) ImplChunkChildUnion()                                 {}
+func (ToDo) ImplCompanyChildUnion()                               {}
+func (ToDo) ImplDealChildUnion()                                  {}
+func (ToDo) ImplDocumentChildUnion()                              {}
+func (ToDo) ImplEquationChildUnion()                              {}
+func (ToDo) ImplEventChildUnion()                                 {}
+func (ToDo) ImplFileChildUnion()                                  {}
+func (ToDo) ImplFootnoteChildUnion()                              {}
+func (ToDo) ImplHeadingChildUnion()                               {}
+func (ToDo) ImplListChildUnion()                                  {}
+func (ToDo) ImplListItemChildUnion()                              {}
+func (ToDo) ImplMessageChildUnion()                               {}
+func (ToDo) ImplPageChildUnion()                                  {}
+func (ToDo) ImplParagraphChildUnion()                             {}
+func (ToDo) ImplPersonChildUnion()                                {}
+func (ToDo) ImplQuoteChildUnion()                                 {}
+func (ToDo) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (ToDo) ImplTableCellChildUnion()                             {}
+func (ToDo) ImplTaskChildUnion()                                  {}
+func (ToDo) ImplToDoChildUnion()                                  {}
+func (ToDo) ImplWebsiteChildUnion()                               {}
+func (ToDo) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (ToDo) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // ToDoChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [ToDoChildUnion.AsAny] method to switch on the variant.
 //
@@ -8624,14 +9899,14 @@ type ToDoChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children ToDoChildUnionChildren `json:"children"`
 	Text     string                 `json:"text"`
 	// This field is from variant [Callout].
@@ -8648,6 +9923,10 @@ type ToDoChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -8691,6 +9970,8 @@ type ToDoChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -8733,6 +10014,7 @@ type anyToDoChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -8777,6 +10059,8 @@ func (u ToDoChildUnion) AsAny() anyToDoChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -8869,6 +10153,11 @@ func (u ToDoChildUnion) AsList() (v List) {
 }
 
 func (u ToDoChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u ToDoChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }
@@ -8970,15 +10259,10 @@ type ToolCall struct {
 	ToolName   string         `json:"tool_name" api:"required"`
 	ID         string         `json:"id"`
 	Args       map[string]any `json:"args"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "tool_call".
 	Type ToolCallType `json:"type"`
@@ -9001,26 +10285,30 @@ func (r *ToolCall) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ToolCall) ImplCalloutChildUnion()   {}
-func (ToolCall) ImplChunkChildUnion()     {}
-func (ToolCall) ImplCompanyChildUnion()   {}
-func (ToolCall) ImplDealChildUnion()      {}
-func (ToolCall) ImplDocumentChildUnion()  {}
-func (ToolCall) ImplEquationChildUnion()  {}
-func (ToolCall) ImplEventChildUnion()     {}
-func (ToolCall) ImplFileChildUnion()      {}
-func (ToolCall) ImplFootnoteChildUnion()  {}
-func (ToolCall) ImplHeadingChildUnion()   {}
-func (ToolCall) ImplListItemChildUnion()  {}
-func (ToolCall) ImplMessageChildUnion()   {}
-func (ToolCall) ImplParagraphChildUnion() {}
-func (ToolCall) ImplPersonChildUnion()    {}
-func (ToolCall) ImplQuoteChildUnion()     {}
-func (ToolCall) ImplTableCellChildUnion() {}
-func (ToolCall) ImplTaskChildUnion()      {}
-func (ToolCall) ImplToDoChildUnion()      {}
-func (ToolCall) ImplTraceChildUnion()     {}
-func (ToolCall) ImplWebsiteChildUnion()   {}
+func (ToolCall) ImplCalloutChildUnion()                               {}
+func (ToolCall) ImplChunkChildUnion()                                 {}
+func (ToolCall) ImplCompanyChildUnion()                               {}
+func (ToolCall) ImplDealChildUnion()                                  {}
+func (ToolCall) ImplDocumentChildUnion()                              {}
+func (ToolCall) ImplEquationChildUnion()                              {}
+func (ToolCall) ImplEventChildUnion()                                 {}
+func (ToolCall) ImplFileChildUnion()                                  {}
+func (ToolCall) ImplFootnoteChildUnion()                              {}
+func (ToolCall) ImplHeadingChildUnion()                               {}
+func (ToolCall) ImplListItemChildUnion()                              {}
+func (ToolCall) ImplMessageChildUnion()                               {}
+func (ToolCall) ImplPageChildUnion()                                  {}
+func (ToolCall) ImplParagraphChildUnion()                             {}
+func (ToolCall) ImplPersonChildUnion()                                {}
+func (ToolCall) ImplQuoteChildUnion()                                 {}
+func (ToolCall) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (ToolCall) ImplTableCellChildUnion()                             {}
+func (ToolCall) ImplTaskChildUnion()                                  {}
+func (ToolCall) ImplToDoChildUnion()                                  {}
+func (ToolCall) ImplTraceChildUnion()                                 {}
+func (ToolCall) ImplWebsiteChildUnion()                               {}
+func (ToolCall) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (ToolCall) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type ToolCallType string
 
@@ -9035,15 +10323,10 @@ type ToolResult struct {
 	ToolName   string                `json:"tool_name" api:"required"`
 	ID         string                `json:"id"`
 	IsError    bool                  `json:"is_error"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "tool_result".
 	Type ToolResultType `json:"type"`
@@ -9067,26 +10350,30 @@ func (r *ToolResult) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ToolResult) ImplCalloutChildUnion()   {}
-func (ToolResult) ImplChunkChildUnion()     {}
-func (ToolResult) ImplCompanyChildUnion()   {}
-func (ToolResult) ImplDealChildUnion()      {}
-func (ToolResult) ImplDocumentChildUnion()  {}
-func (ToolResult) ImplEquationChildUnion()  {}
-func (ToolResult) ImplEventChildUnion()     {}
-func (ToolResult) ImplFileChildUnion()      {}
-func (ToolResult) ImplFootnoteChildUnion()  {}
-func (ToolResult) ImplHeadingChildUnion()   {}
-func (ToolResult) ImplListItemChildUnion()  {}
-func (ToolResult) ImplMessageChildUnion()   {}
-func (ToolResult) ImplParagraphChildUnion() {}
-func (ToolResult) ImplPersonChildUnion()    {}
-func (ToolResult) ImplQuoteChildUnion()     {}
-func (ToolResult) ImplTableCellChildUnion() {}
-func (ToolResult) ImplTaskChildUnion()      {}
-func (ToolResult) ImplToDoChildUnion()      {}
-func (ToolResult) ImplTraceChildUnion()     {}
-func (ToolResult) ImplWebsiteChildUnion()   {}
+func (ToolResult) ImplCalloutChildUnion()                               {}
+func (ToolResult) ImplChunkChildUnion()                                 {}
+func (ToolResult) ImplCompanyChildUnion()                               {}
+func (ToolResult) ImplDealChildUnion()                                  {}
+func (ToolResult) ImplDocumentChildUnion()                              {}
+func (ToolResult) ImplEquationChildUnion()                              {}
+func (ToolResult) ImplEventChildUnion()                                 {}
+func (ToolResult) ImplFileChildUnion()                                  {}
+func (ToolResult) ImplFootnoteChildUnion()                              {}
+func (ToolResult) ImplHeadingChildUnion()                               {}
+func (ToolResult) ImplListItemChildUnion()                              {}
+func (ToolResult) ImplMessageChildUnion()                               {}
+func (ToolResult) ImplPageChildUnion()                                  {}
+func (ToolResult) ImplParagraphChildUnion()                             {}
+func (ToolResult) ImplPersonChildUnion()                                {}
+func (ToolResult) ImplQuoteChildUnion()                                 {}
+func (ToolResult) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (ToolResult) ImplTableCellChildUnion()                             {}
+func (ToolResult) ImplTaskChildUnion()                                  {}
+func (ToolResult) ImplToDoChildUnion()                                  {}
+func (ToolResult) ImplTraceChildUnion()                                 {}
+func (ToolResult) ImplWebsiteChildUnion()                               {}
+func (ToolResult) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (ToolResult) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 // ToolResultOutputUnion contains all possible properties and values from [string],
 // [map[string]any], [[]any].
@@ -9145,15 +10432,10 @@ const (
 type Trace struct {
 	ID       string            `json:"id"`
 	Children []TraceChildUnion `json:"children"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	Title    string   `json:"title" api:"nullable"`
@@ -9288,15 +10570,10 @@ type TraceMessage struct {
 	ID   string `json:"id"`
 	// Any of "message", "thinking".
 	MessageType TraceMessageMessageType `json:"message_type"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	// Any of "user", "assistant".
 	Role      TraceMessageRole `json:"role"`
@@ -9323,26 +10600,30 @@ func (r *TraceMessage) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (TraceMessage) ImplCalloutChildUnion()   {}
-func (TraceMessage) ImplChunkChildUnion()     {}
-func (TraceMessage) ImplCompanyChildUnion()   {}
-func (TraceMessage) ImplDealChildUnion()      {}
-func (TraceMessage) ImplDocumentChildUnion()  {}
-func (TraceMessage) ImplEquationChildUnion()  {}
-func (TraceMessage) ImplEventChildUnion()     {}
-func (TraceMessage) ImplFileChildUnion()      {}
-func (TraceMessage) ImplFootnoteChildUnion()  {}
-func (TraceMessage) ImplHeadingChildUnion()   {}
-func (TraceMessage) ImplListItemChildUnion()  {}
-func (TraceMessage) ImplMessageChildUnion()   {}
-func (TraceMessage) ImplParagraphChildUnion() {}
-func (TraceMessage) ImplPersonChildUnion()    {}
-func (TraceMessage) ImplQuoteChildUnion()     {}
-func (TraceMessage) ImplTableCellChildUnion() {}
-func (TraceMessage) ImplTaskChildUnion()      {}
-func (TraceMessage) ImplToDoChildUnion()      {}
-func (TraceMessage) ImplTraceChildUnion()     {}
-func (TraceMessage) ImplWebsiteChildUnion()   {}
+func (TraceMessage) ImplCalloutChildUnion()                               {}
+func (TraceMessage) ImplChunkChildUnion()                                 {}
+func (TraceMessage) ImplCompanyChildUnion()                               {}
+func (TraceMessage) ImplDealChildUnion()                                  {}
+func (TraceMessage) ImplDocumentChildUnion()                              {}
+func (TraceMessage) ImplEquationChildUnion()                              {}
+func (TraceMessage) ImplEventChildUnion()                                 {}
+func (TraceMessage) ImplFileChildUnion()                                  {}
+func (TraceMessage) ImplFootnoteChildUnion()                              {}
+func (TraceMessage) ImplHeadingChildUnion()                               {}
+func (TraceMessage) ImplListItemChildUnion()                              {}
+func (TraceMessage) ImplMessageChildUnion()                               {}
+func (TraceMessage) ImplPageChildUnion()                                  {}
+func (TraceMessage) ImplParagraphChildUnion()                             {}
+func (TraceMessage) ImplPersonChildUnion()                                {}
+func (TraceMessage) ImplQuoteChildUnion()                                 {}
+func (TraceMessage) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (TraceMessage) ImplTableCellChildUnion()                             {}
+func (TraceMessage) ImplTaskChildUnion()                                  {}
+func (TraceMessage) ImplToDoChildUnion()                                  {}
+func (TraceMessage) ImplTraceChildUnion()                                 {}
+func (TraceMessage) ImplWebsiteChildUnion()                               {}
+func (TraceMessage) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (TraceMessage) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type TraceMessageMessageType string
 
@@ -9364,8 +10645,7 @@ const (
 	TraceMessageTypeTraceMessage TraceMessageType = "trace_message"
 )
 
-// A time-anchored, speaker-attributed transcript — meetings, calls (ENG-2476/D10;
-// mirrors the Trace+TraceStep precedent).
+// A time-anchored, speaker-attributed transcript for a meeting or call.
 //
 // Utterance timestamps are relative offsets from `started_at`, which is the
 // absolute wall-clock anchor.
@@ -9373,15 +10653,10 @@ type Transcript struct {
 	ID       string      `json:"id"`
 	Children []Utterance `json:"children"`
 	EndedAt  time.Time   `json:"ended_at" api:"nullable" format:"date-time"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata     Metadata  `json:"metadata" api:"nullable"`
 	Participants []Person  `json:"participants"`
 	StartedAt    time.Time `json:"started_at" api:"nullable" format:"date-time"`
@@ -9421,24 +10696,17 @@ const (
 	TranscriptTypeTranscript TranscriptType = "transcript"
 )
 
-// A speaker-attributed segment of a transcript (ENG-2476/D10).
+// A speaker-attributed segment of a transcript.
 //
-// "Utterance" is the standard name for this across transcription providers
-// (AssemblyAI, Deepgram, Rev). Timestamps are relative offsets in seconds —
-// provider-native; absolute times derive from `Transcript.started_at`.
+// Start and end times are offsets in seconds from the beginning of the transcript.
 type Utterance struct {
 	Text string  `json:"text" api:"required"`
 	ID   string  `json:"id"`
 	End  float64 `json:"end" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Speaker  *Person  `json:"speaker" api:"nullable"`
 	Start    float64  `json:"start" api:"nullable"`
@@ -9464,25 +10732,29 @@ func (r *Utterance) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Utterance) ImplCalloutChildUnion()   {}
-func (Utterance) ImplChunkChildUnion()     {}
-func (Utterance) ImplCompanyChildUnion()   {}
-func (Utterance) ImplDealChildUnion()      {}
-func (Utterance) ImplDocumentChildUnion()  {}
-func (Utterance) ImplEquationChildUnion()  {}
-func (Utterance) ImplEventChildUnion()     {}
-func (Utterance) ImplFileChildUnion()      {}
-func (Utterance) ImplFootnoteChildUnion()  {}
-func (Utterance) ImplHeadingChildUnion()   {}
-func (Utterance) ImplListItemChildUnion()  {}
-func (Utterance) ImplMessageChildUnion()   {}
-func (Utterance) ImplParagraphChildUnion() {}
-func (Utterance) ImplPersonChildUnion()    {}
-func (Utterance) ImplQuoteChildUnion()     {}
-func (Utterance) ImplTableCellChildUnion() {}
-func (Utterance) ImplTaskChildUnion()      {}
-func (Utterance) ImplToDoChildUnion()      {}
-func (Utterance) ImplWebsiteChildUnion()   {}
+func (Utterance) ImplCalloutChildUnion()                               {}
+func (Utterance) ImplChunkChildUnion()                                 {}
+func (Utterance) ImplCompanyChildUnion()                               {}
+func (Utterance) ImplDealChildUnion()                                  {}
+func (Utterance) ImplDocumentChildUnion()                              {}
+func (Utterance) ImplEquationChildUnion()                              {}
+func (Utterance) ImplEventChildUnion()                                 {}
+func (Utterance) ImplFileChildUnion()                                  {}
+func (Utterance) ImplFootnoteChildUnion()                              {}
+func (Utterance) ImplHeadingChildUnion()                               {}
+func (Utterance) ImplListItemChildUnion()                              {}
+func (Utterance) ImplMessageChildUnion()                               {}
+func (Utterance) ImplPageChildUnion()                                  {}
+func (Utterance) ImplParagraphChildUnion()                             {}
+func (Utterance) ImplPersonChildUnion()                                {}
+func (Utterance) ImplQuoteChildUnion()                                 {}
+func (Utterance) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
+func (Utterance) ImplTableCellChildUnion()                             {}
+func (Utterance) ImplTaskChildUnion()                                  {}
+func (Utterance) ImplToDoChildUnion()                                  {}
+func (Utterance) ImplWebsiteChildUnion()                               {}
+func (Utterance) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
+func (Utterance) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
 
 type UtteranceType string
 
@@ -9498,15 +10770,10 @@ type Website struct {
 	Favicon     string              `json:"favicon" api:"nullable"`
 	ImageURL    string              `json:"image_url" api:"nullable"`
 	Language    string              `json:"language" api:"nullable"`
-	// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+	// Optional annotations carried by a hyperdoc node.
 	//
-	// Out-of-band annotations that travel with a block but aren't part of its content:
-	// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-	// types get added here as typed fields as the need arises.
-	//
-	// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-	// `metadata` (None) is dropped from serialization entirely, and within a populated
-	// `Metadata` only the set keys survive.
+	// Includes source provenance and human edit attribution. Unset metadata is omitted
+	// from serialized responses.
 	Metadata Metadata `json:"metadata" api:"nullable"`
 	Text     string   `json:"text" api:"nullable"`
 	Title    string   `json:"title" api:"nullable"`
@@ -9542,9 +10809,9 @@ func (Website) ImplMemoryGetResponseDocumentUnion()      {}
 
 // WebsiteChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
-// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Paragraph],
-// [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo], [ToolCall],
-// [ToolResult], [TraceMessage], [Utterance].
+// [Heading], [Image], [Link], [LineBreak], [List], [ListItem], [Page],
+// [Paragraph], [Quote], [Table], [TableCell], [TableRow], [Text], [ToDo],
+// [ToolCall], [ToolResult], [TraceMessage], [Utterance].
 //
 // Use the [WebsiteChildUnion.AsAny] method to switch on the variant.
 //
@@ -9559,14 +10826,14 @@ type WebsiteChildUnion struct {
 	Metadata Metadata `json:"metadata"`
 	// Any of "blob", "callout", "chunk", "code", "comment", "divider", "equation",
 	// "footnote", "heading", "image", "link", "line_break", "list", "list_item",
-	// "paragraph", "quote", "table", "table_cell", "table_row", "text", "todo",
-	// "tool_call", "tool_result", "trace_message", "utterance".
+	// "page", "paragraph", "quote", "table", "table_cell", "table_row", "text",
+	// "todo", "tool_call", "tool_result", "trace_message", "utterance".
 	Type string `json:"type"`
 	// This field is a union of [[]CalloutChildUnion], [[]ChunkChildUnion],
 	// [[]EquationChildUnion], [[]FootnoteChildUnion], [[]HeadingChildUnion],
-	// [[]ListChildUnion], [[]ListItemChildUnion], [[]ParagraphChildUnion],
-	// [[]QuoteChildUnion], [[]TableRow], [[]TableCellChildUnion], [[]TableCell],
-	// [[]ToDoChildUnion]
+	// [[]ListChildUnion], [[]ListItemChildUnion], [[]PageChildUnion],
+	// [[]ParagraphChildUnion], [[]QuoteChildUnion], [[]TableRow],
+	// [[]TableCellChildUnion], [[]TableCell], [[]ToDoChildUnion]
 	Children WebsiteChildUnionChildren `json:"children"`
 	Text     string                    `json:"text"`
 	// This field is from variant [Callout].
@@ -9583,6 +10850,10 @@ type WebsiteChildUnion struct {
 	URL string `json:"url"`
 	// This field is from variant [List].
 	Ordered bool `json:"ordered"`
+	// This field is from variant [Page].
+	PageNumber int64 `json:"page_number"`
+	// This field is from variant [Page].
+	PreviewURL string `json:"preview_url"`
 	// This field is from variant [Table].
 	HasHeader bool `json:"has_header"`
 	// This field is from variant [TableCell].
@@ -9626,6 +10897,8 @@ type WebsiteChildUnion struct {
 		Src         respjson.Field
 		URL         respjson.Field
 		Ordered     respjson.Field
+		PageNumber  respjson.Field
+		PreviewURL  respjson.Field
 		HasHeader   respjson.Field
 		Align       respjson.Field
 		Marks       respjson.Field
@@ -9668,6 +10941,7 @@ type anyWebsiteChild interface {
 //	case shared.LineBreak:
 //	case shared.List:
 //	case shared.ListItem:
+//	case shared.Page:
 //	case shared.Paragraph:
 //	case shared.Quote:
 //	case shared.Table:
@@ -9712,6 +10986,8 @@ func (u WebsiteChildUnion) AsAny() anyWebsiteChild {
 		return u.AsList()
 	case "list_item":
 		return u.AsListItem()
+	case "page":
+		return u.AsPage()
 	case "paragraph":
 		return u.AsParagraph()
 	case "quote":
@@ -9804,6 +11080,11 @@ func (u WebsiteChildUnion) AsList() (v List) {
 }
 
 func (u WebsiteChildUnion) AsListItem() (v ListItem) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u WebsiteChildUnion) AsPage() (v Page) {
 	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
 	return
 }

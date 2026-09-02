@@ -54,8 +54,8 @@ func (r *EvaluateService) GetQuery(ctx context.Context, queryID string, opts ...
 
 // Paginate through all prior queries for the app, newest first.
 //
-// User tokens only see their own queries; admin tokens see every query in the app
-// and can narrow to a single user with the `user_id` filter.
+// Requests scoped to a user only see that user's queries. App-wide requests see
+// every query in the app and can filter by `user_id`.
 func (r *EvaluateService) ListQueries(ctx context.Context, query EvaluateListQueriesParams, opts ...option.RequestOption) (res *pagination.CursorPage[EvaluateListQueriesResponse], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.options, opts)
@@ -75,8 +75,8 @@ func (r *EvaluateService) ListQueries(ctx context.Context, query EvaluateListQue
 
 // Paginate through all prior queries for the app, newest first.
 //
-// User tokens only see their own queries; admin tokens see every query in the app
-// and can narrow to a single user with the `user_id` filter.
+// Requests scoped to a user only see that user's queries. App-wide requests see
+// every query in the app and can filter by `user_id`.
 func (r *EvaluateService) ListQueriesAutoPaging(ctx context.Context, query EvaluateListQueriesParams, opts ...option.RequestOption) *pagination.CursorPageAutoPager[EvaluateListQueriesResponse] {
 	return pagination.NewCursorPageAutoPager(r.ListQueries(ctx, query, opts...))
 }

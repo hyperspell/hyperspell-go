@@ -12,6 +12,7 @@ import (
 	"github.com/hyperspell/hyperspell-go/option"
 	"github.com/hyperspell/hyperspell-go/packages/param"
 	"github.com/hyperspell/hyperspell-go/packages/respjson"
+	"github.com/hyperspell/hyperspell-go/shared/constant"
 )
 
 // ActionService contains methods and other services that help with interacting
@@ -96,17 +97,14 @@ type ActionAddReactionParams struct {
 	Channel string `json:"channel" api:"required"`
 	// Emoji name without colons (e.g., thumbsup)
 	Name string `json:"name" api:"required"`
-	// Integration provider (e.g., slack)
-	//
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
-	Provider ActionAddReactionParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message timestamp to react to
 	Timestamp string `json:"timestamp" api:"required"`
 	// Connection ID. If omitted, auto-resolved from provider + user.
 	Connection param.Opt[string] `json:"connection,omitzero"`
+	// Integration provider.
+	//
+	// This field can be elided, and will marshal its zero value as "slack".
+	Provider constant.Slack `json:"provider" default:"slack"`
 	paramObj
 }
 
@@ -118,43 +116,7 @@ func (r *ActionAddReactionParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// Integration provider (e.g., slack)
-type ActionAddReactionParamsProvider string
-
-const (
-	ActionAddReactionParamsProviderReddit         ActionAddReactionParamsProvider = "reddit"
-	ActionAddReactionParamsProviderNotion         ActionAddReactionParamsProvider = "notion"
-	ActionAddReactionParamsProviderSlack          ActionAddReactionParamsProvider = "slack"
-	ActionAddReactionParamsProviderGoogleCalendar ActionAddReactionParamsProvider = "google_calendar"
-	ActionAddReactionParamsProviderGoogleMail     ActionAddReactionParamsProvider = "google_mail"
-	ActionAddReactionParamsProviderBox            ActionAddReactionParamsProvider = "box"
-	ActionAddReactionParamsProviderDropbox        ActionAddReactionParamsProvider = "dropbox"
-	ActionAddReactionParamsProviderGitHub         ActionAddReactionParamsProvider = "github"
-	ActionAddReactionParamsProviderGoogleDrive    ActionAddReactionParamsProvider = "google_drive"
-	ActionAddReactionParamsProviderVault          ActionAddReactionParamsProvider = "vault"
-	ActionAddReactionParamsProviderWebCrawler     ActionAddReactionParamsProvider = "web_crawler"
-	ActionAddReactionParamsProviderTrace          ActionAddReactionParamsProvider = "trace"
-	ActionAddReactionParamsProviderMicrosoftTeams ActionAddReactionParamsProvider = "microsoft_teams"
-	ActionAddReactionParamsProviderGmailActions   ActionAddReactionParamsProvider = "gmail_actions"
-	ActionAddReactionParamsProviderGranola        ActionAddReactionParamsProvider = "granola"
-	ActionAddReactionParamsProviderFathom         ActionAddReactionParamsProvider = "fathom"
-	ActionAddReactionParamsProviderFireflies      ActionAddReactionParamsProvider = "fireflies"
-	ActionAddReactionParamsProviderLinear         ActionAddReactionParamsProvider = "linear"
-	ActionAddReactionParamsProviderHubspot        ActionAddReactionParamsProvider = "hubspot"
-	ActionAddReactionParamsProviderSalesforce     ActionAddReactionParamsProvider = "salesforce"
-	ActionAddReactionParamsProviderCoda           ActionAddReactionParamsProvider = "coda"
-	ActionAddReactionParamsProviderLightfield     ActionAddReactionParamsProvider = "lightfield"
-	ActionAddReactionParamsProviderGong           ActionAddReactionParamsProvider = "gong"
-)
-
 type ActionSendMessageParams struct {
-	// Integration provider (e.g., slack)
-	//
-	// Any of "reddit", "notion", "slack", "google_calendar", "google_mail", "box",
-	// "dropbox", "github", "google_drive", "vault", "web_crawler", "trace",
-	// "microsoft_teams", "gmail_actions", "granola", "fathom", "fireflies", "linear",
-	// "hubspot", "salesforce", "coda", "lightfield", "gong".
-	Provider ActionSendMessageParamsProvider `json:"provider,omitzero" api:"required"`
 	// Message text
 	Text string `json:"text" api:"required"`
 	// Channel ID (required for Slack)
@@ -163,6 +125,10 @@ type ActionSendMessageParams struct {
 	Connection param.Opt[string] `json:"connection,omitzero"`
 	// Parent message ID for threading (thread_ts for Slack)
 	Parent param.Opt[string] `json:"parent,omitzero"`
+	// Integration provider.
+	//
+	// This field can be elided, and will marshal its zero value as "slack".
+	Provider constant.Slack `json:"provider" default:"slack"`
 	paramObj
 }
 
@@ -173,32 +139,3 @@ func (r ActionSendMessageParams) MarshalJSON() (data []byte, err error) {
 func (r *ActionSendMessageParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
-
-// Integration provider (e.g., slack)
-type ActionSendMessageParamsProvider string
-
-const (
-	ActionSendMessageParamsProviderReddit         ActionSendMessageParamsProvider = "reddit"
-	ActionSendMessageParamsProviderNotion         ActionSendMessageParamsProvider = "notion"
-	ActionSendMessageParamsProviderSlack          ActionSendMessageParamsProvider = "slack"
-	ActionSendMessageParamsProviderGoogleCalendar ActionSendMessageParamsProvider = "google_calendar"
-	ActionSendMessageParamsProviderGoogleMail     ActionSendMessageParamsProvider = "google_mail"
-	ActionSendMessageParamsProviderBox            ActionSendMessageParamsProvider = "box"
-	ActionSendMessageParamsProviderDropbox        ActionSendMessageParamsProvider = "dropbox"
-	ActionSendMessageParamsProviderGitHub         ActionSendMessageParamsProvider = "github"
-	ActionSendMessageParamsProviderGoogleDrive    ActionSendMessageParamsProvider = "google_drive"
-	ActionSendMessageParamsProviderVault          ActionSendMessageParamsProvider = "vault"
-	ActionSendMessageParamsProviderWebCrawler     ActionSendMessageParamsProvider = "web_crawler"
-	ActionSendMessageParamsProviderTrace          ActionSendMessageParamsProvider = "trace"
-	ActionSendMessageParamsProviderMicrosoftTeams ActionSendMessageParamsProvider = "microsoft_teams"
-	ActionSendMessageParamsProviderGmailActions   ActionSendMessageParamsProvider = "gmail_actions"
-	ActionSendMessageParamsProviderGranola        ActionSendMessageParamsProvider = "granola"
-	ActionSendMessageParamsProviderFathom         ActionSendMessageParamsProvider = "fathom"
-	ActionSendMessageParamsProviderFireflies      ActionSendMessageParamsProvider = "fireflies"
-	ActionSendMessageParamsProviderLinear         ActionSendMessageParamsProvider = "linear"
-	ActionSendMessageParamsProviderHubspot        ActionSendMessageParamsProvider = "hubspot"
-	ActionSendMessageParamsProviderSalesforce     ActionSendMessageParamsProvider = "salesforce"
-	ActionSendMessageParamsProviderCoda           ActionSendMessageParamsProvider = "coda"
-	ActionSendMessageParamsProviderLightfield     ActionSendMessageParamsProvider = "lightfield"
-	ActionSendMessageParamsProviderGong           ActionSendMessageParamsProvider = "gong"
-)

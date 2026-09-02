@@ -82,7 +82,7 @@ type CommentType = shared.CommentType
 // Equals "comment"
 const CommentTypeComment = shared.CommentTypeComment
 
-// A CRM company/account record (ENG-2476/D10).
+// A CRM company or account record.
 //
 // This is an alias to an internal type.
 type Company = shared.Company
@@ -110,7 +110,7 @@ type ConversationType = shared.ConversationType
 // Equals "conversation"
 const ConversationTypeConversation = shared.ConversationTypeConversation
 
-// A CRM deal/opportunity record (ENG-2476/D10).
+// A CRM deal or opportunity record.
 //
 // This is an alias to an internal type.
 type Deal = shared.Deal
@@ -313,30 +313,38 @@ type MessageType = shared.MessageType
 // Equals "message"
 const MessageTypeMessage = shared.MessageTypeMessage
 
-// Per-block annotations carried by any Hyperdoc node (ENG-1390).
+// Optional annotations carried by a hyperdoc node.
 //
-// Out-of-band annotations that travel with a block but aren't part of its content:
-// provenance (`sources`) and human edit attribution (`edited_by`). New annotation
-// types get added here as typed fields as the need arises.
-//
-// Empty by default. Because `Node.model_dump` forces `exclude_none=True`, an unset
-// `metadata` (None) is dropped from serialization entirely, and within a populated
-// `Metadata` only the set keys survive.
+// Includes source provenance and human edit attribution. Unset metadata is omitted
+// from serialized responses.
 //
 // This is an alias to an internal type.
 type Metadata = shared.Metadata
 
-// A reference to a memory/chunk that a block's content is grounded in (ENG-1390).
+// A reference to source content that supports a block.
 //
-// Chunks are the unit persisted to the DB — extracted memories become chunks when
-// indexed — so `chunk_id` is the stable pointer back to the source. `resource_id`
-// and `source` locate the originating document; `score` carries optional retrieval
-// relevance. Kept deliberately self-contained (plain `str` for `source` rather
-// than the `DocumentProviders` enum) so the hyperdoc format stays free of
-// app-layer imports.
+// `chunk_id` identifies the supporting content. `resource_id` and `source`
+// identify its document, and `score` optionally records relevance.
 //
 // This is an alias to an internal type.
 type MetadataSource = shared.MetadataSource
+
+// This is an alias to an internal type.
+type Page = shared.Page
+
+// Represents embedded binary data using data URI scheme.
+//
+// Format: data:[<media type>][;base64],<data> Example:
+// data:text/html;base64,PGh0bWw+...
+//
+// This is an alias to an internal type.
+type PageChildUnion = shared.PageChildUnion
+
+// This is an alias to an internal type.
+type PageType = shared.PageType
+
+// Equals "page"
+const PageTypePage = shared.PageTypePage
 
 // This is an alias to an internal type.
 type Paragraph = shared.Paragraph
@@ -372,11 +380,7 @@ type PersonType = shared.PersonType
 // Equals "person"
 const PersonTypePerson = shared.PersonTypePerson
 
-// Auditability record attached to an agentic answer.
-//
-// Gated behind `provenance=true` on the request: the cheap parts (sources, steps,
-// failed_sources) are derived from in-memory loop state, but `entities` costs one
-// indexed DB lookup, so the whole record is only built on request.
+// Auditability record returned when requested for a supported query.
 //
 // This is an alias to an internal type.
 type Provenance = shared.Provenance
@@ -386,7 +390,9 @@ type Provenance = shared.Provenance
 // This is an alias to an internal type.
 type ProvenanceEntity = shared.ProvenanceEntity
 
-// A source document that informed the final answer (the post-rank result set).
+// A source document that informed the final answer.
+//
+// Includes available retrieval details such as title and relevance score.
 //
 // This is an alias to an internal type.
 type ProvenanceSource = shared.ProvenanceSource
@@ -409,6 +415,12 @@ const ProvenanceSourceSourceGoogleCalendar = shared.ProvenanceSourceSourceGoogle
 // Equals "google_mail"
 const ProvenanceSourceSourceGoogleMail = shared.ProvenanceSourceSourceGoogleMail
 
+// Equals "imap"
+const ProvenanceSourceSourceImap = shared.ProvenanceSourceSourceImap
+
+// Equals "google_meet"
+const ProvenanceSourceSourceGoogleMeet = shared.ProvenanceSourceSourceGoogleMeet
+
 // Equals "box"
 const ProvenanceSourceSourceBox = shared.ProvenanceSourceSourceBox
 
@@ -417,6 +429,9 @@ const ProvenanceSourceSourceDropbox = shared.ProvenanceSourceSourceDropbox
 
 // Equals "github"
 const ProvenanceSourceSourceGitHub = shared.ProvenanceSourceSourceGitHub
+
+// Equals "gitlab"
+const ProvenanceSourceSourceGitlab = shared.ProvenanceSourceSourceGitlab
 
 // Equals "google_drive"
 const ProvenanceSourceSourceGoogleDrive = shared.ProvenanceSourceSourceGoogleDrive
@@ -430,11 +445,11 @@ const ProvenanceSourceSourceWebCrawler = shared.ProvenanceSourceSourceWebCrawler
 // Equals "trace"
 const ProvenanceSourceSourceTrace = shared.ProvenanceSourceSourceTrace
 
+// Equals "microsoft_outlook"
+const ProvenanceSourceSourceMicrosoftOutlook = shared.ProvenanceSourceSourceMicrosoftOutlook
+
 // Equals "microsoft_teams"
 const ProvenanceSourceSourceMicrosoftTeams = shared.ProvenanceSourceSourceMicrosoftTeams
-
-// Equals "gmail_actions"
-const ProvenanceSourceSourceGmailActions = shared.ProvenanceSourceSourceGmailActions
 
 // Equals "granola"
 const ProvenanceSourceSourceGranola = shared.ProvenanceSourceSourceGranola
@@ -444,6 +459,9 @@ const ProvenanceSourceSourceFathom = shared.ProvenanceSourceSourceFathom
 
 // Equals "fireflies"
 const ProvenanceSourceSourceFireflies = shared.ProvenanceSourceSourceFireflies
+
+// Equals "figma"
+const ProvenanceSourceSourceFigma = shared.ProvenanceSourceSourceFigma
 
 // Equals "linear"
 const ProvenanceSourceSourceLinear = shared.ProvenanceSourceSourceLinear
@@ -457,11 +475,35 @@ const ProvenanceSourceSourceSalesforce = shared.ProvenanceSourceSourceSalesforce
 // Equals "coda"
 const ProvenanceSourceSourceCoda = shared.ProvenanceSourceSourceCoda
 
-// Equals "lightfield"
-const ProvenanceSourceSourceLightfield = shared.ProvenanceSourceSourceLightfield
+// Equals "confluence"
+const ProvenanceSourceSourceConfluence = shared.ProvenanceSourceSourceConfluence
+
+// Equals "jira"
+const ProvenanceSourceSourceJira = shared.ProvenanceSourceSourceJira
+
+// Equals "metabase"
+const ProvenanceSourceSourceMetabase = shared.ProvenanceSourceSourceMetabase
 
 // Equals "gong"
 const ProvenanceSourceSourceGong = shared.ProvenanceSourceSourceGong
+
+// Equals "clickup"
+const ProvenanceSourceSourceClickup = shared.ProvenanceSourceSourceClickup
+
+// Equals "lightfield"
+const ProvenanceSourceSourceLightfield = shared.ProvenanceSourceSourceLightfield
+
+// Equals "pylon"
+const ProvenanceSourceSourcePylon = shared.ProvenanceSourceSourcePylon
+
+// Equals "fellow"
+const ProvenanceSourceSourceFellow = shared.ProvenanceSourceSourceFellow
+
+// Equals "odoo"
+const ProvenanceSourceSourceOdoo = shared.ProvenanceSourceSourceOdoo
+
+// Equals "external_mcp"
+const ProvenanceSourceSourceExternalMcp = shared.ProvenanceSourceSourceExternalMcp
 
 // One tool invocation in the agent's search trajectory (audit trail).
 //
@@ -488,18 +530,32 @@ type QuoteType = shared.QuoteType
 // Equals "quote"
 const QuoteTypeQuote = shared.QuoteTypeQuote
 
-// A `DocumentResponse` plus the query-path fields a `ScoredDocument` carries
-// (ENG-2479): relevance score, matched highlights, and the concatenated summary of
-// those highlights.
+// A document response with its relevance score, matched highlights, and a summary
+// of those highlights.
 //
 // This is an alias to an internal type.
 type ScoredDocumentResponse = shared.ScoredDocumentResponse
 
 // The full hyperdoc tree. Switch on `type` for the document frame and recurse
-// `children` for the body — see the `<Hyperdoc />` renderer.
+// through `children` for the body.
 //
 // This is an alias to an internal type.
 type ScoredDocumentResponseDocumentUnion = shared.ScoredDocumentResponseDocumentUnion
+
+// A customer invoice, vendor bill, or credit memo.
+//
+// Line items are included in `children`.
+//
+// This is an alias to an internal type.
+type ScoredDocumentResponseDocumentInvoice = shared.ScoredDocumentResponseDocumentInvoice
+
+// Represents embedded binary data using data URI scheme.
+//
+// Format: data:[<media type>][;base64],<data> Example:
+// data:text/html;base64,PGh0bWw+...
+//
+// This is an alias to an internal type.
+type ScoredDocumentResponseDocumentInvoiceChildUnion = shared.ScoredDocumentResponseDocumentInvoiceChildUnion
 
 // This is an alias to an internal type.
 type ScoredDocumentResponseSource = shared.ScoredDocumentResponseSource
@@ -519,6 +575,12 @@ const ScoredDocumentResponseSourceGoogleCalendar = shared.ScoredDocumentResponse
 // Equals "google_mail"
 const ScoredDocumentResponseSourceGoogleMail = shared.ScoredDocumentResponseSourceGoogleMail
 
+// Equals "imap"
+const ScoredDocumentResponseSourceImap = shared.ScoredDocumentResponseSourceImap
+
+// Equals "google_meet"
+const ScoredDocumentResponseSourceGoogleMeet = shared.ScoredDocumentResponseSourceGoogleMeet
+
 // Equals "box"
 const ScoredDocumentResponseSourceBox = shared.ScoredDocumentResponseSourceBox
 
@@ -527,6 +589,9 @@ const ScoredDocumentResponseSourceDropbox = shared.ScoredDocumentResponseSourceD
 
 // Equals "github"
 const ScoredDocumentResponseSourceGitHub = shared.ScoredDocumentResponseSourceGitHub
+
+// Equals "gitlab"
+const ScoredDocumentResponseSourceGitlab = shared.ScoredDocumentResponseSourceGitlab
 
 // Equals "google_drive"
 const ScoredDocumentResponseSourceGoogleDrive = shared.ScoredDocumentResponseSourceGoogleDrive
@@ -540,11 +605,11 @@ const ScoredDocumentResponseSourceWebCrawler = shared.ScoredDocumentResponseSour
 // Equals "trace"
 const ScoredDocumentResponseSourceTrace = shared.ScoredDocumentResponseSourceTrace
 
+// Equals "microsoft_outlook"
+const ScoredDocumentResponseSourceMicrosoftOutlook = shared.ScoredDocumentResponseSourceMicrosoftOutlook
+
 // Equals "microsoft_teams"
 const ScoredDocumentResponseSourceMicrosoftTeams = shared.ScoredDocumentResponseSourceMicrosoftTeams
-
-// Equals "gmail_actions"
-const ScoredDocumentResponseSourceGmailActions = shared.ScoredDocumentResponseSourceGmailActions
 
 // Equals "granola"
 const ScoredDocumentResponseSourceGranola = shared.ScoredDocumentResponseSourceGranola
@@ -554,6 +619,9 @@ const ScoredDocumentResponseSourceFathom = shared.ScoredDocumentResponseSourceFa
 
 // Equals "fireflies"
 const ScoredDocumentResponseSourceFireflies = shared.ScoredDocumentResponseSourceFireflies
+
+// Equals "figma"
+const ScoredDocumentResponseSourceFigma = shared.ScoredDocumentResponseSourceFigma
 
 // Equals "linear"
 const ScoredDocumentResponseSourceLinear = shared.ScoredDocumentResponseSourceLinear
@@ -567,11 +635,42 @@ const ScoredDocumentResponseSourceSalesforce = shared.ScoredDocumentResponseSour
 // Equals "coda"
 const ScoredDocumentResponseSourceCoda = shared.ScoredDocumentResponseSourceCoda
 
-// Equals "lightfield"
-const ScoredDocumentResponseSourceLightfield = shared.ScoredDocumentResponseSourceLightfield
+// Equals "confluence"
+const ScoredDocumentResponseSourceConfluence = shared.ScoredDocumentResponseSourceConfluence
+
+// Equals "jira"
+const ScoredDocumentResponseSourceJira = shared.ScoredDocumentResponseSourceJira
+
+// Equals "metabase"
+const ScoredDocumentResponseSourceMetabase = shared.ScoredDocumentResponseSourceMetabase
 
 // Equals "gong"
 const ScoredDocumentResponseSourceGong = shared.ScoredDocumentResponseSourceGong
+
+// Equals "clickup"
+const ScoredDocumentResponseSourceClickup = shared.ScoredDocumentResponseSourceClickup
+
+// Equals "lightfield"
+const ScoredDocumentResponseSourceLightfield = shared.ScoredDocumentResponseSourceLightfield
+
+// Equals "pylon"
+const ScoredDocumentResponseSourcePylon = shared.ScoredDocumentResponseSourcePylon
+
+// Equals "fellow"
+const ScoredDocumentResponseSourceFellow = shared.ScoredDocumentResponseSourceFellow
+
+// Equals "odoo"
+const ScoredDocumentResponseSourceOdoo = shared.ScoredDocumentResponseSourceOdoo
+
+// Equals "external_mcp"
+const ScoredDocumentResponseSourceExternalMcp = shared.ScoredDocumentResponseSourceExternalMcp
+
+// A searchable chunk extracted from a document during ingestion.
+//
+// `summary` is null when no summary was generated for the chunk.
+//
+// This is an alias to an internal type.
+type ScoredDocumentResponseChunk = shared.ScoredDocumentResponseChunk
 
 // Indexing status of the document.
 //
@@ -595,6 +694,12 @@ const ScoredDocumentResponseStatusPendingReview = shared.ScoredDocumentResponseS
 
 // Equals "skipped"
 const ScoredDocumentResponseStatusSkipped = shared.ScoredDocumentResponseStatusSkipped
+
+// Equals "filtered"
+const ScoredDocumentResponseStatusFiltered = shared.ScoredDocumentResponseStatusFiltered
+
+// Equals "cancelled"
+const ScoredDocumentResponseStatusCancelled = shared.ScoredDocumentResponseStatusCancelled
 
 // This is an alias to an internal type.
 type Table = shared.Table
@@ -789,8 +894,7 @@ type TraceMessageType = shared.TraceMessageType
 // Equals "trace_message"
 const TraceMessageTypeTraceMessage = shared.TraceMessageTypeTraceMessage
 
-// A time-anchored, speaker-attributed transcript — meetings, calls (ENG-2476/D10;
-// mirrors the Trace+TraceStep precedent).
+// A time-anchored, speaker-attributed transcript for a meeting or call.
 //
 // Utterance timestamps are relative offsets from `started_at`, which is the
 // absolute wall-clock anchor.
@@ -804,11 +908,9 @@ type TranscriptType = shared.TranscriptType
 // Equals "transcript"
 const TranscriptTypeTranscript = shared.TranscriptTypeTranscript
 
-// A speaker-attributed segment of a transcript (ENG-2476/D10).
+// A speaker-attributed segment of a transcript.
 //
-// "Utterance" is the standard name for this across transcription providers
-// (AssemblyAI, Deepgram, Rev). Timestamps are relative offsets in seconds —
-// provider-native; absolute times derive from `Transcript.started_at`.
+// Start and end times are offsets in seconds from the beginning of the transcript.
 //
 // This is an alias to an internal type.
 type Utterance = shared.Utterance

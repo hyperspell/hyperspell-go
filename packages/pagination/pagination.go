@@ -117,3 +117,103 @@ func (r *CursorPageAutoPager[T]) Err() error {
 func (r *CursorPageAutoPager[T]) Index() int {
 	return r.run
 }
+
+type ContextDocumentsCursorPage[T any] struct {
+	Documents  []T    `json:"documents"`
+	NextCursor string `json:"next_cursor"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		Documents   respjson.Field
+		NextCursor  respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+	cfg *requestconfig.RequestConfig
+	res *http.Response
+}
+
+// Returns the unmodified JSON received from the API
+func (r ContextDocumentsCursorPage[T]) RawJSON() string { return r.JSON.raw }
+func (r *ContextDocumentsCursorPage[T]) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// GetNextPage returns the next page as defined by this pagination style. When
+// there is no next page, this function will return a 'nil' for the page value, but
+// will not return an error
+func (r *ContextDocumentsCursorPage[T]) GetNextPage() (res *ContextDocumentsCursorPage[T], err error) {
+	if len(r.Documents) == 0 {
+		return nil, nil
+	}
+	next := r.NextCursor
+	if len(next) == 0 {
+		return nil, nil
+	}
+	cfg := r.cfg.Clone(r.cfg.Context)
+	err = cfg.Apply(option.WithQuery("cursor", next))
+	if err != nil {
+		return nil, err
+	}
+	var raw *http.Response
+	cfg.ResponseInto = &raw
+	cfg.ResponseBodyInto = &res
+	err = cfg.Execute()
+	if err != nil {
+		return nil, err
+	}
+	res.SetPageConfig(cfg, raw)
+	return res, nil
+}
+
+func (r *ContextDocumentsCursorPage[T]) SetPageConfig(cfg *requestconfig.RequestConfig, res *http.Response) {
+	if r == nil {
+		r = &ContextDocumentsCursorPage[T]{}
+	}
+	r.cfg = cfg
+	r.res = res
+}
+
+type ContextDocumentsCursorPageAutoPager[T any] struct {
+	page *ContextDocumentsCursorPage[T]
+	cur  T
+	idx  int
+	run  int
+	err  error
+	paramObj
+}
+
+func NewContextDocumentsCursorPageAutoPager[T any](page *ContextDocumentsCursorPage[T], err error) *ContextDocumentsCursorPageAutoPager[T] {
+	return &ContextDocumentsCursorPageAutoPager[T]{
+		page: page,
+		err:  err,
+	}
+}
+
+func (r *ContextDocumentsCursorPageAutoPager[T]) Next() bool {
+	if r.page == nil || len(r.page.Documents) == 0 {
+		return false
+	}
+	if r.idx >= len(r.page.Documents) {
+		r.idx = 0
+		r.page, r.err = r.page.GetNextPage()
+		if r.err != nil || r.page == nil || len(r.page.Documents) == 0 {
+			return false
+		}
+	}
+	r.cur = r.page.Documents[r.idx]
+	r.run += 1
+	r.idx += 1
+	return true
+}
+
+func (r *ContextDocumentsCursorPageAutoPager[T]) Current() T {
+	return r.cur
+}
+
+func (r *ContextDocumentsCursorPageAutoPager[T]) Err() error {
+	return r.err
+}
+
+func (r *ContextDocumentsCursorPageAutoPager[T]) Index() int {
+	return r.run
+}
