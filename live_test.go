@@ -13,7 +13,7 @@ import (
 	"github.com/hyperspell/hyperspell-go/option"
 )
 
-func TestContextDocumentConfigUpdateWithOptionalParams(t *testing.T) {
+func TestLiveGetResourceWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -26,34 +26,15 @@ func TestContextDocumentConfigUpdateWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.ContextDocuments.Config.Update(context.TODO(), hyperspell.ContextDocumentConfigUpdateParams{
-		CompanyPrompts: map[string]string{
-			"foo": "string",
+	_, err := client.Live.GetResource(
+		context.TODO(),
+		"resource_id",
+		hyperspell.LiveGetResourceParams{
+			Source:       hyperspell.LiveGetResourceParamsSourceReddit,
+			ConnectionID: hyperspell.String("connection_id"),
+			Index:        hyperspell.Bool(true),
 		},
-		DetectionPrompt: hyperspell.String("detection_prompt"),
-		Domain:          hyperspell.String("domain"),
-		PersonalPrompt:  hyperspell.String("personal_prompt"),
-		SourceWeights: map[string]string{
-			"foo": "string",
-		},
-		Structure: hyperspell.ContextDocumentConfigUpdateParamsStructure{
-			Company: []hyperspell.ContextDocumentConfigUpdateParamsStructureCompany{{
-				Filename:      "filename",
-				Key:           "key",
-				Prompt:        "prompt",
-				SearchQueries: []string{"string"},
-			}},
-			Workstream: []hyperspell.ContextDocumentConfigUpdateParamsStructureWorkstream{{
-				Filename:      "filename",
-				Key:           "key",
-				Prompt:        "prompt",
-				SearchQueries: []string{"string"},
-			}},
-		},
-		WorkstreamPrompts: map[string]string{
-			"foo": "string",
-		},
-	})
+	)
 	if err != nil {
 		var apierr *hyperspell.Error
 		if errors.As(err, &apierr) {
@@ -63,7 +44,7 @@ func TestContextDocumentConfigUpdateWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestContextDocumentConfigGet(t *testing.T) {
+func TestLiveListResourcesWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -76,7 +57,15 @@ func TestContextDocumentConfigGet(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.ContextDocuments.Config.Get(context.TODO())
+	_, err := client.Live.ListResources(
+		context.TODO(),
+		hyperspell.LiveListResourcesParamsSourceReddit,
+		hyperspell.LiveListResourcesParams{
+			ConnectionID: hyperspell.String("connection_id"),
+			Cursor:       hyperspell.String("cursor"),
+			Size:         hyperspell.Int(0),
+		},
+	)
 	if err != nil {
 		var apierr *hyperspell.Error
 		if errors.As(err, &apierr) {
@@ -86,7 +75,7 @@ func TestContextDocumentConfigGet(t *testing.T) {
 	}
 }
 
-func TestContextDocumentConfigReset(t *testing.T) {
+func TestLiveListSources(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -99,7 +88,38 @@ func TestContextDocumentConfigReset(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.ContextDocuments.Config.Reset(context.TODO())
+	_, err := client.Live.ListSources(context.TODO())
+	if err != nil {
+		var apierr *hyperspell.Error
+		if errors.As(err, &apierr) {
+			t.Log(string(apierr.DumpRequest(true)))
+		}
+		t.Fatalf("err should be nil: %s", err.Error())
+	}
+}
+
+func TestLiveSearchWithOptionalParams(t *testing.T) {
+	baseURL := "http://localhost:4010"
+	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
+		baseURL = envURL
+	}
+	if !testutil.CheckTestServer(t, baseURL) {
+		return
+	}
+	client := hyperspell.NewClient(
+		option.WithBaseURL(baseURL),
+		option.WithAPIKey("My API Key"),
+		option.WithUserID("My User ID"),
+	)
+	_, err := client.Live.Search(
+		context.TODO(),
+		hyperspell.LiveSearchParamsSourceReddit,
+		hyperspell.LiveSearchParams{
+			Query:        "query",
+			ConnectionID: hyperspell.String("connection_id"),
+			Index:        hyperspell.Bool(true),
+		},
+	)
 	if err != nil {
 		var apierr *hyperspell.Error
 		if errors.As(err, &apierr) {

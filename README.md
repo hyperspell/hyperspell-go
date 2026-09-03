@@ -297,11 +297,11 @@ This library provides some conveniences for working with paginated list endpoint
 You can use `.ListAutoPaging()` methods to iterate through items across all pages:
 
 ```go
-iter := client.ContextDocuments.ListAutoPaging(context.TODO(), hyperspell.ContextDocumentListParams{})
+iter := client.Entities.ListAutoPaging(context.TODO(), hyperspell.EntityListParams{})
 // Automatically fetches more pages as needed.
 for iter.Next() {
-	contextDocumentListResponse := iter.Current()
-	fmt.Printf("%+v\n", contextDocumentListResponse)
+	entityListResponse := iter.Current()
+	fmt.Printf("%+v\n", entityListResponse)
 }
 if err := iter.Err(); err != nil {
 	panic(err.Error())
@@ -312,10 +312,10 @@ Or you can use simple `.List()` methods to fetch a single page and receive a sta
 with additional helper methods like `.GetNextPage()`, e.g.:
 
 ```go
-page, err := client.ContextDocuments.List(context.TODO(), hyperspell.ContextDocumentListParams{})
+page, err := client.Entities.List(context.TODO(), hyperspell.EntityListParams{})
 for page != nil {
-	for _, contextDocument := range page.Documents {
-		fmt.Printf("%+v\n", contextDocument)
+	for _, entity := range page.Items {
+		fmt.Printf("%+v\n", entity)
 	}
 	page, err = page.GetNextPage()
 }

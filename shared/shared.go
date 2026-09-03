@@ -50,29 +50,32 @@ func (r *Blob) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Blob) ImplCalloutChildUnion()                               {}
-func (Blob) ImplChunkChildUnion()                                 {}
-func (Blob) ImplCompanyChildUnion()                               {}
-func (Blob) ImplDealChildUnion()                                  {}
-func (Blob) ImplDocumentChildUnion()                              {}
-func (Blob) ImplEquationChildUnion()                              {}
-func (Blob) ImplEventChildUnion()                                 {}
-func (Blob) ImplFileChildUnion()                                  {}
-func (Blob) ImplFootnoteChildUnion()                              {}
-func (Blob) ImplHeadingChildUnion()                               {}
-func (Blob) ImplListItemChildUnion()                              {}
-func (Blob) ImplMessageChildUnion()                               {}
-func (Blob) ImplPageChildUnion()                                  {}
-func (Blob) ImplParagraphChildUnion()                             {}
-func (Blob) ImplPersonChildUnion()                                {}
-func (Blob) ImplQuoteChildUnion()                                 {}
-func (Blob) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Blob) ImplTableCellChildUnion()                             {}
-func (Blob) ImplTaskChildUnion()                                  {}
-func (Blob) ImplToDoChildUnion()                                  {}
-func (Blob) ImplWebsiteChildUnion()                               {}
-func (Blob) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Blob) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Blob) ImplCalloutChildUnion()                                        {}
+func (Blob) ImplChunkChildUnion()                                          {}
+func (Blob) ImplCompanyChildUnion()                                        {}
+func (Blob) ImplDealChildUnion()                                           {}
+func (Blob) ImplDocumentChildUnion()                                       {}
+func (Blob) ImplEquationChildUnion()                                       {}
+func (Blob) ImplEventChildUnion()                                          {}
+func (Blob) ImplFileChildUnion()                                           {}
+func (Blob) ImplFootnoteChildUnion()                                       {}
+func (Blob) ImplHeadingChildUnion()                                        {}
+func (Blob) ImplListItemChildUnion()                                       {}
+func (Blob) ImplMessageChildUnion()                                        {}
+func (Blob) ImplPageChildUnion()                                           {}
+func (Blob) ImplParagraphChildUnion()                                      {}
+func (Blob) ImplPersonChildUnion()                                         {}
+func (Blob) ImplQuoteChildUnion()                                          {}
+func (Blob) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Blob) ImplTableCellChildUnion()                                      {}
+func (Blob) ImplTaskChildUnion()                                           {}
+func (Blob) ImplToDoChildUnion()                                           {}
+func (Blob) ImplWebsiteChildUnion()                                        {}
+func (Blob) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Blob) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Blob) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Blob) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Blob) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type BlobType string
 
@@ -111,29 +114,32 @@ func (r *Callout) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Callout) ImplCalloutChildUnion()                               {}
-func (Callout) ImplChunkChildUnion()                                 {}
-func (Callout) ImplCompanyChildUnion()                               {}
-func (Callout) ImplDealChildUnion()                                  {}
-func (Callout) ImplDocumentChildUnion()                              {}
-func (Callout) ImplEquationChildUnion()                              {}
-func (Callout) ImplEventChildUnion()                                 {}
-func (Callout) ImplFileChildUnion()                                  {}
-func (Callout) ImplFootnoteChildUnion()                              {}
-func (Callout) ImplHeadingChildUnion()                               {}
-func (Callout) ImplListItemChildUnion()                              {}
-func (Callout) ImplMessageChildUnion()                               {}
-func (Callout) ImplPageChildUnion()                                  {}
-func (Callout) ImplParagraphChildUnion()                             {}
-func (Callout) ImplPersonChildUnion()                                {}
-func (Callout) ImplQuoteChildUnion()                                 {}
-func (Callout) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Callout) ImplTableCellChildUnion()                             {}
-func (Callout) ImplTaskChildUnion()                                  {}
-func (Callout) ImplToDoChildUnion()                                  {}
-func (Callout) ImplWebsiteChildUnion()                               {}
-func (Callout) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Callout) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Callout) ImplCalloutChildUnion()                                        {}
+func (Callout) ImplChunkChildUnion()                                          {}
+func (Callout) ImplCompanyChildUnion()                                        {}
+func (Callout) ImplDealChildUnion()                                           {}
+func (Callout) ImplDocumentChildUnion()                                       {}
+func (Callout) ImplEquationChildUnion()                                       {}
+func (Callout) ImplEventChildUnion()                                          {}
+func (Callout) ImplFileChildUnion()                                           {}
+func (Callout) ImplFootnoteChildUnion()                                       {}
+func (Callout) ImplHeadingChildUnion()                                        {}
+func (Callout) ImplListItemChildUnion()                                       {}
+func (Callout) ImplMessageChildUnion()                                        {}
+func (Callout) ImplPageChildUnion()                                           {}
+func (Callout) ImplParagraphChildUnion()                                      {}
+func (Callout) ImplPersonChildUnion()                                         {}
+func (Callout) ImplQuoteChildUnion()                                          {}
+func (Callout) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Callout) ImplTableCellChildUnion()                                      {}
+func (Callout) ImplTaskChildUnion()                                           {}
+func (Callout) ImplToDoChildUnion()                                           {}
+func (Callout) ImplWebsiteChildUnion()                                        {}
+func (Callout) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Callout) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Callout) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Callout) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Callout) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // CalloutChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -537,29 +543,32 @@ func (r *Chunk) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Chunk) ImplCalloutChildUnion()                               {}
-func (Chunk) ImplChunkChildUnion()                                 {}
-func (Chunk) ImplCompanyChildUnion()                               {}
-func (Chunk) ImplDealChildUnion()                                  {}
-func (Chunk) ImplDocumentChildUnion()                              {}
-func (Chunk) ImplEquationChildUnion()                              {}
-func (Chunk) ImplEventChildUnion()                                 {}
-func (Chunk) ImplFileChildUnion()                                  {}
-func (Chunk) ImplFootnoteChildUnion()                              {}
-func (Chunk) ImplHeadingChildUnion()                               {}
-func (Chunk) ImplListItemChildUnion()                              {}
-func (Chunk) ImplMessageChildUnion()                               {}
-func (Chunk) ImplPageChildUnion()                                  {}
-func (Chunk) ImplParagraphChildUnion()                             {}
-func (Chunk) ImplPersonChildUnion()                                {}
-func (Chunk) ImplQuoteChildUnion()                                 {}
-func (Chunk) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Chunk) ImplTableCellChildUnion()                             {}
-func (Chunk) ImplTaskChildUnion()                                  {}
-func (Chunk) ImplToDoChildUnion()                                  {}
-func (Chunk) ImplWebsiteChildUnion()                               {}
-func (Chunk) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Chunk) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Chunk) ImplCalloutChildUnion()                                        {}
+func (Chunk) ImplChunkChildUnion()                                          {}
+func (Chunk) ImplCompanyChildUnion()                                        {}
+func (Chunk) ImplDealChildUnion()                                           {}
+func (Chunk) ImplDocumentChildUnion()                                       {}
+func (Chunk) ImplEquationChildUnion()                                       {}
+func (Chunk) ImplEventChildUnion()                                          {}
+func (Chunk) ImplFileChildUnion()                                           {}
+func (Chunk) ImplFootnoteChildUnion()                                       {}
+func (Chunk) ImplHeadingChildUnion()                                        {}
+func (Chunk) ImplListItemChildUnion()                                       {}
+func (Chunk) ImplMessageChildUnion()                                        {}
+func (Chunk) ImplPageChildUnion()                                           {}
+func (Chunk) ImplParagraphChildUnion()                                      {}
+func (Chunk) ImplPersonChildUnion()                                         {}
+func (Chunk) ImplQuoteChildUnion()                                          {}
+func (Chunk) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Chunk) ImplTableCellChildUnion()                                      {}
+func (Chunk) ImplTaskChildUnion()                                           {}
+func (Chunk) ImplToDoChildUnion()                                           {}
+func (Chunk) ImplWebsiteChildUnion()                                        {}
+func (Chunk) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Chunk) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Chunk) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Chunk) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Chunk) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // ChunkChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -963,29 +972,32 @@ func (r *Code) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Code) ImplCalloutChildUnion()                               {}
-func (Code) ImplChunkChildUnion()                                 {}
-func (Code) ImplCompanyChildUnion()                               {}
-func (Code) ImplDealChildUnion()                                  {}
-func (Code) ImplDocumentChildUnion()                              {}
-func (Code) ImplEquationChildUnion()                              {}
-func (Code) ImplEventChildUnion()                                 {}
-func (Code) ImplFileChildUnion()                                  {}
-func (Code) ImplFootnoteChildUnion()                              {}
-func (Code) ImplHeadingChildUnion()                               {}
-func (Code) ImplListItemChildUnion()                              {}
-func (Code) ImplMessageChildUnion()                               {}
-func (Code) ImplPageChildUnion()                                  {}
-func (Code) ImplParagraphChildUnion()                             {}
-func (Code) ImplPersonChildUnion()                                {}
-func (Code) ImplQuoteChildUnion()                                 {}
-func (Code) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Code) ImplTableCellChildUnion()                             {}
-func (Code) ImplTaskChildUnion()                                  {}
-func (Code) ImplToDoChildUnion()                                  {}
-func (Code) ImplWebsiteChildUnion()                               {}
-func (Code) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Code) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Code) ImplCalloutChildUnion()                                        {}
+func (Code) ImplChunkChildUnion()                                          {}
+func (Code) ImplCompanyChildUnion()                                        {}
+func (Code) ImplDealChildUnion()                                           {}
+func (Code) ImplDocumentChildUnion()                                       {}
+func (Code) ImplEquationChildUnion()                                       {}
+func (Code) ImplEventChildUnion()                                          {}
+func (Code) ImplFileChildUnion()                                           {}
+func (Code) ImplFootnoteChildUnion()                                       {}
+func (Code) ImplHeadingChildUnion()                                        {}
+func (Code) ImplListItemChildUnion()                                       {}
+func (Code) ImplMessageChildUnion()                                        {}
+func (Code) ImplPageChildUnion()                                           {}
+func (Code) ImplParagraphChildUnion()                                      {}
+func (Code) ImplPersonChildUnion()                                         {}
+func (Code) ImplQuoteChildUnion()                                          {}
+func (Code) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Code) ImplTableCellChildUnion()                                      {}
+func (Code) ImplTaskChildUnion()                                           {}
+func (Code) ImplToDoChildUnion()                                           {}
+func (Code) ImplWebsiteChildUnion()                                        {}
+func (Code) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Code) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Code) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Code) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Code) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type CodeType string
 
@@ -1022,29 +1034,32 @@ func (r *Comment) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Comment) ImplCalloutChildUnion()                               {}
-func (Comment) ImplChunkChildUnion()                                 {}
-func (Comment) ImplCompanyChildUnion()                               {}
-func (Comment) ImplDealChildUnion()                                  {}
-func (Comment) ImplDocumentChildUnion()                              {}
-func (Comment) ImplEquationChildUnion()                              {}
-func (Comment) ImplEventChildUnion()                                 {}
-func (Comment) ImplFileChildUnion()                                  {}
-func (Comment) ImplFootnoteChildUnion()                              {}
-func (Comment) ImplHeadingChildUnion()                               {}
-func (Comment) ImplListItemChildUnion()                              {}
-func (Comment) ImplMessageChildUnion()                               {}
-func (Comment) ImplPageChildUnion()                                  {}
-func (Comment) ImplParagraphChildUnion()                             {}
-func (Comment) ImplPersonChildUnion()                                {}
-func (Comment) ImplQuoteChildUnion()                                 {}
-func (Comment) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Comment) ImplTableCellChildUnion()                             {}
-func (Comment) ImplTaskChildUnion()                                  {}
-func (Comment) ImplToDoChildUnion()                                  {}
-func (Comment) ImplWebsiteChildUnion()                               {}
-func (Comment) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Comment) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Comment) ImplCalloutChildUnion()                                        {}
+func (Comment) ImplChunkChildUnion()                                          {}
+func (Comment) ImplCompanyChildUnion()                                        {}
+func (Comment) ImplDealChildUnion()                                           {}
+func (Comment) ImplDocumentChildUnion()                                       {}
+func (Comment) ImplEquationChildUnion()                                       {}
+func (Comment) ImplEventChildUnion()                                          {}
+func (Comment) ImplFileChildUnion()                                           {}
+func (Comment) ImplFootnoteChildUnion()                                       {}
+func (Comment) ImplHeadingChildUnion()                                        {}
+func (Comment) ImplListItemChildUnion()                                       {}
+func (Comment) ImplMessageChildUnion()                                        {}
+func (Comment) ImplPageChildUnion()                                           {}
+func (Comment) ImplParagraphChildUnion()                                      {}
+func (Comment) ImplPersonChildUnion()                                         {}
+func (Comment) ImplQuoteChildUnion()                                          {}
+func (Comment) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Comment) ImplTableCellChildUnion()                                      {}
+func (Comment) ImplTaskChildUnion()                                           {}
+func (Comment) ImplToDoChildUnion()                                           {}
+func (Comment) ImplWebsiteChildUnion()                                        {}
+func (Comment) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Comment) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Comment) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Comment) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Comment) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type CommentType string
 
@@ -1110,9 +1125,12 @@ func (r *Company) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Company) ImplScoredDocumentResponseDocumentUnion() {}
-func (Company) ImplMemoryListResponseDocumentUnion()     {}
-func (Company) ImplMemoryGetResponseDocumentUnion()      {}
+func (Company) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Company) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Company) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Company) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Company) ImplMemoryListResponseDocumentUnion()              {}
+func (Company) ImplMemoryGetResponseDocumentUnion()               {}
 
 // CompanyChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -1522,9 +1540,12 @@ func (r *Conversation) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Conversation) ImplScoredDocumentResponseDocumentUnion() {}
-func (Conversation) ImplMemoryListResponseDocumentUnion()     {}
-func (Conversation) ImplMemoryGetResponseDocumentUnion()      {}
+func (Conversation) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Conversation) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Conversation) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Conversation) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Conversation) ImplMemoryListResponseDocumentUnion()              {}
+func (Conversation) ImplMemoryGetResponseDocumentUnion()               {}
 
 type ConversationType string
 
@@ -1588,9 +1609,12 @@ func (r *Deal) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Deal) ImplScoredDocumentResponseDocumentUnion() {}
-func (Deal) ImplMemoryListResponseDocumentUnion()     {}
-func (Deal) ImplMemoryGetResponseDocumentUnion()      {}
+func (Deal) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Deal) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Deal) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Deal) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Deal) ImplMemoryListResponseDocumentUnion()              {}
+func (Deal) ImplMemoryGetResponseDocumentUnion()               {}
 
 // DealChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -1990,29 +2014,32 @@ func (r *Divider) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Divider) ImplCalloutChildUnion()                               {}
-func (Divider) ImplChunkChildUnion()                                 {}
-func (Divider) ImplCompanyChildUnion()                               {}
-func (Divider) ImplDealChildUnion()                                  {}
-func (Divider) ImplDocumentChildUnion()                              {}
-func (Divider) ImplEquationChildUnion()                              {}
-func (Divider) ImplEventChildUnion()                                 {}
-func (Divider) ImplFileChildUnion()                                  {}
-func (Divider) ImplFootnoteChildUnion()                              {}
-func (Divider) ImplHeadingChildUnion()                               {}
-func (Divider) ImplListItemChildUnion()                              {}
-func (Divider) ImplMessageChildUnion()                               {}
-func (Divider) ImplPageChildUnion()                                  {}
-func (Divider) ImplParagraphChildUnion()                             {}
-func (Divider) ImplPersonChildUnion()                                {}
-func (Divider) ImplQuoteChildUnion()                                 {}
-func (Divider) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Divider) ImplTableCellChildUnion()                             {}
-func (Divider) ImplTaskChildUnion()                                  {}
-func (Divider) ImplToDoChildUnion()                                  {}
-func (Divider) ImplWebsiteChildUnion()                               {}
-func (Divider) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Divider) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Divider) ImplCalloutChildUnion()                                        {}
+func (Divider) ImplChunkChildUnion()                                          {}
+func (Divider) ImplCompanyChildUnion()                                        {}
+func (Divider) ImplDealChildUnion()                                           {}
+func (Divider) ImplDocumentChildUnion()                                       {}
+func (Divider) ImplEquationChildUnion()                                       {}
+func (Divider) ImplEventChildUnion()                                          {}
+func (Divider) ImplFileChildUnion()                                           {}
+func (Divider) ImplFootnoteChildUnion()                                       {}
+func (Divider) ImplHeadingChildUnion()                                        {}
+func (Divider) ImplListItemChildUnion()                                       {}
+func (Divider) ImplMessageChildUnion()                                        {}
+func (Divider) ImplPageChildUnion()                                           {}
+func (Divider) ImplParagraphChildUnion()                                      {}
+func (Divider) ImplPersonChildUnion()                                         {}
+func (Divider) ImplQuoteChildUnion()                                          {}
+func (Divider) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Divider) ImplTableCellChildUnion()                                      {}
+func (Divider) ImplTaskChildUnion()                                           {}
+func (Divider) ImplToDoChildUnion()                                           {}
+func (Divider) ImplWebsiteChildUnion()                                        {}
+func (Divider) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Divider) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Divider) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Divider) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Divider) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type DividerType string
 
@@ -2051,9 +2078,12 @@ func (r *Document) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Document) ImplScoredDocumentResponseDocumentUnion() {}
-func (Document) ImplMemoryListResponseDocumentUnion()     {}
-func (Document) ImplMemoryGetResponseDocumentUnion()      {}
+func (Document) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Document) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Document) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Document) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Document) ImplMemoryListResponseDocumentUnion()              {}
+func (Document) ImplMemoryGetResponseDocumentUnion()               {}
 
 // DocumentChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -2457,29 +2487,32 @@ func (r *Equation) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Equation) ImplCalloutChildUnion()                               {}
-func (Equation) ImplChunkChildUnion()                                 {}
-func (Equation) ImplCompanyChildUnion()                               {}
-func (Equation) ImplDealChildUnion()                                  {}
-func (Equation) ImplDocumentChildUnion()                              {}
-func (Equation) ImplEquationChildUnion()                              {}
-func (Equation) ImplEventChildUnion()                                 {}
-func (Equation) ImplFileChildUnion()                                  {}
-func (Equation) ImplFootnoteChildUnion()                              {}
-func (Equation) ImplHeadingChildUnion()                               {}
-func (Equation) ImplListItemChildUnion()                              {}
-func (Equation) ImplMessageChildUnion()                               {}
-func (Equation) ImplPageChildUnion()                                  {}
-func (Equation) ImplParagraphChildUnion()                             {}
-func (Equation) ImplPersonChildUnion()                                {}
-func (Equation) ImplQuoteChildUnion()                                 {}
-func (Equation) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Equation) ImplTableCellChildUnion()                             {}
-func (Equation) ImplTaskChildUnion()                                  {}
-func (Equation) ImplToDoChildUnion()                                  {}
-func (Equation) ImplWebsiteChildUnion()                               {}
-func (Equation) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Equation) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Equation) ImplCalloutChildUnion()                                        {}
+func (Equation) ImplChunkChildUnion()                                          {}
+func (Equation) ImplCompanyChildUnion()                                        {}
+func (Equation) ImplDealChildUnion()                                           {}
+func (Equation) ImplDocumentChildUnion()                                       {}
+func (Equation) ImplEquationChildUnion()                                       {}
+func (Equation) ImplEventChildUnion()                                          {}
+func (Equation) ImplFileChildUnion()                                           {}
+func (Equation) ImplFootnoteChildUnion()                                       {}
+func (Equation) ImplHeadingChildUnion()                                        {}
+func (Equation) ImplListItemChildUnion()                                       {}
+func (Equation) ImplMessageChildUnion()                                        {}
+func (Equation) ImplPageChildUnion()                                           {}
+func (Equation) ImplParagraphChildUnion()                                      {}
+func (Equation) ImplPersonChildUnion()                                         {}
+func (Equation) ImplQuoteChildUnion()                                          {}
+func (Equation) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Equation) ImplTableCellChildUnion()                                      {}
+func (Equation) ImplTaskChildUnion()                                           {}
+func (Equation) ImplToDoChildUnion()                                           {}
+func (Equation) ImplWebsiteChildUnion()                                        {}
+func (Equation) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Equation) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Equation) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Equation) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Equation) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // EquationChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -2895,9 +2928,12 @@ func (r *Event) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Event) ImplScoredDocumentResponseDocumentUnion() {}
-func (Event) ImplMemoryListResponseDocumentUnion()     {}
-func (Event) ImplMemoryGetResponseDocumentUnion()      {}
+func (Event) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Event) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Event) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Event) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Event) ImplMemoryListResponseDocumentUnion()              {}
+func (Event) ImplMemoryGetResponseDocumentUnion()               {}
 
 // EventChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -3312,9 +3348,12 @@ func (r *File) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (File) ImplScoredDocumentResponseDocumentUnion() {}
-func (File) ImplMemoryListResponseDocumentUnion()     {}
-func (File) ImplMemoryGetResponseDocumentUnion()      {}
+func (File) ImplScoredDocumentResponseDocumentUnion()          {}
+func (File) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (File) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (File) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (File) ImplMemoryListResponseDocumentUnion()              {}
+func (File) ImplMemoryGetResponseDocumentUnion()               {}
 
 // FileChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -3718,29 +3757,32 @@ func (r *Footnote) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Footnote) ImplCalloutChildUnion()                               {}
-func (Footnote) ImplChunkChildUnion()                                 {}
-func (Footnote) ImplCompanyChildUnion()                               {}
-func (Footnote) ImplDealChildUnion()                                  {}
-func (Footnote) ImplDocumentChildUnion()                              {}
-func (Footnote) ImplEquationChildUnion()                              {}
-func (Footnote) ImplEventChildUnion()                                 {}
-func (Footnote) ImplFileChildUnion()                                  {}
-func (Footnote) ImplFootnoteChildUnion()                              {}
-func (Footnote) ImplHeadingChildUnion()                               {}
-func (Footnote) ImplListItemChildUnion()                              {}
-func (Footnote) ImplMessageChildUnion()                               {}
-func (Footnote) ImplPageChildUnion()                                  {}
-func (Footnote) ImplParagraphChildUnion()                             {}
-func (Footnote) ImplPersonChildUnion()                                {}
-func (Footnote) ImplQuoteChildUnion()                                 {}
-func (Footnote) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Footnote) ImplTableCellChildUnion()                             {}
-func (Footnote) ImplTaskChildUnion()                                  {}
-func (Footnote) ImplToDoChildUnion()                                  {}
-func (Footnote) ImplWebsiteChildUnion()                               {}
-func (Footnote) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Footnote) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Footnote) ImplCalloutChildUnion()                                        {}
+func (Footnote) ImplChunkChildUnion()                                          {}
+func (Footnote) ImplCompanyChildUnion()                                        {}
+func (Footnote) ImplDealChildUnion()                                           {}
+func (Footnote) ImplDocumentChildUnion()                                       {}
+func (Footnote) ImplEquationChildUnion()                                       {}
+func (Footnote) ImplEventChildUnion()                                          {}
+func (Footnote) ImplFileChildUnion()                                           {}
+func (Footnote) ImplFootnoteChildUnion()                                       {}
+func (Footnote) ImplHeadingChildUnion()                                        {}
+func (Footnote) ImplListItemChildUnion()                                       {}
+func (Footnote) ImplMessageChildUnion()                                        {}
+func (Footnote) ImplPageChildUnion()                                           {}
+func (Footnote) ImplParagraphChildUnion()                                      {}
+func (Footnote) ImplPersonChildUnion()                                         {}
+func (Footnote) ImplQuoteChildUnion()                                          {}
+func (Footnote) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Footnote) ImplTableCellChildUnion()                                      {}
+func (Footnote) ImplTaskChildUnion()                                           {}
+func (Footnote) ImplToDoChildUnion()                                           {}
+func (Footnote) ImplWebsiteChildUnion()                                        {}
+func (Footnote) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Footnote) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Footnote) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Footnote) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Footnote) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // FootnoteChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -4146,29 +4188,32 @@ func (r *Heading) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Heading) ImplCalloutChildUnion()                               {}
-func (Heading) ImplChunkChildUnion()                                 {}
-func (Heading) ImplCompanyChildUnion()                               {}
-func (Heading) ImplDealChildUnion()                                  {}
-func (Heading) ImplDocumentChildUnion()                              {}
-func (Heading) ImplEquationChildUnion()                              {}
-func (Heading) ImplEventChildUnion()                                 {}
-func (Heading) ImplFileChildUnion()                                  {}
-func (Heading) ImplFootnoteChildUnion()                              {}
-func (Heading) ImplHeadingChildUnion()                               {}
-func (Heading) ImplListItemChildUnion()                              {}
-func (Heading) ImplMessageChildUnion()                               {}
-func (Heading) ImplPageChildUnion()                                  {}
-func (Heading) ImplParagraphChildUnion()                             {}
-func (Heading) ImplPersonChildUnion()                                {}
-func (Heading) ImplQuoteChildUnion()                                 {}
-func (Heading) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Heading) ImplTableCellChildUnion()                             {}
-func (Heading) ImplTaskChildUnion()                                  {}
-func (Heading) ImplToDoChildUnion()                                  {}
-func (Heading) ImplWebsiteChildUnion()                               {}
-func (Heading) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Heading) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Heading) ImplCalloutChildUnion()                                        {}
+func (Heading) ImplChunkChildUnion()                                          {}
+func (Heading) ImplCompanyChildUnion()                                        {}
+func (Heading) ImplDealChildUnion()                                           {}
+func (Heading) ImplDocumentChildUnion()                                       {}
+func (Heading) ImplEquationChildUnion()                                       {}
+func (Heading) ImplEventChildUnion()                                          {}
+func (Heading) ImplFileChildUnion()                                           {}
+func (Heading) ImplFootnoteChildUnion()                                       {}
+func (Heading) ImplHeadingChildUnion()                                        {}
+func (Heading) ImplListItemChildUnion()                                       {}
+func (Heading) ImplMessageChildUnion()                                        {}
+func (Heading) ImplPageChildUnion()                                           {}
+func (Heading) ImplParagraphChildUnion()                                      {}
+func (Heading) ImplPersonChildUnion()                                         {}
+func (Heading) ImplQuoteChildUnion()                                          {}
+func (Heading) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Heading) ImplTableCellChildUnion()                                      {}
+func (Heading) ImplTaskChildUnion()                                           {}
+func (Heading) ImplToDoChildUnion()                                           {}
+func (Heading) ImplWebsiteChildUnion()                                        {}
+func (Heading) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Heading) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Heading) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Heading) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Heading) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // HeadingChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -4572,29 +4617,32 @@ func (r *Image) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Image) ImplCalloutChildUnion()                               {}
-func (Image) ImplChunkChildUnion()                                 {}
-func (Image) ImplCompanyChildUnion()                               {}
-func (Image) ImplDealChildUnion()                                  {}
-func (Image) ImplDocumentChildUnion()                              {}
-func (Image) ImplEquationChildUnion()                              {}
-func (Image) ImplEventChildUnion()                                 {}
-func (Image) ImplFileChildUnion()                                  {}
-func (Image) ImplFootnoteChildUnion()                              {}
-func (Image) ImplHeadingChildUnion()                               {}
-func (Image) ImplListItemChildUnion()                              {}
-func (Image) ImplMessageChildUnion()                               {}
-func (Image) ImplPageChildUnion()                                  {}
-func (Image) ImplParagraphChildUnion()                             {}
-func (Image) ImplPersonChildUnion()                                {}
-func (Image) ImplQuoteChildUnion()                                 {}
-func (Image) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Image) ImplTableCellChildUnion()                             {}
-func (Image) ImplTaskChildUnion()                                  {}
-func (Image) ImplToDoChildUnion()                                  {}
-func (Image) ImplWebsiteChildUnion()                               {}
-func (Image) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Image) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Image) ImplCalloutChildUnion()                                        {}
+func (Image) ImplChunkChildUnion()                                          {}
+func (Image) ImplCompanyChildUnion()                                        {}
+func (Image) ImplDealChildUnion()                                           {}
+func (Image) ImplDocumentChildUnion()                                       {}
+func (Image) ImplEquationChildUnion()                                       {}
+func (Image) ImplEventChildUnion()                                          {}
+func (Image) ImplFileChildUnion()                                           {}
+func (Image) ImplFootnoteChildUnion()                                       {}
+func (Image) ImplHeadingChildUnion()                                        {}
+func (Image) ImplListItemChildUnion()                                       {}
+func (Image) ImplMessageChildUnion()                                        {}
+func (Image) ImplPageChildUnion()                                           {}
+func (Image) ImplParagraphChildUnion()                                      {}
+func (Image) ImplPersonChildUnion()                                         {}
+func (Image) ImplQuoteChildUnion()                                          {}
+func (Image) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Image) ImplTableCellChildUnion()                                      {}
+func (Image) ImplTaskChildUnion()                                           {}
+func (Image) ImplToDoChildUnion()                                           {}
+func (Image) ImplWebsiteChildUnion()                                        {}
+func (Image) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Image) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Image) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Image) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Image) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type ImageType string
 
@@ -4627,29 +4675,32 @@ func (r *LineBreak) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (LineBreak) ImplCalloutChildUnion()                               {}
-func (LineBreak) ImplChunkChildUnion()                                 {}
-func (LineBreak) ImplCompanyChildUnion()                               {}
-func (LineBreak) ImplDealChildUnion()                                  {}
-func (LineBreak) ImplDocumentChildUnion()                              {}
-func (LineBreak) ImplEquationChildUnion()                              {}
-func (LineBreak) ImplEventChildUnion()                                 {}
-func (LineBreak) ImplFileChildUnion()                                  {}
-func (LineBreak) ImplFootnoteChildUnion()                              {}
-func (LineBreak) ImplHeadingChildUnion()                               {}
-func (LineBreak) ImplListItemChildUnion()                              {}
-func (LineBreak) ImplMessageChildUnion()                               {}
-func (LineBreak) ImplPageChildUnion()                                  {}
-func (LineBreak) ImplParagraphChildUnion()                             {}
-func (LineBreak) ImplPersonChildUnion()                                {}
-func (LineBreak) ImplQuoteChildUnion()                                 {}
-func (LineBreak) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (LineBreak) ImplTableCellChildUnion()                             {}
-func (LineBreak) ImplTaskChildUnion()                                  {}
-func (LineBreak) ImplToDoChildUnion()                                  {}
-func (LineBreak) ImplWebsiteChildUnion()                               {}
-func (LineBreak) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (LineBreak) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (LineBreak) ImplCalloutChildUnion()                                        {}
+func (LineBreak) ImplChunkChildUnion()                                          {}
+func (LineBreak) ImplCompanyChildUnion()                                        {}
+func (LineBreak) ImplDealChildUnion()                                           {}
+func (LineBreak) ImplDocumentChildUnion()                                       {}
+func (LineBreak) ImplEquationChildUnion()                                       {}
+func (LineBreak) ImplEventChildUnion()                                          {}
+func (LineBreak) ImplFileChildUnion()                                           {}
+func (LineBreak) ImplFootnoteChildUnion()                                       {}
+func (LineBreak) ImplHeadingChildUnion()                                        {}
+func (LineBreak) ImplListItemChildUnion()                                       {}
+func (LineBreak) ImplMessageChildUnion()                                        {}
+func (LineBreak) ImplPageChildUnion()                                           {}
+func (LineBreak) ImplParagraphChildUnion()                                      {}
+func (LineBreak) ImplPersonChildUnion()                                         {}
+func (LineBreak) ImplQuoteChildUnion()                                          {}
+func (LineBreak) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (LineBreak) ImplTableCellChildUnion()                                      {}
+func (LineBreak) ImplTaskChildUnion()                                           {}
+func (LineBreak) ImplToDoChildUnion()                                           {}
+func (LineBreak) ImplWebsiteChildUnion()                                        {}
+func (LineBreak) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (LineBreak) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (LineBreak) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (LineBreak) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (LineBreak) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type LineBreakType string
 
@@ -4686,29 +4737,32 @@ func (r *Link) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Link) ImplCalloutChildUnion()                               {}
-func (Link) ImplChunkChildUnion()                                 {}
-func (Link) ImplCompanyChildUnion()                               {}
-func (Link) ImplDealChildUnion()                                  {}
-func (Link) ImplDocumentChildUnion()                              {}
-func (Link) ImplEquationChildUnion()                              {}
-func (Link) ImplEventChildUnion()                                 {}
-func (Link) ImplFileChildUnion()                                  {}
-func (Link) ImplFootnoteChildUnion()                              {}
-func (Link) ImplHeadingChildUnion()                               {}
-func (Link) ImplListItemChildUnion()                              {}
-func (Link) ImplMessageChildUnion()                               {}
-func (Link) ImplPageChildUnion()                                  {}
-func (Link) ImplParagraphChildUnion()                             {}
-func (Link) ImplPersonChildUnion()                                {}
-func (Link) ImplQuoteChildUnion()                                 {}
-func (Link) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Link) ImplTableCellChildUnion()                             {}
-func (Link) ImplTaskChildUnion()                                  {}
-func (Link) ImplToDoChildUnion()                                  {}
-func (Link) ImplWebsiteChildUnion()                               {}
-func (Link) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Link) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Link) ImplCalloutChildUnion()                                        {}
+func (Link) ImplChunkChildUnion()                                          {}
+func (Link) ImplCompanyChildUnion()                                        {}
+func (Link) ImplDealChildUnion()                                           {}
+func (Link) ImplDocumentChildUnion()                                       {}
+func (Link) ImplEquationChildUnion()                                       {}
+func (Link) ImplEventChildUnion()                                          {}
+func (Link) ImplFileChildUnion()                                           {}
+func (Link) ImplFootnoteChildUnion()                                       {}
+func (Link) ImplHeadingChildUnion()                                        {}
+func (Link) ImplListItemChildUnion()                                       {}
+func (Link) ImplMessageChildUnion()                                        {}
+func (Link) ImplPageChildUnion()                                           {}
+func (Link) ImplParagraphChildUnion()                                      {}
+func (Link) ImplPersonChildUnion()                                         {}
+func (Link) ImplQuoteChildUnion()                                          {}
+func (Link) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Link) ImplTableCellChildUnion()                                      {}
+func (Link) ImplTaskChildUnion()                                           {}
+func (Link) ImplToDoChildUnion()                                           {}
+func (Link) ImplWebsiteChildUnion()                                        {}
+func (Link) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Link) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Link) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Link) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Link) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type LinkType string
 
@@ -4747,29 +4801,32 @@ func (r *List) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (List) ImplCalloutChildUnion()                               {}
-func (List) ImplChunkChildUnion()                                 {}
-func (List) ImplCompanyChildUnion()                               {}
-func (List) ImplDealChildUnion()                                  {}
-func (List) ImplDocumentChildUnion()                              {}
-func (List) ImplEquationChildUnion()                              {}
-func (List) ImplEventChildUnion()                                 {}
-func (List) ImplFileChildUnion()                                  {}
-func (List) ImplFootnoteChildUnion()                              {}
-func (List) ImplHeadingChildUnion()                               {}
-func (List) ImplListItemChildUnion()                              {}
-func (List) ImplMessageChildUnion()                               {}
-func (List) ImplPageChildUnion()                                  {}
-func (List) ImplParagraphChildUnion()                             {}
-func (List) ImplPersonChildUnion()                                {}
-func (List) ImplQuoteChildUnion()                                 {}
-func (List) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (List) ImplTableCellChildUnion()                             {}
-func (List) ImplTaskChildUnion()                                  {}
-func (List) ImplToDoChildUnion()                                  {}
-func (List) ImplWebsiteChildUnion()                               {}
-func (List) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (List) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (List) ImplCalloutChildUnion()                                        {}
+func (List) ImplChunkChildUnion()                                          {}
+func (List) ImplCompanyChildUnion()                                        {}
+func (List) ImplDealChildUnion()                                           {}
+func (List) ImplDocumentChildUnion()                                       {}
+func (List) ImplEquationChildUnion()                                       {}
+func (List) ImplEventChildUnion()                                          {}
+func (List) ImplFileChildUnion()                                           {}
+func (List) ImplFootnoteChildUnion()                                       {}
+func (List) ImplHeadingChildUnion()                                        {}
+func (List) ImplListItemChildUnion()                                       {}
+func (List) ImplMessageChildUnion()                                        {}
+func (List) ImplPageChildUnion()                                           {}
+func (List) ImplParagraphChildUnion()                                      {}
+func (List) ImplPersonChildUnion()                                         {}
+func (List) ImplQuoteChildUnion()                                          {}
+func (List) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (List) ImplTableCellChildUnion()                                      {}
+func (List) ImplTaskChildUnion()                                           {}
+func (List) ImplToDoChildUnion()                                           {}
+func (List) ImplWebsiteChildUnion()                                        {}
+func (List) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (List) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (List) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (List) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (List) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // ListChildUnion contains all possible properties and values from [ListItem],
 // [ToDo].
@@ -4898,30 +4955,33 @@ func (r *ListItem) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ListItem) ImplCalloutChildUnion()                               {}
-func (ListItem) ImplChunkChildUnion()                                 {}
-func (ListItem) ImplCompanyChildUnion()                               {}
-func (ListItem) ImplDealChildUnion()                                  {}
-func (ListItem) ImplDocumentChildUnion()                              {}
-func (ListItem) ImplEquationChildUnion()                              {}
-func (ListItem) ImplEventChildUnion()                                 {}
-func (ListItem) ImplFileChildUnion()                                  {}
-func (ListItem) ImplFootnoteChildUnion()                              {}
-func (ListItem) ImplHeadingChildUnion()                               {}
-func (ListItem) ImplListChildUnion()                                  {}
-func (ListItem) ImplListItemChildUnion()                              {}
-func (ListItem) ImplMessageChildUnion()                               {}
-func (ListItem) ImplPageChildUnion()                                  {}
-func (ListItem) ImplParagraphChildUnion()                             {}
-func (ListItem) ImplPersonChildUnion()                                {}
-func (ListItem) ImplQuoteChildUnion()                                 {}
-func (ListItem) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (ListItem) ImplTableCellChildUnion()                             {}
-func (ListItem) ImplTaskChildUnion()                                  {}
-func (ListItem) ImplToDoChildUnion()                                  {}
-func (ListItem) ImplWebsiteChildUnion()                               {}
-func (ListItem) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (ListItem) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (ListItem) ImplCalloutChildUnion()                                        {}
+func (ListItem) ImplChunkChildUnion()                                          {}
+func (ListItem) ImplCompanyChildUnion()                                        {}
+func (ListItem) ImplDealChildUnion()                                           {}
+func (ListItem) ImplDocumentChildUnion()                                       {}
+func (ListItem) ImplEquationChildUnion()                                       {}
+func (ListItem) ImplEventChildUnion()                                          {}
+func (ListItem) ImplFileChildUnion()                                           {}
+func (ListItem) ImplFootnoteChildUnion()                                       {}
+func (ListItem) ImplHeadingChildUnion()                                        {}
+func (ListItem) ImplListChildUnion()                                           {}
+func (ListItem) ImplListItemChildUnion()                                       {}
+func (ListItem) ImplMessageChildUnion()                                        {}
+func (ListItem) ImplPageChildUnion()                                           {}
+func (ListItem) ImplParagraphChildUnion()                                      {}
+func (ListItem) ImplPersonChildUnion()                                         {}
+func (ListItem) ImplQuoteChildUnion()                                          {}
+func (ListItem) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (ListItem) ImplTableCellChildUnion()                                      {}
+func (ListItem) ImplTaskChildUnion()                                           {}
+func (ListItem) ImplToDoChildUnion()                                           {}
+func (ListItem) ImplWebsiteChildUnion()                                        {}
+func (ListItem) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (ListItem) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (ListItem) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (ListItem) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (ListItem) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // ListItemChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -5355,9 +5415,12 @@ func (r *Message) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Message) ImplScoredDocumentResponseDocumentUnion() {}
-func (Message) ImplMemoryListResponseDocumentUnion()     {}
-func (Message) ImplMemoryGetResponseDocumentUnion()      {}
+func (Message) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Message) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Message) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Message) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Message) ImplMemoryListResponseDocumentUnion()              {}
+func (Message) ImplMemoryGetResponseDocumentUnion()               {}
 
 // MessageChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -5813,29 +5876,32 @@ func (r *Page) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Page) ImplCalloutChildUnion()                               {}
-func (Page) ImplChunkChildUnion()                                 {}
-func (Page) ImplCompanyChildUnion()                               {}
-func (Page) ImplDealChildUnion()                                  {}
-func (Page) ImplDocumentChildUnion()                              {}
-func (Page) ImplEquationChildUnion()                              {}
-func (Page) ImplEventChildUnion()                                 {}
-func (Page) ImplFileChildUnion()                                  {}
-func (Page) ImplFootnoteChildUnion()                              {}
-func (Page) ImplHeadingChildUnion()                               {}
-func (Page) ImplListItemChildUnion()                              {}
-func (Page) ImplMessageChildUnion()                               {}
-func (Page) ImplPageChildUnion()                                  {}
-func (Page) ImplParagraphChildUnion()                             {}
-func (Page) ImplPersonChildUnion()                                {}
-func (Page) ImplQuoteChildUnion()                                 {}
-func (Page) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Page) ImplTableCellChildUnion()                             {}
-func (Page) ImplTaskChildUnion()                                  {}
-func (Page) ImplToDoChildUnion()                                  {}
-func (Page) ImplWebsiteChildUnion()                               {}
-func (Page) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Page) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Page) ImplCalloutChildUnion()                                        {}
+func (Page) ImplChunkChildUnion()                                          {}
+func (Page) ImplCompanyChildUnion()                                        {}
+func (Page) ImplDealChildUnion()                                           {}
+func (Page) ImplDocumentChildUnion()                                       {}
+func (Page) ImplEquationChildUnion()                                       {}
+func (Page) ImplEventChildUnion()                                          {}
+func (Page) ImplFileChildUnion()                                           {}
+func (Page) ImplFootnoteChildUnion()                                       {}
+func (Page) ImplHeadingChildUnion()                                        {}
+func (Page) ImplListItemChildUnion()                                       {}
+func (Page) ImplMessageChildUnion()                                        {}
+func (Page) ImplPageChildUnion()                                           {}
+func (Page) ImplParagraphChildUnion()                                      {}
+func (Page) ImplPersonChildUnion()                                         {}
+func (Page) ImplQuoteChildUnion()                                          {}
+func (Page) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Page) ImplTableCellChildUnion()                                      {}
+func (Page) ImplTaskChildUnion()                                           {}
+func (Page) ImplToDoChildUnion()                                           {}
+func (Page) ImplWebsiteChildUnion()                                        {}
+func (Page) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Page) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Page) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Page) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Page) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // PageChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -6239,29 +6305,32 @@ func (r *Paragraph) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Paragraph) ImplCalloutChildUnion()                               {}
-func (Paragraph) ImplChunkChildUnion()                                 {}
-func (Paragraph) ImplCompanyChildUnion()                               {}
-func (Paragraph) ImplDealChildUnion()                                  {}
-func (Paragraph) ImplDocumentChildUnion()                              {}
-func (Paragraph) ImplEquationChildUnion()                              {}
-func (Paragraph) ImplEventChildUnion()                                 {}
-func (Paragraph) ImplFileChildUnion()                                  {}
-func (Paragraph) ImplFootnoteChildUnion()                              {}
-func (Paragraph) ImplHeadingChildUnion()                               {}
-func (Paragraph) ImplListItemChildUnion()                              {}
-func (Paragraph) ImplMessageChildUnion()                               {}
-func (Paragraph) ImplPageChildUnion()                                  {}
-func (Paragraph) ImplParagraphChildUnion()                             {}
-func (Paragraph) ImplPersonChildUnion()                                {}
-func (Paragraph) ImplQuoteChildUnion()                                 {}
-func (Paragraph) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Paragraph) ImplTableCellChildUnion()                             {}
-func (Paragraph) ImplTaskChildUnion()                                  {}
-func (Paragraph) ImplToDoChildUnion()                                  {}
-func (Paragraph) ImplWebsiteChildUnion()                               {}
-func (Paragraph) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Paragraph) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Paragraph) ImplCalloutChildUnion()                                        {}
+func (Paragraph) ImplChunkChildUnion()                                          {}
+func (Paragraph) ImplCompanyChildUnion()                                        {}
+func (Paragraph) ImplDealChildUnion()                                           {}
+func (Paragraph) ImplDocumentChildUnion()                                       {}
+func (Paragraph) ImplEquationChildUnion()                                       {}
+func (Paragraph) ImplEventChildUnion()                                          {}
+func (Paragraph) ImplFileChildUnion()                                           {}
+func (Paragraph) ImplFootnoteChildUnion()                                       {}
+func (Paragraph) ImplHeadingChildUnion()                                        {}
+func (Paragraph) ImplListItemChildUnion()                                       {}
+func (Paragraph) ImplMessageChildUnion()                                        {}
+func (Paragraph) ImplPageChildUnion()                                           {}
+func (Paragraph) ImplParagraphChildUnion()                                      {}
+func (Paragraph) ImplPersonChildUnion()                                         {}
+func (Paragraph) ImplQuoteChildUnion()                                          {}
+func (Paragraph) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Paragraph) ImplTableCellChildUnion()                                      {}
+func (Paragraph) ImplTaskChildUnion()                                           {}
+func (Paragraph) ImplToDoChildUnion()                                           {}
+func (Paragraph) ImplWebsiteChildUnion()                                        {}
+func (Paragraph) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Paragraph) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Paragraph) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Paragraph) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Paragraph) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // ParagraphChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -6730,9 +6799,12 @@ func (r *Person) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Person) ImplScoredDocumentResponseDocumentUnion() {}
-func (Person) ImplMemoryListResponseDocumentUnion()     {}
-func (Person) ImplMemoryGetResponseDocumentUnion()      {}
+func (Person) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Person) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Person) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Person) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Person) ImplMemoryListResponseDocumentUnion()              {}
+func (Person) ImplMemoryGetResponseDocumentUnion()               {}
 
 // PersonChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -7328,29 +7400,32 @@ func (r *Quote) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Quote) ImplCalloutChildUnion()                               {}
-func (Quote) ImplChunkChildUnion()                                 {}
-func (Quote) ImplCompanyChildUnion()                               {}
-func (Quote) ImplDealChildUnion()                                  {}
-func (Quote) ImplDocumentChildUnion()                              {}
-func (Quote) ImplEquationChildUnion()                              {}
-func (Quote) ImplEventChildUnion()                                 {}
-func (Quote) ImplFileChildUnion()                                  {}
-func (Quote) ImplFootnoteChildUnion()                              {}
-func (Quote) ImplHeadingChildUnion()                               {}
-func (Quote) ImplListItemChildUnion()                              {}
-func (Quote) ImplMessageChildUnion()                               {}
-func (Quote) ImplPageChildUnion()                                  {}
-func (Quote) ImplParagraphChildUnion()                             {}
-func (Quote) ImplPersonChildUnion()                                {}
-func (Quote) ImplQuoteChildUnion()                                 {}
-func (Quote) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Quote) ImplTableCellChildUnion()                             {}
-func (Quote) ImplTaskChildUnion()                                  {}
-func (Quote) ImplToDoChildUnion()                                  {}
-func (Quote) ImplWebsiteChildUnion()                               {}
-func (Quote) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Quote) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Quote) ImplCalloutChildUnion()                                        {}
+func (Quote) ImplChunkChildUnion()                                          {}
+func (Quote) ImplCompanyChildUnion()                                        {}
+func (Quote) ImplDealChildUnion()                                           {}
+func (Quote) ImplDocumentChildUnion()                                       {}
+func (Quote) ImplEquationChildUnion()                                       {}
+func (Quote) ImplEventChildUnion()                                          {}
+func (Quote) ImplFileChildUnion()                                           {}
+func (Quote) ImplFootnoteChildUnion()                                       {}
+func (Quote) ImplHeadingChildUnion()                                        {}
+func (Quote) ImplListItemChildUnion()                                       {}
+func (Quote) ImplMessageChildUnion()                                        {}
+func (Quote) ImplPageChildUnion()                                           {}
+func (Quote) ImplParagraphChildUnion()                                      {}
+func (Quote) ImplPersonChildUnion()                                         {}
+func (Quote) ImplQuoteChildUnion()                                          {}
+func (Quote) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Quote) ImplTableCellChildUnion()                                      {}
+func (Quote) ImplTaskChildUnion()                                           {}
+func (Quote) ImplToDoChildUnion()                                           {}
+func (Quote) ImplWebsiteChildUnion()                                        {}
+func (Quote) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Quote) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Quote) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Quote) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Quote) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // QuoteChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -8804,29 +8879,32 @@ func (r *Table) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Table) ImplCalloutChildUnion()                               {}
-func (Table) ImplChunkChildUnion()                                 {}
-func (Table) ImplCompanyChildUnion()                               {}
-func (Table) ImplDealChildUnion()                                  {}
-func (Table) ImplDocumentChildUnion()                              {}
-func (Table) ImplEquationChildUnion()                              {}
-func (Table) ImplEventChildUnion()                                 {}
-func (Table) ImplFileChildUnion()                                  {}
-func (Table) ImplFootnoteChildUnion()                              {}
-func (Table) ImplHeadingChildUnion()                               {}
-func (Table) ImplListItemChildUnion()                              {}
-func (Table) ImplMessageChildUnion()                               {}
-func (Table) ImplPageChildUnion()                                  {}
-func (Table) ImplParagraphChildUnion()                             {}
-func (Table) ImplPersonChildUnion()                                {}
-func (Table) ImplQuoteChildUnion()                                 {}
-func (Table) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Table) ImplTableCellChildUnion()                             {}
-func (Table) ImplTaskChildUnion()                                  {}
-func (Table) ImplToDoChildUnion()                                  {}
-func (Table) ImplWebsiteChildUnion()                               {}
-func (Table) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Table) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Table) ImplCalloutChildUnion()                                        {}
+func (Table) ImplChunkChildUnion()                                          {}
+func (Table) ImplCompanyChildUnion()                                        {}
+func (Table) ImplDealChildUnion()                                           {}
+func (Table) ImplDocumentChildUnion()                                       {}
+func (Table) ImplEquationChildUnion()                                       {}
+func (Table) ImplEventChildUnion()                                          {}
+func (Table) ImplFileChildUnion()                                           {}
+func (Table) ImplFootnoteChildUnion()                                       {}
+func (Table) ImplHeadingChildUnion()                                        {}
+func (Table) ImplListItemChildUnion()                                       {}
+func (Table) ImplMessageChildUnion()                                        {}
+func (Table) ImplPageChildUnion()                                           {}
+func (Table) ImplParagraphChildUnion()                                      {}
+func (Table) ImplPersonChildUnion()                                         {}
+func (Table) ImplQuoteChildUnion()                                          {}
+func (Table) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Table) ImplTableCellChildUnion()                                      {}
+func (Table) ImplTaskChildUnion()                                           {}
+func (Table) ImplToDoChildUnion()                                           {}
+func (Table) ImplWebsiteChildUnion()                                        {}
+func (Table) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Table) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Table) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Table) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Table) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type TableType string
 
@@ -8866,29 +8944,32 @@ func (r *TableCell) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (TableCell) ImplCalloutChildUnion()                               {}
-func (TableCell) ImplChunkChildUnion()                                 {}
-func (TableCell) ImplCompanyChildUnion()                               {}
-func (TableCell) ImplDealChildUnion()                                  {}
-func (TableCell) ImplDocumentChildUnion()                              {}
-func (TableCell) ImplEquationChildUnion()                              {}
-func (TableCell) ImplEventChildUnion()                                 {}
-func (TableCell) ImplFileChildUnion()                                  {}
-func (TableCell) ImplFootnoteChildUnion()                              {}
-func (TableCell) ImplHeadingChildUnion()                               {}
-func (TableCell) ImplListItemChildUnion()                              {}
-func (TableCell) ImplMessageChildUnion()                               {}
-func (TableCell) ImplPageChildUnion()                                  {}
-func (TableCell) ImplParagraphChildUnion()                             {}
-func (TableCell) ImplPersonChildUnion()                                {}
-func (TableCell) ImplQuoteChildUnion()                                 {}
-func (TableCell) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (TableCell) ImplTableCellChildUnion()                             {}
-func (TableCell) ImplTaskChildUnion()                                  {}
-func (TableCell) ImplToDoChildUnion()                                  {}
-func (TableCell) ImplWebsiteChildUnion()                               {}
-func (TableCell) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (TableCell) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (TableCell) ImplCalloutChildUnion()                                        {}
+func (TableCell) ImplChunkChildUnion()                                          {}
+func (TableCell) ImplCompanyChildUnion()                                        {}
+func (TableCell) ImplDealChildUnion()                                           {}
+func (TableCell) ImplDocumentChildUnion()                                       {}
+func (TableCell) ImplEquationChildUnion()                                       {}
+func (TableCell) ImplEventChildUnion()                                          {}
+func (TableCell) ImplFileChildUnion()                                           {}
+func (TableCell) ImplFootnoteChildUnion()                                       {}
+func (TableCell) ImplHeadingChildUnion()                                        {}
+func (TableCell) ImplListItemChildUnion()                                       {}
+func (TableCell) ImplMessageChildUnion()                                        {}
+func (TableCell) ImplPageChildUnion()                                           {}
+func (TableCell) ImplParagraphChildUnion()                                      {}
+func (TableCell) ImplPersonChildUnion()                                         {}
+func (TableCell) ImplQuoteChildUnion()                                          {}
+func (TableCell) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (TableCell) ImplTableCellChildUnion()                                      {}
+func (TableCell) ImplTaskChildUnion()                                           {}
+func (TableCell) ImplToDoChildUnion()                                           {}
+func (TableCell) ImplWebsiteChildUnion()                                        {}
+func (TableCell) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (TableCell) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (TableCell) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (TableCell) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (TableCell) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type TableCellAlign string
 
@@ -9300,29 +9381,32 @@ func (r *TableRow) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (TableRow) ImplCalloutChildUnion()                               {}
-func (TableRow) ImplChunkChildUnion()                                 {}
-func (TableRow) ImplCompanyChildUnion()                               {}
-func (TableRow) ImplDealChildUnion()                                  {}
-func (TableRow) ImplDocumentChildUnion()                              {}
-func (TableRow) ImplEquationChildUnion()                              {}
-func (TableRow) ImplEventChildUnion()                                 {}
-func (TableRow) ImplFileChildUnion()                                  {}
-func (TableRow) ImplFootnoteChildUnion()                              {}
-func (TableRow) ImplHeadingChildUnion()                               {}
-func (TableRow) ImplListItemChildUnion()                              {}
-func (TableRow) ImplMessageChildUnion()                               {}
-func (TableRow) ImplPageChildUnion()                                  {}
-func (TableRow) ImplParagraphChildUnion()                             {}
-func (TableRow) ImplPersonChildUnion()                                {}
-func (TableRow) ImplQuoteChildUnion()                                 {}
-func (TableRow) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (TableRow) ImplTableCellChildUnion()                             {}
-func (TableRow) ImplTaskChildUnion()                                  {}
-func (TableRow) ImplToDoChildUnion()                                  {}
-func (TableRow) ImplWebsiteChildUnion()                               {}
-func (TableRow) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (TableRow) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (TableRow) ImplCalloutChildUnion()                                        {}
+func (TableRow) ImplChunkChildUnion()                                          {}
+func (TableRow) ImplCompanyChildUnion()                                        {}
+func (TableRow) ImplDealChildUnion()                                           {}
+func (TableRow) ImplDocumentChildUnion()                                       {}
+func (TableRow) ImplEquationChildUnion()                                       {}
+func (TableRow) ImplEventChildUnion()                                          {}
+func (TableRow) ImplFileChildUnion()                                           {}
+func (TableRow) ImplFootnoteChildUnion()                                       {}
+func (TableRow) ImplHeadingChildUnion()                                        {}
+func (TableRow) ImplListItemChildUnion()                                       {}
+func (TableRow) ImplMessageChildUnion()                                        {}
+func (TableRow) ImplPageChildUnion()                                           {}
+func (TableRow) ImplParagraphChildUnion()                                      {}
+func (TableRow) ImplPersonChildUnion()                                         {}
+func (TableRow) ImplQuoteChildUnion()                                          {}
+func (TableRow) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (TableRow) ImplTableCellChildUnion()                                      {}
+func (TableRow) ImplTaskChildUnion()                                           {}
+func (TableRow) ImplToDoChildUnion()                                           {}
+func (TableRow) ImplWebsiteChildUnion()                                        {}
+func (TableRow) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (TableRow) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (TableRow) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (TableRow) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (TableRow) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type TableRowType string
 
@@ -9369,9 +9453,12 @@ func (r *Task) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Task) ImplScoredDocumentResponseDocumentUnion() {}
-func (Task) ImplMemoryListResponseDocumentUnion()     {}
-func (Task) ImplMemoryGetResponseDocumentUnion()      {}
+func (Task) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Task) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Task) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Task) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Task) ImplMemoryListResponseDocumentUnion()              {}
+func (Task) ImplMemoryGetResponseDocumentUnion()               {}
 
 // TaskChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -9794,29 +9881,32 @@ func (r *Text) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Text) ImplCalloutChildUnion()                               {}
-func (Text) ImplChunkChildUnion()                                 {}
-func (Text) ImplCompanyChildUnion()                               {}
-func (Text) ImplDealChildUnion()                                  {}
-func (Text) ImplDocumentChildUnion()                              {}
-func (Text) ImplEquationChildUnion()                              {}
-func (Text) ImplEventChildUnion()                                 {}
-func (Text) ImplFileChildUnion()                                  {}
-func (Text) ImplFootnoteChildUnion()                              {}
-func (Text) ImplHeadingChildUnion()                               {}
-func (Text) ImplListItemChildUnion()                              {}
-func (Text) ImplMessageChildUnion()                               {}
-func (Text) ImplPageChildUnion()                                  {}
-func (Text) ImplParagraphChildUnion()                             {}
-func (Text) ImplPersonChildUnion()                                {}
-func (Text) ImplQuoteChildUnion()                                 {}
-func (Text) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Text) ImplTableCellChildUnion()                             {}
-func (Text) ImplTaskChildUnion()                                  {}
-func (Text) ImplToDoChildUnion()                                  {}
-func (Text) ImplWebsiteChildUnion()                               {}
-func (Text) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Text) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Text) ImplCalloutChildUnion()                                        {}
+func (Text) ImplChunkChildUnion()                                          {}
+func (Text) ImplCompanyChildUnion()                                        {}
+func (Text) ImplDealChildUnion()                                           {}
+func (Text) ImplDocumentChildUnion()                                       {}
+func (Text) ImplEquationChildUnion()                                       {}
+func (Text) ImplEventChildUnion()                                          {}
+func (Text) ImplFileChildUnion()                                           {}
+func (Text) ImplFootnoteChildUnion()                                       {}
+func (Text) ImplHeadingChildUnion()                                        {}
+func (Text) ImplListItemChildUnion()                                       {}
+func (Text) ImplMessageChildUnion()                                        {}
+func (Text) ImplPageChildUnion()                                           {}
+func (Text) ImplParagraphChildUnion()                                      {}
+func (Text) ImplPersonChildUnion()                                         {}
+func (Text) ImplQuoteChildUnion()                                          {}
+func (Text) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Text) ImplTableCellChildUnion()                                      {}
+func (Text) ImplTaskChildUnion()                                           {}
+func (Text) ImplToDoChildUnion()                                           {}
+func (Text) ImplWebsiteChildUnion()                                        {}
+func (Text) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Text) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Text) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Text) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Text) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type TextType string
 
@@ -9855,30 +9945,33 @@ func (r *ToDo) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ToDo) ImplCalloutChildUnion()                               {}
-func (ToDo) ImplChunkChildUnion()                                 {}
-func (ToDo) ImplCompanyChildUnion()                               {}
-func (ToDo) ImplDealChildUnion()                                  {}
-func (ToDo) ImplDocumentChildUnion()                              {}
-func (ToDo) ImplEquationChildUnion()                              {}
-func (ToDo) ImplEventChildUnion()                                 {}
-func (ToDo) ImplFileChildUnion()                                  {}
-func (ToDo) ImplFootnoteChildUnion()                              {}
-func (ToDo) ImplHeadingChildUnion()                               {}
-func (ToDo) ImplListChildUnion()                                  {}
-func (ToDo) ImplListItemChildUnion()                              {}
-func (ToDo) ImplMessageChildUnion()                               {}
-func (ToDo) ImplPageChildUnion()                                  {}
-func (ToDo) ImplParagraphChildUnion()                             {}
-func (ToDo) ImplPersonChildUnion()                                {}
-func (ToDo) ImplQuoteChildUnion()                                 {}
-func (ToDo) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (ToDo) ImplTableCellChildUnion()                             {}
-func (ToDo) ImplTaskChildUnion()                                  {}
-func (ToDo) ImplToDoChildUnion()                                  {}
-func (ToDo) ImplWebsiteChildUnion()                               {}
-func (ToDo) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (ToDo) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (ToDo) ImplCalloutChildUnion()                                        {}
+func (ToDo) ImplChunkChildUnion()                                          {}
+func (ToDo) ImplCompanyChildUnion()                                        {}
+func (ToDo) ImplDealChildUnion()                                           {}
+func (ToDo) ImplDocumentChildUnion()                                       {}
+func (ToDo) ImplEquationChildUnion()                                       {}
+func (ToDo) ImplEventChildUnion()                                          {}
+func (ToDo) ImplFileChildUnion()                                           {}
+func (ToDo) ImplFootnoteChildUnion()                                       {}
+func (ToDo) ImplHeadingChildUnion()                                        {}
+func (ToDo) ImplListChildUnion()                                           {}
+func (ToDo) ImplListItemChildUnion()                                       {}
+func (ToDo) ImplMessageChildUnion()                                        {}
+func (ToDo) ImplPageChildUnion()                                           {}
+func (ToDo) ImplParagraphChildUnion()                                      {}
+func (ToDo) ImplPersonChildUnion()                                         {}
+func (ToDo) ImplQuoteChildUnion()                                          {}
+func (ToDo) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (ToDo) ImplTableCellChildUnion()                                      {}
+func (ToDo) ImplTaskChildUnion()                                           {}
+func (ToDo) ImplToDoChildUnion()                                           {}
+func (ToDo) ImplWebsiteChildUnion()                                        {}
+func (ToDo) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (ToDo) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (ToDo) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (ToDo) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (ToDo) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // ToDoChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
@@ -10285,30 +10378,33 @@ func (r *ToolCall) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ToolCall) ImplCalloutChildUnion()                               {}
-func (ToolCall) ImplChunkChildUnion()                                 {}
-func (ToolCall) ImplCompanyChildUnion()                               {}
-func (ToolCall) ImplDealChildUnion()                                  {}
-func (ToolCall) ImplDocumentChildUnion()                              {}
-func (ToolCall) ImplEquationChildUnion()                              {}
-func (ToolCall) ImplEventChildUnion()                                 {}
-func (ToolCall) ImplFileChildUnion()                                  {}
-func (ToolCall) ImplFootnoteChildUnion()                              {}
-func (ToolCall) ImplHeadingChildUnion()                               {}
-func (ToolCall) ImplListItemChildUnion()                              {}
-func (ToolCall) ImplMessageChildUnion()                               {}
-func (ToolCall) ImplPageChildUnion()                                  {}
-func (ToolCall) ImplParagraphChildUnion()                             {}
-func (ToolCall) ImplPersonChildUnion()                                {}
-func (ToolCall) ImplQuoteChildUnion()                                 {}
-func (ToolCall) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (ToolCall) ImplTableCellChildUnion()                             {}
-func (ToolCall) ImplTaskChildUnion()                                  {}
-func (ToolCall) ImplToDoChildUnion()                                  {}
-func (ToolCall) ImplTraceChildUnion()                                 {}
-func (ToolCall) ImplWebsiteChildUnion()                               {}
-func (ToolCall) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (ToolCall) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (ToolCall) ImplCalloutChildUnion()                                        {}
+func (ToolCall) ImplChunkChildUnion()                                          {}
+func (ToolCall) ImplCompanyChildUnion()                                        {}
+func (ToolCall) ImplDealChildUnion()                                           {}
+func (ToolCall) ImplDocumentChildUnion()                                       {}
+func (ToolCall) ImplEquationChildUnion()                                       {}
+func (ToolCall) ImplEventChildUnion()                                          {}
+func (ToolCall) ImplFileChildUnion()                                           {}
+func (ToolCall) ImplFootnoteChildUnion()                                       {}
+func (ToolCall) ImplHeadingChildUnion()                                        {}
+func (ToolCall) ImplListItemChildUnion()                                       {}
+func (ToolCall) ImplMessageChildUnion()                                        {}
+func (ToolCall) ImplPageChildUnion()                                           {}
+func (ToolCall) ImplParagraphChildUnion()                                      {}
+func (ToolCall) ImplPersonChildUnion()                                         {}
+func (ToolCall) ImplQuoteChildUnion()                                          {}
+func (ToolCall) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (ToolCall) ImplTableCellChildUnion()                                      {}
+func (ToolCall) ImplTaskChildUnion()                                           {}
+func (ToolCall) ImplToDoChildUnion()                                           {}
+func (ToolCall) ImplTraceChildUnion()                                          {}
+func (ToolCall) ImplWebsiteChildUnion()                                        {}
+func (ToolCall) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (ToolCall) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (ToolCall) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (ToolCall) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (ToolCall) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type ToolCallType string
 
@@ -10350,30 +10446,33 @@ func (r *ToolResult) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (ToolResult) ImplCalloutChildUnion()                               {}
-func (ToolResult) ImplChunkChildUnion()                                 {}
-func (ToolResult) ImplCompanyChildUnion()                               {}
-func (ToolResult) ImplDealChildUnion()                                  {}
-func (ToolResult) ImplDocumentChildUnion()                              {}
-func (ToolResult) ImplEquationChildUnion()                              {}
-func (ToolResult) ImplEventChildUnion()                                 {}
-func (ToolResult) ImplFileChildUnion()                                  {}
-func (ToolResult) ImplFootnoteChildUnion()                              {}
-func (ToolResult) ImplHeadingChildUnion()                               {}
-func (ToolResult) ImplListItemChildUnion()                              {}
-func (ToolResult) ImplMessageChildUnion()                               {}
-func (ToolResult) ImplPageChildUnion()                                  {}
-func (ToolResult) ImplParagraphChildUnion()                             {}
-func (ToolResult) ImplPersonChildUnion()                                {}
-func (ToolResult) ImplQuoteChildUnion()                                 {}
-func (ToolResult) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (ToolResult) ImplTableCellChildUnion()                             {}
-func (ToolResult) ImplTaskChildUnion()                                  {}
-func (ToolResult) ImplToDoChildUnion()                                  {}
-func (ToolResult) ImplTraceChildUnion()                                 {}
-func (ToolResult) ImplWebsiteChildUnion()                               {}
-func (ToolResult) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (ToolResult) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (ToolResult) ImplCalloutChildUnion()                                        {}
+func (ToolResult) ImplChunkChildUnion()                                          {}
+func (ToolResult) ImplCompanyChildUnion()                                        {}
+func (ToolResult) ImplDealChildUnion()                                           {}
+func (ToolResult) ImplDocumentChildUnion()                                       {}
+func (ToolResult) ImplEquationChildUnion()                                       {}
+func (ToolResult) ImplEventChildUnion()                                          {}
+func (ToolResult) ImplFileChildUnion()                                           {}
+func (ToolResult) ImplFootnoteChildUnion()                                       {}
+func (ToolResult) ImplHeadingChildUnion()                                        {}
+func (ToolResult) ImplListItemChildUnion()                                       {}
+func (ToolResult) ImplMessageChildUnion()                                        {}
+func (ToolResult) ImplPageChildUnion()                                           {}
+func (ToolResult) ImplParagraphChildUnion()                                      {}
+func (ToolResult) ImplPersonChildUnion()                                         {}
+func (ToolResult) ImplQuoteChildUnion()                                          {}
+func (ToolResult) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (ToolResult) ImplTableCellChildUnion()                                      {}
+func (ToolResult) ImplTaskChildUnion()                                           {}
+func (ToolResult) ImplToDoChildUnion()                                           {}
+func (ToolResult) ImplTraceChildUnion()                                          {}
+func (ToolResult) ImplWebsiteChildUnion()                                        {}
+func (ToolResult) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (ToolResult) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (ToolResult) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (ToolResult) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (ToolResult) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 // ToolResultOutputUnion contains all possible properties and values from [string],
 // [map[string]any], [[]any].
@@ -10460,9 +10559,12 @@ func (r *Trace) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Trace) ImplScoredDocumentResponseDocumentUnion() {}
-func (Trace) ImplMemoryListResponseDocumentUnion()     {}
-func (Trace) ImplMemoryGetResponseDocumentUnion()      {}
+func (Trace) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Trace) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Trace) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Trace) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Trace) ImplMemoryListResponseDocumentUnion()              {}
+func (Trace) ImplMemoryGetResponseDocumentUnion()               {}
 
 // TraceChildUnion contains all possible properties and values from [TraceMessage],
 // [ToolCall], [ToolResult].
@@ -10600,30 +10702,33 @@ func (r *TraceMessage) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (TraceMessage) ImplCalloutChildUnion()                               {}
-func (TraceMessage) ImplChunkChildUnion()                                 {}
-func (TraceMessage) ImplCompanyChildUnion()                               {}
-func (TraceMessage) ImplDealChildUnion()                                  {}
-func (TraceMessage) ImplDocumentChildUnion()                              {}
-func (TraceMessage) ImplEquationChildUnion()                              {}
-func (TraceMessage) ImplEventChildUnion()                                 {}
-func (TraceMessage) ImplFileChildUnion()                                  {}
-func (TraceMessage) ImplFootnoteChildUnion()                              {}
-func (TraceMessage) ImplHeadingChildUnion()                               {}
-func (TraceMessage) ImplListItemChildUnion()                              {}
-func (TraceMessage) ImplMessageChildUnion()                               {}
-func (TraceMessage) ImplPageChildUnion()                                  {}
-func (TraceMessage) ImplParagraphChildUnion()                             {}
-func (TraceMessage) ImplPersonChildUnion()                                {}
-func (TraceMessage) ImplQuoteChildUnion()                                 {}
-func (TraceMessage) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (TraceMessage) ImplTableCellChildUnion()                             {}
-func (TraceMessage) ImplTaskChildUnion()                                  {}
-func (TraceMessage) ImplToDoChildUnion()                                  {}
-func (TraceMessage) ImplTraceChildUnion()                                 {}
-func (TraceMessage) ImplWebsiteChildUnion()                               {}
-func (TraceMessage) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (TraceMessage) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (TraceMessage) ImplCalloutChildUnion()                                        {}
+func (TraceMessage) ImplChunkChildUnion()                                          {}
+func (TraceMessage) ImplCompanyChildUnion()                                        {}
+func (TraceMessage) ImplDealChildUnion()                                           {}
+func (TraceMessage) ImplDocumentChildUnion()                                       {}
+func (TraceMessage) ImplEquationChildUnion()                                       {}
+func (TraceMessage) ImplEventChildUnion()                                          {}
+func (TraceMessage) ImplFileChildUnion()                                           {}
+func (TraceMessage) ImplFootnoteChildUnion()                                       {}
+func (TraceMessage) ImplHeadingChildUnion()                                        {}
+func (TraceMessage) ImplListItemChildUnion()                                       {}
+func (TraceMessage) ImplMessageChildUnion()                                        {}
+func (TraceMessage) ImplPageChildUnion()                                           {}
+func (TraceMessage) ImplParagraphChildUnion()                                      {}
+func (TraceMessage) ImplPersonChildUnion()                                         {}
+func (TraceMessage) ImplQuoteChildUnion()                                          {}
+func (TraceMessage) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (TraceMessage) ImplTableCellChildUnion()                                      {}
+func (TraceMessage) ImplTaskChildUnion()                                           {}
+func (TraceMessage) ImplToDoChildUnion()                                           {}
+func (TraceMessage) ImplTraceChildUnion()                                          {}
+func (TraceMessage) ImplWebsiteChildUnion()                                        {}
+func (TraceMessage) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (TraceMessage) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (TraceMessage) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (TraceMessage) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (TraceMessage) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type TraceMessageMessageType string
 
@@ -10686,9 +10791,12 @@ func (r *Transcript) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Transcript) ImplScoredDocumentResponseDocumentUnion() {}
-func (Transcript) ImplMemoryListResponseDocumentUnion()     {}
-func (Transcript) ImplMemoryGetResponseDocumentUnion()      {}
+func (Transcript) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Transcript) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Transcript) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Transcript) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Transcript) ImplMemoryListResponseDocumentUnion()              {}
+func (Transcript) ImplMemoryGetResponseDocumentUnion()               {}
 
 type TranscriptType string
 
@@ -10732,29 +10840,32 @@ func (r *Utterance) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Utterance) ImplCalloutChildUnion()                               {}
-func (Utterance) ImplChunkChildUnion()                                 {}
-func (Utterance) ImplCompanyChildUnion()                               {}
-func (Utterance) ImplDealChildUnion()                                  {}
-func (Utterance) ImplDocumentChildUnion()                              {}
-func (Utterance) ImplEquationChildUnion()                              {}
-func (Utterance) ImplEventChildUnion()                                 {}
-func (Utterance) ImplFileChildUnion()                                  {}
-func (Utterance) ImplFootnoteChildUnion()                              {}
-func (Utterance) ImplHeadingChildUnion()                               {}
-func (Utterance) ImplListItemChildUnion()                              {}
-func (Utterance) ImplMessageChildUnion()                               {}
-func (Utterance) ImplPageChildUnion()                                  {}
-func (Utterance) ImplParagraphChildUnion()                             {}
-func (Utterance) ImplPersonChildUnion()                                {}
-func (Utterance) ImplQuoteChildUnion()                                 {}
-func (Utterance) ImplScoredDocumentResponseDocumentInvoiceChildUnion() {}
-func (Utterance) ImplTableCellChildUnion()                             {}
-func (Utterance) ImplTaskChildUnion()                                  {}
-func (Utterance) ImplToDoChildUnion()                                  {}
-func (Utterance) ImplWebsiteChildUnion()                               {}
-func (Utterance) ImplMemoryListResponseDocumentInvoiceChildUnion()     {}
-func (Utterance) ImplMemoryGetResponseDocumentInvoiceChildUnion()      {}
+func (Utterance) ImplCalloutChildUnion()                                        {}
+func (Utterance) ImplChunkChildUnion()                                          {}
+func (Utterance) ImplCompanyChildUnion()                                        {}
+func (Utterance) ImplDealChildUnion()                                           {}
+func (Utterance) ImplDocumentChildUnion()                                       {}
+func (Utterance) ImplEquationChildUnion()                                       {}
+func (Utterance) ImplEventChildUnion()                                          {}
+func (Utterance) ImplFileChildUnion()                                           {}
+func (Utterance) ImplFootnoteChildUnion()                                       {}
+func (Utterance) ImplHeadingChildUnion()                                        {}
+func (Utterance) ImplListItemChildUnion()                                       {}
+func (Utterance) ImplMessageChildUnion()                                        {}
+func (Utterance) ImplPageChildUnion()                                           {}
+func (Utterance) ImplParagraphChildUnion()                                      {}
+func (Utterance) ImplPersonChildUnion()                                         {}
+func (Utterance) ImplQuoteChildUnion()                                          {}
+func (Utterance) ImplScoredDocumentResponseDocumentInvoiceChildUnion()          {}
+func (Utterance) ImplTableCellChildUnion()                                      {}
+func (Utterance) ImplTaskChildUnion()                                           {}
+func (Utterance) ImplToDoChildUnion()                                           {}
+func (Utterance) ImplWebsiteChildUnion()                                        {}
+func (Utterance) ImplLiveGetResourceResponseDocumentDocumentInvoiceChildUnion() {}
+func (Utterance) ImplLiveListResourcesResponseDocumentInvoiceChildUnion()       {}
+func (Utterance) ImplLiveSearchResponseDocumentDocumentInvoiceChildUnion()      {}
+func (Utterance) ImplMemoryListResponseDocumentInvoiceChildUnion()              {}
+func (Utterance) ImplMemoryGetResponseDocumentInvoiceChildUnion()               {}
 
 type UtteranceType string
 
@@ -10803,9 +10914,12 @@ func (r *Website) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (Website) ImplScoredDocumentResponseDocumentUnion() {}
-func (Website) ImplMemoryListResponseDocumentUnion()     {}
-func (Website) ImplMemoryGetResponseDocumentUnion()      {}
+func (Website) ImplScoredDocumentResponseDocumentUnion()          {}
+func (Website) ImplLiveGetResourceResponseDocumentDocumentUnion() {}
+func (Website) ImplLiveListResourcesResponseDocumentUnion()       {}
+func (Website) ImplLiveSearchResponseDocumentDocumentUnion()      {}
+func (Website) ImplMemoryListResponseDocumentUnion()              {}
+func (Website) ImplMemoryGetResponseDocumentUnion()               {}
 
 // WebsiteChildUnion contains all possible properties and values from [Blob],
 // [Callout], [Chunk], [Code], [Comment], [Divider], [Equation], [Footnote],
