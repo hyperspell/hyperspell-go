@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/hyperspell/hyperspell-go/compare/v0.2.0...v0.3.0) (2026-09-03)
+
+
+### Features
+
+* **api:** sync generated SDK from staging c6d4fbd0ba73c5e2bcdcc1d026d1fe01b58a018c ([#7](https://github.com/hyperspell/hyperspell-go/issues/7)) ([57c28cf](https://github.com/hyperspell/hyperspell-go/commit/57c28cf8bff4d8bf25a545096a6265a3b46bdb34))
+* **api:** sync generated SDK from staging dd1a8e1aa64bbf8426c74a64d7210fbb4c1832a9 ([#10](https://github.com/hyperspell/hyperspell-go/issues/10)) ([60b50d7](https://github.com/hyperspell/hyperspell-go/commit/60b50d7a7223e50d6f0f51d376fd1fa11c1d6671))
+
 ## [0.2.0](https://github.com/hyperspell/hyperspell-go/compare/v0.1.0...v0.2.0) (2026-06-26)
 
 
