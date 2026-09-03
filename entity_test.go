@@ -13,7 +13,7 @@ import (
 	"github.com/hyperspell/hyperspell-go/option"
 )
 
-func TestContextDocumentListWithOptionalParams(t *testing.T) {
+func TestEntityListWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -26,10 +26,16 @@ func TestContextDocumentListWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.ContextDocuments.List(context.TODO(), hyperspell.ContextDocumentListParams{
-		Cursor: hyperspell.String("cursor"),
-		Limit:  hyperspell.Int(0),
-		Status: hyperspell.ContextDocumentListParamsStatusProcessing,
+	_, err := client.Entities.List(context.TODO(), hyperspell.EntityListParams{
+		Cursor:                 hyperspell.String("cursor"),
+		Limit:                  hyperspell.Int(1),
+		MinSupportingDocuments: hyperspell.Int(0),
+		NamePrefix:             hyperspell.String("name_prefix"),
+		Search:                 hyperspell.String("search"),
+		SortBy:                 hyperspell.EntityListParamsSortByID,
+		SortDir:                hyperspell.EntityListParamsSortDirAsc,
+		Status:                 hyperspell.EntityListParamsStatusProvisional,
+		Type:                   hyperspell.String("type"),
 	})
 	if err != nil {
 		var apierr *hyperspell.Error
@@ -40,7 +46,7 @@ func TestContextDocumentListWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestContextDocumentGenerateWithOptionalParams(t *testing.T) {
+func TestEntityGet(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -53,12 +59,7 @@ func TestContextDocumentGenerateWithOptionalParams(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.ContextDocuments.Generate(context.TODO(), hyperspell.ContextDocumentGenerateParams{
-		Model:   hyperspell.String("model"),
-		Prompt:  hyperspell.String("prompt"),
-		Sources: []string{"string"},
-		UserID:  hyperspell.String("user_id"),
-	})
+	_, err := client.Entities.Get(context.TODO(), "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 	if err != nil {
 		var apierr *hyperspell.Error
 		if errors.As(err, &apierr) {
@@ -68,7 +69,7 @@ func TestContextDocumentGenerateWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestContextDocumentGet(t *testing.T) {
+func TestEntitySearchWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -81,7 +82,11 @@ func TestContextDocumentGet(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	_, err := client.ContextDocuments.Get(context.TODO(), "document_id")
+	_, err := client.Entities.Search(context.TODO(), hyperspell.EntitySearchParams{
+		Query: "query",
+		Limit: hyperspell.Int(1),
+		Type:  hyperspell.String("type"),
+	})
 	if err != nil {
 		var apierr *hyperspell.Error
 		if errors.As(err, &apierr) {

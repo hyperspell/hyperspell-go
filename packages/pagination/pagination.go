@@ -118,12 +118,12 @@ func (r *CursorPageAutoPager[T]) Index() int {
 	return r.run
 }
 
-type ContextDocumentsCursorPage[T any] struct {
-	Documents  []T    `json:"documents"`
+type EntityCursorPage[T any] struct {
+	Items      []T    `json:"items"`
 	NextCursor string `json:"next_cursor"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		Documents   respjson.Field
+		Items       respjson.Field
 		NextCursor  respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -133,16 +133,16 @@ type ContextDocumentsCursorPage[T any] struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r ContextDocumentsCursorPage[T]) RawJSON() string { return r.JSON.raw }
-func (r *ContextDocumentsCursorPage[T]) UnmarshalJSON(data []byte) error {
+func (r EntityCursorPage[T]) RawJSON() string { return r.JSON.raw }
+func (r *EntityCursorPage[T]) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
 // GetNextPage returns the next page as defined by this pagination style. When
 // there is no next page, this function will return a 'nil' for the page value, but
 // will not return an error
-func (r *ContextDocumentsCursorPage[T]) GetNextPage() (res *ContextDocumentsCursorPage[T], err error) {
-	if len(r.Documents) == 0 {
+func (r *EntityCursorPage[T]) GetNextPage() (res *EntityCursorPage[T], err error) {
+	if len(r.Items) == 0 {
 		return nil, nil
 	}
 	next := r.NextCursor
@@ -165,16 +165,16 @@ func (r *ContextDocumentsCursorPage[T]) GetNextPage() (res *ContextDocumentsCurs
 	return res, nil
 }
 
-func (r *ContextDocumentsCursorPage[T]) SetPageConfig(cfg *requestconfig.RequestConfig, res *http.Response) {
+func (r *EntityCursorPage[T]) SetPageConfig(cfg *requestconfig.RequestConfig, res *http.Response) {
 	if r == nil {
-		r = &ContextDocumentsCursorPage[T]{}
+		r = &EntityCursorPage[T]{}
 	}
 	r.cfg = cfg
 	r.res = res
 }
 
-type ContextDocumentsCursorPageAutoPager[T any] struct {
-	page *ContextDocumentsCursorPage[T]
+type EntityCursorPageAutoPager[T any] struct {
+	page *EntityCursorPage[T]
 	cur  T
 	idx  int
 	run  int
@@ -182,38 +182,38 @@ type ContextDocumentsCursorPageAutoPager[T any] struct {
 	paramObj
 }
 
-func NewContextDocumentsCursorPageAutoPager[T any](page *ContextDocumentsCursorPage[T], err error) *ContextDocumentsCursorPageAutoPager[T] {
-	return &ContextDocumentsCursorPageAutoPager[T]{
+func NewEntityCursorPageAutoPager[T any](page *EntityCursorPage[T], err error) *EntityCursorPageAutoPager[T] {
+	return &EntityCursorPageAutoPager[T]{
 		page: page,
 		err:  err,
 	}
 }
 
-func (r *ContextDocumentsCursorPageAutoPager[T]) Next() bool {
-	if r.page == nil || len(r.page.Documents) == 0 {
+func (r *EntityCursorPageAutoPager[T]) Next() bool {
+	if r.page == nil || len(r.page.Items) == 0 {
 		return false
 	}
-	if r.idx >= len(r.page.Documents) {
+	if r.idx >= len(r.page.Items) {
 		r.idx = 0
 		r.page, r.err = r.page.GetNextPage()
-		if r.err != nil || r.page == nil || len(r.page.Documents) == 0 {
+		if r.err != nil || r.page == nil || len(r.page.Items) == 0 {
 			return false
 		}
 	}
-	r.cur = r.page.Documents[r.idx]
+	r.cur = r.page.Items[r.idx]
 	r.run += 1
 	r.idx += 1
 	return true
 }
 
-func (r *ContextDocumentsCursorPageAutoPager[T]) Current() T {
+func (r *EntityCursorPageAutoPager[T]) Current() T {
 	return r.cur
 }
 
-func (r *ContextDocumentsCursorPageAutoPager[T]) Err() error {
+func (r *EntityCursorPageAutoPager[T]) Err() error {
 	return r.err
 }
 
-func (r *ContextDocumentsCursorPageAutoPager[T]) Index() int {
+func (r *EntityCursorPageAutoPager[T]) Index() int {
 	return r.run
 }

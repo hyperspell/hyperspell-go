@@ -25,12 +25,12 @@ func TestManualPagination(t *testing.T) {
 		option.WithAPIKey("My API Key"),
 		option.WithUserID("My User ID"),
 	)
-	page, err := client.ContextDocuments.List(context.TODO(), hyperspell.ContextDocumentListParams{})
+	page, err := client.Entities.List(context.TODO(), hyperspell.EntityListParams{})
 	if err != nil {
 		t.Fatalf("err should be nil: %s", err.Error())
 	}
-	for _, contextDocument := range page.Documents {
-		t.Logf("%+v\n", contextDocument.DocumentID)
+	for _, entity := range page.Items {
+		t.Logf("%+v\n", entity.ID)
 	}
 	// The mock server isn't going to give us real pagination
 	page, err = page.GetNextPage()
@@ -38,8 +38,8 @@ func TestManualPagination(t *testing.T) {
 		t.Fatalf("err should be nil: %s", err.Error())
 	}
 	if page != nil {
-		for _, contextDocument := range page.Documents {
-			t.Logf("%+v\n", contextDocument.DocumentID)
+		for _, entity := range page.Items {
+			t.Logf("%+v\n", entity.ID)
 		}
 	}
 }
